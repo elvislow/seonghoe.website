@@ -1,0 +1,32 @@
+---
+import Base from '../../layouts/Base.astro';
+import Icon from '../../components/Icon.astro';
+import PageHead from '../../components/PageHead.astro';
+import { articles } from '../../data/customs';
+import { waLink, brand } from '../../data/site';
+export function getStaticPaths() { return articles.map((a) => ({ params: { slug: a.slug }, props: { a } })); }
+const { a } = Astro.props;
+const schema = { '@context': 'https://schema.org', '@type': 'Article', headline: a.title, datePublished: a.date, inLanguage: 'zh-Hans-MY', publisher: { '@id': new URL('/#org', Astro.site!).href }, author: { '@id': new URL('/#org', Astro.site!).href }, description: a.summary, mainEntityOfPage: new URL(`/customs/${a.slug}/`, Astro.site!).href, image: new URL('/brand/logo-circle-color.jpg', Astro.site!).href };
+const others = articles.filter((x) => x.slug !== a.slug);
+---
+<Base lang="zh" active="customs" title={`${a.title}｜华人丧礼习俗｜祥鹤殡仪服务有限公司`} description={`${a.summary}祥鹤殡仪整理的华人丧礼习俗，各地讲法略有不同，供大家参考。`} schema={[schema]}>
+  <PageHead crumbs={[{ href: '/', label: '首页' }, { href: '/customs/', label: '习俗知识' }]} title={a.title} />
+  <section class="section" style="padding-top:40px">
+    <div class="wrap split">
+      <article class="prose" data-reveal>{a.body.map((p) => <p>{p}</p>)}</article>
+      <aside class="side-card on-dark" data-reveal style="--d:1">
+        <h3>家里正在办事，不懂怎么做？</h3>
+        <p style="color:var(--on-dark-muted);font-size:14.5px;margin:12px 0 20px">24 小时都有人接，WhatsApp 问我们就好。</p>
+        <a class="btn btn--light" href={waLink('zh')}>WhatsApp {brand.whatsappDisplay}<span class="disc"><Icon name="arrow" /></span></a>
+      </aside>
+    </div>
+  </section>
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head" data-reveal><h2 class="h2">其他习俗</h2></div>
+      <div class="article-grid">
+        {others.map((o, i) => <a class="a-card" href={`/customs/${o.slug}/`} data-reveal style={`--d:${i % 2}`}><div><h3>{o.title}</h3><p>{o.summary}</p></div><span class="disc-arrow"><Icon name="arrow" /></span></a>)}
+      </div>
+    </div>
+  </section>
+</Base>

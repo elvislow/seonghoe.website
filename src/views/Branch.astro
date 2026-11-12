@@ -1,0 +1,67 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import Photo from '../components/Photo.astro';
+import PageHead from '../components/PageHead.astro';
+import { branches, mapEmbed, waLink, reviews, googleRating, type Branch, type Lang } from '../data/site';
+import { services, serviceIcon } from '../data/services';
+import { tr, pfx, altPath, branchSchema } from '../lib';
+const { lang, branch: b } = Astro.props as { lang: Lang; branch: Branch };
+const t = tr(lang); const pre = pfx(lang); const area = b.area[lang];
+---
+<Base lang={lang} image={b.photo} active="branches" alt={altPath(lang, `/branches/${b.slug}/`)}
+  title={t(`${area}殡仪服务｜祥鹤殡仪服务有限公司${b.name.zh}｜24 小时`, `Funeral Services in ${area} | Seong Hoe ${b.name.en} | 24 Hours`)}
+  description={t(`祥鹤殡仪服务有限公司${b.name.zh}，${b.address}。24 小时殡仪服务，电话 ${b.phoneDisplay}。丧礼策划、各式法事、火化、土葬。`, `Seong Hoe Funeral Service Sdn. Bhd. ${b.name.en}, ${b.address}. 24-hour funeral services, call ${b.phoneDisplay}.`)}
+  schema={[branchSchema(b, Astro.site!)]}>
+  <PageHead crumbs={[{ href: `${pre}/`, label: t('首页', 'Home') }, { href: `${pre}/branches/`, label: t('分店', 'Branches') }, { href: `${pre}/branches/${b.slug}/`, label: b.name[lang] }]}
+    title={t(`${area}殡仪服务，`, `Funeral services in ${area},`)} grey={t(`祥鹤${b.name.zh}。`, `Seong Hoe ${b.name.en}.`)} lead={b.address} />
+  <section class="section" style="padding-top:40px">
+    <div class="wrap split">
+      <div>
+        <div class="branch-card__media" data-reveal style="aspect-ratio:3/2"><Photo src={b.photo} pos={b.photoPos} alt={b.googleName} label={t(`照片待补：${b.name.zh}门面`, 'Photo coming soon')} /></div>
+        <iframe class="map" style="margin-top:20px" loading="lazy" src={mapEmbed(b)} title={b.googleName} referrerpolicy="no-referrer-when-downgrade" data-reveal></iframe>
+      </div>
+      <aside class="side-card on-dark" data-reveal style="--d:1">
+        <h3>{b.name[lang]}</h3>
+        <ul>
+          <li><span>{t('电话', 'Phone')}</span><a href={`tel:${b.phone}`}>{b.phoneDisplay}</a></li>
+          <li><span>{t('营业时间', 'Hours')}</span>{t('24 小时', 'Open 24 hours')}</li>
+          <li><span>{t('公司', 'Company')}</span><span style="color:inherit;text-align:right">{b.company}</span></li>
+        </ul>
+        <a class="btn btn--light" href={`tel:${b.phone}`}>{t('打电话', 'Call')}<span class="disc"><Icon name="phone" /></span></a>
+        <a class="btn btn--light" href={b.mapsUrl}>{t('Google 地图导航', 'Directions')}<span class="disc"><Icon name="nav" /></span></a>
+        <a class="btn btn--light" href={waLink(lang)}>WhatsApp<span class="disc"><Icon name="chat" /></span></a>
+      </aside>
+    </div>
+  </section>
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head" data-reveal><h2 class="h2">{t(`${b.name.zh}的服务`, `Services at ${b.name.en}`)}</h2></div>
+      <div class="svc-rows">
+        {services.map((s, i) => (
+          <a class="svc-row" href={`${pre}/services/${s.slug}/`} data-reveal style={`--d:${i % 3}`}>
+            <span class="svc-row__icon"><Icon name={serviceIcon[s.slug]} /></span>
+            <span class="svc-row__title">{s.title[lang]}</span>
+            <span class="disc-arrow"><Icon name="arrow" /></span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+  {b.isHQ && (
+    <section class="section">
+      <div class="wrap">
+        <div class="section-head" data-reveal><h2 class="h2">{t('家属的 Google 评价，', 'Google reviews,')}<span class="grey">{t(`${googleRating.value} 分。`, ` ${googleRating.value} stars.`)}</span></h2></div>
+        <div class="article-grid">{reviews.map((r, i) => <blockquote class="a-card" style={`margin:0;--d:${i % 2}`} data-reveal><p style="color:var(--ink);font-size:16px">“{r}”</p></blockquote>)}</div>
+      </div>
+    </section>
+  )}
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head" data-reveal><h2 class="h2">{t('其他分店', 'Other branches')}</h2></div>
+      <div class="tile-list">
+        {branches.filter((x) => x.slug !== b.slug).map((x) => <a href={`${pre}/branches/${x.slug}/`} data-reveal><span><strong>{x.name[lang]}</strong><br /><span style="color:var(--muted);font-size:14px">{x.address}</span></span><span class="disc-arrow"><Icon name="arrow" /></span></a>)}
+      </div>
+    </div>
+  </section>
+</Base>

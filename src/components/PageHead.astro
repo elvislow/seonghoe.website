@@ -1,0 +1,16 @@
+---
+import Icon from './Icon.astro';
+const { crumbs = [], title, grey, lead } = Astro.props as { crumbs?: { href: string; label: string }[]; title: string; grey?: string; lead?: string };
+const site = Astro.site!;
+const crumbSchema = crumbs.length ? { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: crumbs.map((c, i) => ({ '@type': 'ListItem', position: i + 1, name: c.label, item: new URL(c.href, site).href })) } : null;
+---
+{crumbSchema && <script type="application/ld+json" set:html={JSON.stringify(crumbSchema)} />}
+<section class="page-head">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="breadcrumb" data-reveal>
+      {crumbs.map((c, i) => <>{i > 0 && <Icon name="right" size={14} />}<a href={c.href}>{c.label}</a></>)}
+    </nav>
+    <h1 class="page-title" data-reveal style="--d:1">{title}{grey && <span class="grey">{grey.split(/\s*[｜|]\s*/).map((g, i, all) => <>{i > 0 && ' '}<span class="nw">{g}{i < all.length - 1 && ' ｜'}</span></>)}</span>}</h1>
+    {lead && <p class="lead" data-reveal style="--d:2">{lead}</p>}
+  </div>
+</section>

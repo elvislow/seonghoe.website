@@ -1,0 +1,27 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import PageHead from '../components/PageHead.astro';
+import { type Lang } from '../data/site';
+import { services, serviceIcon } from '../data/services';
+import { tr, pfx, altPath } from '../lib';
+const { lang } = Astro.props as { lang: Lang };
+const t = tr(lang); const pre = pfx(lang);
+---
+<Base lang={lang} active="services" alt={altPath(lang, '/services/')}
+  title={t('殡仪服务项目｜丧礼策划・法事・火化・土葬｜祥鹤殡仪服务有限公司', 'Funeral Services | Planning, Rites, Cremation, Burial | Seong Hoe')}
+  description={t('祥鹤殡仪服务有限公司的服务项目：丧礼策划、各式法事、火化、土葬、捐棺助葬守护、宠物殡葬。柔佛 24 小时服务。', 'Funeral planning, rites, cremation, burial, casket sponsorship and pet funerals. 24 hours across Johor.')}>
+  <PageHead crumbs={[{ href: `${pre}/`, label: t('首页', 'Home') }, { href: `${pre}/services/`, label: t('服务', 'Services') }]}
+    title={t('服务项目，', 'Our services,')} grey={t('照家里的习惯安排。', 'arranged around your family.')} />
+  <section class="section" style="padding-top:48px">
+    <div class="wrap svc-rows">
+      {services.map((s, i) => (
+        <a class="svc-row" href={`${pre}/services/${s.slug}/`} data-reveal style={`--d:${i % 3}`}>
+          <span class="svc-row__icon"><Icon name={serviceIcon[s.slug]} /></span>
+          <span><span class="svc-row__title">{s.title[lang]}</span><span class="svc-row__desc" style="display:block">{s.intro[lang]}</span></span>
+          <span class="disc-arrow"><Icon name="arrow" /></span>
+        </a>
+      ))}
+    </div>
+  </section>
+</Base>

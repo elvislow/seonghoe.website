@@ -1,0 +1,7 @@
+---
+import V from '../../views/Branch.astro';
+import { branches } from '../../data/site';
+export function getStaticPaths() { return branches.map((b) => ({ params: { slug: b.slug }, props: { branch: b } })); }
+const { branch } = Astro.props;
+---
+<V lang="zh" branch={branch} />

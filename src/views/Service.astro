@@ -1,0 +1,58 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import PageHead from '../components/PageHead.astro';
+import { branches, waLink, brand, type Lang } from '../data/site';
+import { services, type Service } from '../data/services';
+import { tr, pfx, altPath } from '../lib';
+const { lang, service: s } = Astro.props as { lang: Lang; service: Service };
+const t = tr(lang); const pre = pfx(lang);
+const idx = services.findIndex((x) => x.slug === s.slug);
+const next = services[(idx + 1) % services.length];
+const faqSchema = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: s.faqs[lang].map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) };
+const serviceSchema = { '@context': 'https://schema.org', '@type': 'Service', name: s.title[lang], description: s.intro[lang], provider: { '@id': new URL('/#org', Astro.site!).href }, areaServed: ['Batu Pahat', 'Johor Bahru', 'Senggarang', 'Johor'] };
+---
+<Base lang={lang} active="services" alt={altPath(lang, `/services/${s.slug}/`)}
+  title={t(`${s.title.zh}｜峇株巴辖・新山・新文龙｜祥鹤殡仪服务有限公司`, `${s.title.en} | Batu Pahat, Johor Bahru, Senggarang | Seong Hoe`)}
+  image={s.photo} description={lang === 'zh' ? `${s.intro.zh}祥鹤殡仪服务有限公司，峇株巴辖、新山、新文龙 24 小时服务，电话 016-777 3883。` : `${s.intro.en} Seong Hoe Funeral Service, 24 hours in Batu Pahat, Johor Bahru and Senggarang. Call 016-777 3883.`} schema={[serviceSchema, faqSchema]}>
+  <PageHead crumbs={[{ href: `${pre}/`, label: t('首页', 'Home') }, { href: `${pre}/services/`, label: t('服务', 'Services') }, { href: `${pre}/services/${s.slug}/`, label: s.title[lang] }]}
+    title={s.title[lang]} lead={s.intro[lang]} />
+  <section class="section" style="padding-top:48px">
+    <div class="wrap split">
+      <div>
+        {s.photo && <div class="svc-photo" data-reveal><img src={s.photo} alt={s.title[lang]} /></div>}
+        {s.body[lang].map((sec) => (
+          <div class="svc-sec" data-reveal>
+            <h2 class="h3">{sec.h}</h2>
+            {sec.p && <div class="body">{sec.p.map((x) => <p>{x}</p>)}</div>}
+            {sec.steps && (
+              <ol class="steps">
+                {sec.steps.map(([h, d], i) => <li><span class="steps__n">{String(i + 1).padStart(2, '0')}</span><div><strong>{h}</strong><p>{d}</p></div></li>)}
+              </ol>
+            )}
+          </div>
+        ))}
+        <div class="svc-sec" data-reveal>
+          <h2 class="h3">{t('常见问题', 'Common questions')}</h2>
+          <div class="acc" data-acc style="margin-top:12px">
+            {s.faqs[lang].map(([q, a], k) => (
+              <div class="acc__item">
+                <button class="acc__btn" type="button" aria-expanded={k === 0 ? 'true' : 'false'}>{q}<span class="acc__plus"><Icon name="plus" size={18} /></span></button>
+                <div class="acc__panel"><div><p>{a}</p></div></div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div class="svc-sec" data-reveal>
+          <h2 class="h3">{t('下一个服务', 'Next service')}</h2>
+          <div class="tile-list"><a href={`${pre}/services/${next.slug}/`}><span>{next.title[lang]}</span><span class="disc-arrow"><Icon name="arrow" /></span></a></div>
+        </div>
+      </div>
+      <aside class="side-card on-dark" data-reveal style="--d:1">
+        <h3>{t('24 小时联络', 'Call us 24 hours')}</h3>
+        <ul>{branches.map((b) => <li><span>{b.name[lang]}</span><a href={`tel:${b.phone}`}>{b.phoneDisplay}</a></li>)}</ul>
+        <a class="btn btn--light" href={waLink(lang)}>WhatsApp {brand.whatsappDisplay}<span class="disc"><Icon name="arrow" /></span></a>
+      </aside>
+    </div>
+  </section>
+</Base>

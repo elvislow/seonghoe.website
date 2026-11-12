@@ -1,0 +1,6 @@
+---
+// 有照片就放照片；还没有的显示「照片待补」，不放假照片
+const { src, alt = '', label = '照片待补', pos = '50% 50%' } = Astro.props as { src?: string; alt?: string; label?: string; pos?: string };
+---
+{src ? <img src={src} alt={alt} loading="lazy" style={`object-position:${pos}`} /> :
+  <div class="ph" role="img" aria-label={label}><img src="/brand/logo-ink.png" alt="" /><span>{label}</span></div>}

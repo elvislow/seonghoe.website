@@ -1,0 +1,239 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import Photo from '../components/Photo.astro';
+import DriftWall from '../components/DriftWall.astro';
+import { brand, branches, reviews, googleRating, waLink, press, type Lang } from '../data/site';
+import { services, serviceIcon, gallery } from '../data/services';
+import { articles } from '../data/customs';
+import { tr, pfx, altPath } from '../lib';
+const { lang } = Astro.props as { lang: Lang };
+const t = tr(lang); const pre = pfx(lang);
+const tickerItems = lang === 'zh'
+  ? ['24 小时服务', '峇株巴辖', '新山', '新文龙', '丧礼策划', '各式法事', '火化', '土葬', '捐棺助葬守护', '怀宠阁 宠物殡葬']
+  : ['Open 24 hours', 'Batu Pahat', 'Johor Bahru', 'Senggarang', 'Funeral planning', 'Funeral rites', 'Cremation', 'Burial', 'Casket sponsorship', 'Pet funerals'];
+const faqs = lang === 'zh' ? [
+  ['半夜家里有人走了，可以打来吗？', '可以。三间分店都是 24 小时服务，任何时间打来或 WhatsApp 都有人接。'],
+  ['祥鹤有哪几间分店？', `峇株巴辖总店、新山分店、新文龙分店。地址和地图都在「分店」页。`],
+  ['老一辈的规矩我们都不懂，怎么办？', '各地、各籍贯的做法都不一样。家里怎么做，我们会先跟你和长辈商量，一步一步提醒。'],
+] : [
+  ['Can I call in the middle of the night?', 'Yes. All three branches are open 24 hours. Call or WhatsApp us at any time.'],
+  ['Where are your branches?', 'Batu Pahat (HQ), Johor Bahru and Senggarang. Addresses and maps are on the Branches page.'],
+  ['We do not know the traditional customs. What should we do?', 'Customs differ by place and dialect group. We talk it through with you and your elders first, and remind you of each step.'],
+];
+---
+<Base lang={lang} active="home" alt={altPath(lang, '/')}
+  title={t('祥鹤殡仪服务有限公司｜柔佛 24 小时殡仪服务｜峇株巴辖・新山・新文龙', 'Seong Hoe Funeral Service Sdn. Bhd. | 24-Hour Funeral Services in Johor')}
+  description={t('祥鹤殡仪服务有限公司，柔佛 24 小时殡仪服务。丧礼策划、各式法事、火化、土葬、捐棺助葬守护。峇株巴辖总店、新山分店、新文龙分店。', 'Seong Hoe Funeral Service Sdn. Bhd. offers 24-hour funeral services in Johor: funeral planning, rites, cremation, burial and casket sponsorship. Branches in Batu Pahat, Johor Bahru and Senggarang.')}>
+
+  <section class="hero">
+    <img class="hero__crane" src="/brand/logo-ink.png" alt="" aria-hidden="true" />
+    <div class="wrap">
+      <div class="hero__grid">
+        <div>
+          <p class="hero__hello" data-in style="--d:0">{t('柔佛 · 24 小时殡仪服务', 'JOHOR · 24-HOUR FUNERAL SERVICE')}</p>
+          <h1 class="hero__name">
+            <span class="ln"><span style="--d:1">{t('家里有人走了，', 'When a loved one')}</span></span>
+            <span class="ln ln--2"><span style="--d:2">{t('先打给祥鹤。', 'passes, call us.')}</span></span>
+          </h1>
+          <p class="hero__lead" data-in style="--d:3">{t('不管几点都有人接。接下来要做什么、要准备什么，我们一步一步陪你。', 'Someone answers at any hour. We walk you through what to do next, one step at a time.')}</p>
+          <div class="hero__ctas" data-in style="--d:4">
+            <a class="btn btn--primary" href={waLink(lang)}>{t('WhatsApp 我们', 'WhatsApp us')}<span class="disc"><Icon name="arrow" /></span></a>
+          </div>
+        </div>
+
+        <div class="portrait-wrap">
+        <svg class="portrait-ring" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="49" /><circle cx="50" cy="50" r="46" /></svg>
+        <figure class="portrait" style="--d:3" data-tilt>
+          <div class="portrait__media">
+            <img src={brand.founder.photo} alt={t(`祥鹤创办人${brand.founder.zh}`, `Seong Hoe founder ${brand.founder.en}`)} data-parallax width="552" height="690" />
+            <div class="socials">
+              <a href={`tel:${branches[0].phone}`} data-tip={t('打电话', 'Call')} aria-label={t('打电话', 'Call')}><Icon name="phone" /></a>
+              <a href={waLink(lang)} data-tip="WhatsApp" aria-label="WhatsApp"><Icon name="chat" /></a>
+            </div>
+          </div>
+          <figcaption class="avail"><span class="status-dot" aria-hidden="true"></span>{t('现在有人接电话', 'Someone is on call now')}</figcaption>
+        </figure>
+        </div>
+
+        <div class="hero__aside">
+          <p class="award" data-in style="--d:5">{t('祥鹤创办人', 'Founder')}<strong>{brand.founder.zh}</strong></p>
+          <p class="role" data-in style="--d:6">{t('丧礼策划', 'Funeral')}<span>{t('各式法事', 'Planning')}</span></p>
+          <p class="proof" data-in style="--d:7"><span class="proof__num">{googleRating.value}</span><span class="stars">{[1,2,3,4,5].map(() => <Icon name="star" />)}</span>{t('Google 评分', 'on Google')}</p>
+        </div>
+      </div>
+
+      <div class="ticker" data-in style="--d:8">
+        {press.length ? (
+          <p class="ticker__label"><strong>{t('媒体报导', 'As featured in')}</strong><br />{t('报章与媒体', 'the press')}</p>
+        ) : (
+          <p class="ticker__label"><strong>{t('三间分店', 'Three branches')}</strong><br />{t('柔佛都到得了', 'across Johor')}</p>
+        )}
+        <div class="marquee">
+          <div class="marquee__track">
+            {[0, 1].map((k) => (
+              <div class="marquee__group" aria-hidden={k === 1 ? 'true' : undefined}>
+                {press.length
+                  ? press.map((m) => {
+                      const inner = m.logo ? <img class="press-logo" src={m.logo} alt={m.name} /> : <><i></i>{m.name}</>;
+                      return m.url ? <a class="wm" href={m.url} target="_blank" rel="noopener">{inner}</a> : <span class="wm">{inner}</span>;
+                    })
+                  : tickerItems.map((w) => <span class="wm"><i></i>{w}</span>)}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section"><div class="svc-band">
+    <div class="wrap svc-index">
+      <div class="svc-index__intro" data-reveal>
+        <h2 class="h2">{t('从第一通电话，', 'From the first call')}<span class="grey">{t('到最后一程。', ' to the final farewell.')}</span></h2>
+        <p class="lead">{t('丧礼策划、法事、火化或土葬，我们照家里的信仰和习惯安排。', 'Planning, rites, cremation or burial, arranged around your family’s beliefs and customs.')}</p>
+        <a class="link" href={`${pre}/services/`}>{t('看全部服务', 'All services')}<Icon name="arrow" /></a>
+      </div>
+      <div class="svc-rows">
+        {services.map((s, i) => (
+          <a class="svc-row" href={`${pre}/services/${s.slug}/`} data-reveal style={`--d:${i % 3}`}>
+            <span class="svc-row__icon"><Icon name={serviceIcon[s.slug]} /></span>
+            <span><span class="svc-row__title">{s.title[lang]}</span><span class="svc-row__desc" style="display:block">{s.intro[lang]}</span></span>
+            <span class="disc-arrow"><Icon name="arrow" /></span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </div></section>
+
+  <section class="section">
+    <div class="wrap collab">
+      <div data-reveal>
+        <h2 class="collab__title">{t('不懂规矩没关系，', 'You do not need to know the customs.')}<span class="grey">{t('我们会在旁边一步一步提醒。', ' We will remind you of every step.')}</span></h2>
+        <div class="contact-items">
+          {branches.map((b) => (
+            <div class="contact-item">
+              <span class="contact-item__icon"><Icon name="phone" /></span>
+              <div><small>{b.name[lang]}</small><a href={`tel:${b.phone}`}>{b.phoneDisplay}</a></div>
+            </div>
+          ))}
+        </div>
+        <a class="btn btn--dark" href={waLink(lang)}>{t('WhatsApp 咨询', 'WhatsApp us')}<span class="disc"><Icon name="arrow" /></span></a>
+      </div>
+      <div class="collab__shots">
+        <figure class="shot" data-reveal style="--d:1"><Photo src="/img/founder-showroom.webp" alt={t('祥鹤创办人蔡偉中在棺木展示厅', 'Seong Hoe founder in the casket showroom')} pos="55% 50%" /></figure>
+        <figure class="shot" data-reveal style="--d:2"><Photo src="/img/work-altar.webp" alt={t('祥鹤布置的灵堂', 'A memorial altar arranged by Seong Hoe')} pos="50% 50%" /></figure>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section"><div class="gallery-band on-dark">
+    <div class="wrap section-head" data-reveal style="margin-bottom:0">
+      <h2 class="h2">{t('一场丧礼，', 'At every funeral,')}<span class="grey">{t('我们这样陪家属走完。', ' this is how we stay with the family.')}</span></h2>
+    </div>
+    <DriftWall items={gallery} lang={lang} columns={5} />
+  </div></section>
+
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <h2 class="h2">{t('三间分店，', 'Three branches,')}<span class="grey">{t('就近找我们。', ' find the nearest one.')}</span></h2>
+        <a class="link" href={`${pre}/branches/`}>{t('分店地址与地图', 'Addresses and maps')}<Icon name="arrow" /></a>
+      </div>
+      <div class="branch-grid">
+        {branches.map((b, i) => (
+          <a class="branch-card" href={`${pre}/branches/${b.slug}/`} data-reveal style={`--d:${i}`} data-tilt>
+            <div class="branch-card__media"><Photo src={b.photo} pos={b.photoPos} alt={b.googleName} label={t(`照片待补：${b.name.zh}门面`, 'Photo coming soon')} /></div>
+            <div class="branch-card__foot">
+              <div><h3>{b.name[lang]}</h3><p>{b.area[lang]} · {b.phoneDisplay}</p></div>
+              <span class="disc-arrow"><Icon name="arrow" /></span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="band on-dark" data-reveal>
+        <img class="band__mark" src="/brand/logo-white.png" alt="" />
+        <h2 class="band__title">{lang === 'zh' ? <>家属在 Google 上<span class="nw">给的分数，</span></> : 'The score families give us on Google'}<span class="grey">{t('是我们最在乎的数字。', ' is the number we care about most.')}</span></h2>
+        <div class="band__row">
+          <div class="stat"><div class="stat__num num"><span data-count={googleRating.value}>{googleRating.value}</span><sup>★</sup></div><p class="stat__label">{t('Google 评分（总店）', 'Google rating (HQ)')}</p></div>
+          <div class="stat"><div class="stat__num num"><span data-count={branches.length}>{branches.length}</span></div><p class="stat__label">{t('间分店，遍布柔佛', 'branches across Johor')}</p></div>
+          <div class="stat"><div class="stat__num num"><span data-count="24">24</span><sup>{t('小时', 'h')}</sup></div><p class="stat__label">{t('全天候有人接电话', 'someone always on call')}</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap quotes" data-carousel>
+      <div class="quotes__side" data-reveal>
+        <h2 class="h2">{t('家属怎么说，', 'What families say,')}<span class="grey">{t('原文照放。', ' word for word.')}</span></h2>
+        <p class="quotes__rating"><span class="stars">{[1,2,3,4,5].map(() => <Icon name="star" />)}</span>{t(`Google 评分 ${googleRating.value}`, `${googleRating.value} on Google`)}</p>
+        <div class="quotes__ctrl">
+          <button class="icon-btn" type="button" aria-label={t('上一则', 'Previous')} data-prev><Icon name="left" /></button>
+          <button class="icon-btn" type="button" aria-label={t('下一则', 'Next')} data-next><Icon name="right" /></button>
+          <div class="ticks">{reviews.map((_, k) => <button type="button" aria-label={t(`第 ${k + 1} 则`, `Review ${k + 1}`)} aria-current={k === 0 ? 'true' : 'false'}></button>)}</div>
+        </div>
+      </div>
+      <div class="stage" data-reveal style="--d:1" tabindex="0" aria-roledescription="carousel">
+        {reviews.map((r, k) => (
+          <figure class={`slide${k === 0 ? ' is-active' : ''}`} style="margin:0">
+            <div class="slide__mark" aria-hidden="true">“</div>
+            <blockquote>{r}</blockquote>
+            <footer>{t('Google 评价 · 峇株巴辖总店', 'Google review · Batu Pahat HQ')}</footer>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {lang === 'zh' && (
+    <section class="section">
+      <div class="wrap">
+        <div class="section-head" data-reveal>
+          <h2 class="h2">大家都在做的规矩，<span class="grey">很少人解释。</span></h2>
+          <a class="link" href="/customs/">全部习俗知识<Icon name="arrow" /></a>
+        </div>
+        <div class="article-grid">
+          {articles.map((a, i) => (
+            <a class="a-card" href={`/customs/${a.slug}/`} data-reveal style={`--d:${i % 2}`} data-tilt>
+              <div><h3>{a.title}</h3><p>{a.summary}</p></div>
+              <span class="disc-arrow"><Icon name="arrow" /></span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <section class="section">
+    <div class="wrap faq">
+      <div data-reveal><h2 class="h2">{t('家属最常问的，', 'Questions families')}<span class="grey">{t('先回答你。', ' ask first.')}</span></h2>
+        <a class="link" style="margin-top:24px" href={`${pre}/faq/`}>{t('全部常见问题', 'All questions')}<Icon name="arrow" /></a></div>
+      <div class="acc" data-acc data-reveal style="--d:1">
+        {faqs.map(([q, a], k) => (
+          <div class="acc__item">
+            <button class="acc__btn" type="button" aria-expanded={k === 0 ? 'true' : 'false'}>{q}<span class="acc__plus"><Icon name="plus" size={18} /></span></button>
+            <div class="acc__panel"><div><p>{a}</p></div></div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="cta-band" data-reveal>
+        <h2>{t('不管几点，', 'Whatever the hour,')}<span class="grey">{t('都可以打来。', ' you can call.')}</span></h2>
+        <div><p>{t('三间分店都是 24 小时服务。', 'All three branches are open 24 hours.')}</p>
+          <a class="btn btn--dark" href={waLink(lang)}>WhatsApp {brand.whatsappDisplay}<span class="disc"><Icon name="arrow" /></span></a></div>
+      </div>
+    </div>
+  </section>
+</Base>

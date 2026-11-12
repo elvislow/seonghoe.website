@@ -1,0 +1,260 @@
+---
+import '../styles/global.css';
+import { ClientRouter } from 'astro:transitions';
+import Icon from '../components/Icon.astro';
+import { brand, branches, waLink, type Lang } from '../data/site';
+import { services } from '../data/services';
+import { tr, pfx } from '../lib';
+
+interface Props { lang: Lang; title: string; description: string; alt?: string; schema?: object[]; active?: string; image?: string; }
+const { lang, title, description, alt, schema = [], active = '', image = '/brand/logo-circle-color.jpg' } = Astro.props;
+const site = Astro.site!;
+const canonical = new URL(Astro.url.pathname, site).href;
+const t = tr(lang); const pre = pfx(lang);
+const orgSchema = {
+  '@context': 'https://schema.org', '@type': 'Organization', '@id': new URL('/#org', site).href,
+  name: brand.en, alternateName: brand.zh, url: site.href, logo: new URL('/brand/logo-ink.png', site).href,
+  founder: { '@type': 'Person', name: brand.founder.zh },
+  sameAs: [brand.linktree, ...Object.values(brand.social).filter(Boolean)],
+};
+const nav = [
+  { key: 'home', href: `${pre}/`, label: t('首页', 'Home') },
+  { key: 'services', href: `${pre}/services/`, label: t('服务', 'Services') },
+  { key: 'branches', href: `${pre}/branches/`, label: t('分店', 'Branches') },
+  { key: 'customs', href: `${pre}/customs/`, label: t('习俗知识', 'Customs') },
+  { key: 'faq', href: `${pre}/faq/`, label: t('常见问题', 'FAQ') },
+  { key: 'about', href: `${pre}/about/`, label: t('关于祥鹤', 'About') },
+];
+---
+<!doctype html>
+<html lang={lang === 'zh' ? 'zh-Hans-MY' : 'en-MY'}>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#a78b73" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
+  {alt && <link rel="alternate" hreflang={lang === 'zh' ? 'en-MY' : 'zh-Hans-MY'} href={new URL(alt, site).href} />}
+  <link rel="alternate" hreflang={lang === 'zh' ? 'zh-Hans-MY' : 'en-MY'} href={canonical} />
+  <link rel="icon" href="/favicon.png" type="image/png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content={new URL(image, site).href} />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta property="og:site_name" content={`${brand.zh} ${brand.en}`} />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script is:inline>document.documentElement.classList.add('js');window.addEventListener('error',function(){document.documentElement.classList.remove('js')});</script>
+  <script type="application/ld+json" set:html={JSON.stringify([orgSchema, ...schema])} />
+  {import.meta.env.PUBLIC_PREVIEW !== '1' && <ClientRouter fallback="swap" />}
+</head>
+<body>
+  <div class="frame-mask" aria-hidden="true"></div>
+  <div class="progress" aria-hidden="true"><span data-progress></span></div>
+  <div class="sheet">
+    <header class="site-header" data-header>
+      <div class="wrap site-header__in">
+        <a class="brand" href={`${pre}/`} aria-label={brand.zh}>
+          <img src="/brand/logo-ink.png" alt="" width="38" height="40" />
+          <span><b>{brand.zh}</b><small>SEONG HOE FUNERAL SERVICE SDN. BHD.</small></span>
+        </a>
+        <nav class="nav" aria-label={t('主选单', 'Main')}>
+          {nav.map((n) => <a href={n.href} aria-current={active === n.key ? 'page' : undefined}>{n.label}</a>)}
+        </nav>
+        <div class="header-cta">
+          {alt && <a class="lang" href={alt}>{lang === 'zh' ? 'EN' : '中文'}</a>}
+          <a class="btn btn--dark btn--sm" href={waLink(lang)}>{t('WhatsApp 咨询', 'WhatsApp us')}<span class="disc"><Icon name="arrow" /></span></a>
+          <button class="icon-btn menu-btn" type="button" aria-label={t('打开选单', 'Open menu')} aria-expanded="false" aria-controls="menu" data-menu-open><Icon name="menu" /></button>
+        </div>
+      </div>
+    </header>
+
+    <div class="menu" id="menu" role="dialog" aria-modal="true" aria-label={t('选单', 'Menu')} data-menu>
+      <div class="menu__top">
+        <a class="brand" href={`${pre}/`}><img src="/brand/logo-ink.png" alt="" width="38" height="40" /><span><b>{brand.zh}</b></span></a>
+        <button class="icon-btn" type="button" aria-label={t('关闭选单', 'Close menu')} data-menu-close><Icon name="x" /></button>
+      </div>
+      <nav class="menu__links">
+        {nav.map((n, i) => <a href={n.href} style={`--i:${i}`}>{n.label}<span class="disc-arrow"><Icon name="arrow" /></span></a>)}
+      </nav>
+      <div class="menu__foot">
+        <a class="btn btn--primary" href={waLink(lang)}>WhatsApp {brand.whatsappDisplay}<span class="disc"><Icon name="arrow" /></span></a>
+        {alt && <a class="btn btn--ghost" href={alt}>{lang === 'zh' ? 'English' : '中文'}<span class="disc"><Icon name="arrow" /></span></a>}
+      </div>
+    </div>
+
+    <main id="main"><slot /></main>
+
+    <footer class="footer on-dark">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <img src="/brand/logo-white.png" alt={brand.zh} />
+          <p>{brand.tagline[lang]}</p>
+          <p style="margin-top:10px">{t('24 小时服务，峇株巴辖、新山、新文龙都有分店。', 'Open 24 hours, with branches in Batu Pahat, Johor Bahru and Senggarang.')}</p>
+        </div>
+        <div>
+          <h4>{t('页面', 'PAGES')}</h4>
+          <ul>{nav.map((n) => <li><a href={n.href}>{n.label}</a></li>)}</ul>
+        </div>
+        <div>
+          <h4>{t('服务', 'SERVICES')}</h4>
+          <ul>{services.map((s) => <li><a href={`${pre}/services/${s.slug}/`}>{s.title[lang]}</a></li>)}</ul>
+        </div>
+        <div>
+          <h4>{t('分店', 'BRANCHES')}</h4>
+          <ul>{branches.map((b) => <li><a href={`${pre}/branches/${b.slug}/`}>{b.name[lang]}</a><small><a href={`tel:${b.phone}`}>{b.phoneDisplay}</a></small></li>)}</ul>
+        </div>
+      </div>
+      <div class="footer__bar">
+        <span>© {new Date().getFullYear()} {brand.en} · {brand.zh}</span>
+        <a href={brand.linktree}>Linktree</a>
+      </div>
+    </footer>
+  </div>
+
+  <nav class="dock" aria-label={t('快速联络', 'Quick contact')}>
+    <a class="d-wa" href={waLink(lang)}><Icon name="chat" size={18} />WhatsApp</a>
+    <a class="d-call" href={`tel:${branches[0].phone}`}><Icon name="phone" size={18} />{t('打电话', 'Call')}</a>
+  </nav>
+
+  <script>
+    const reduce = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function header() {
+      const h = document.querySelector('[data-header]');
+      if (!h) return;
+      const on = () => h.classList.toggle('is-stuck', window.scrollY > 8);
+      on(); window.addEventListener('scroll', on, { passive: true });
+    }
+
+    function menu() {
+      const m = document.querySelector<HTMLElement>('[data-menu]');
+      const openBtn = document.querySelector<HTMLButtonElement>('[data-menu-open]');
+      const closeBtn = document.querySelector<HTMLButtonElement>('[data-menu-close]');
+      if (!m || !openBtn || !closeBtn) return;
+      const focusables = () => Array.from(m.querySelectorAll<HTMLElement>('a,button'));
+      const close = () => { m.classList.remove('is-open'); openBtn.setAttribute('aria-expanded', 'false'); document.body.style.overflow = ''; openBtn.focus(); };
+      openBtn.onclick = () => { m.classList.add('is-open'); openBtn.setAttribute('aria-expanded', 'true'); document.body.style.overflow = 'hidden'; closeBtn.focus(); };
+      closeBtn.onclick = close;
+      m.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => { m.classList.remove('is-open'); document.body.style.overflow = ''; }));
+      m.onkeydown = (e) => {
+        if (e.key === 'Escape') close();
+        if (e.key === 'Tab') { const f = focusables(); const first = f[0], last = f[f.length - 1];
+          if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+          else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); } }
+      };
+    }
+
+    function reveals() {
+      const els = Array.from(document.querySelectorAll<HTMLElement>('[data-reveal]'));
+      if (!('IntersectionObserver' in window) || reduce()) { els.forEach((e) => e.classList.add('is-in')); return; }
+      const io = new IntersectionObserver((entries) => entries.forEach((en) => { if (en.isIntersecting) { en.target.classList.add('is-in'); io.unobserve(en.target); } }), { rootMargin: '0px 0px -6% 0px' });
+      els.forEach((e) => io.observe(e));
+      setTimeout(() => els.forEach((e) => e.classList.add('is-in')), 4000); // 安全网
+    }
+
+    function hero() {
+      const h = document.querySelector('.hero');
+      if (h) requestAnimationFrame(() => requestAnimationFrame(() => h.classList.add('is-ready')));
+      const img = document.querySelector<HTMLElement>('[data-parallax]');
+      if (img && !reduce()) {
+        const move = () => { const y = Math.min(36, window.scrollY * 0.08); img.style.transform = `translateY(${-y}px)`; };
+        window.addEventListener('scroll', move, { passive: true });
+      }
+    }
+
+    function counters() {
+      const els = Array.from(document.querySelectorAll<HTMLElement>('[data-count]'));
+      const run = (el: HTMLElement) => {
+        const end = parseFloat(el.dataset.count!); const dec = (el.dataset.count!.split('.')[1] || '').length;
+        if (reduce()) { el.textContent = end.toFixed(dec); return; }
+        const t0 = performance.now(); const dur = 1400;
+        const step = (now: number) => { const p = Math.min(1, (now - t0) / dur); const v = end * (1 - Math.pow(1 - p, 4)); el.textContent = v.toFixed(dec); if (p < 1) requestAnimationFrame(step); };
+        el.textContent = (0).toFixed(dec); requestAnimationFrame(step);
+      };
+      if (!('IntersectionObserver' in window)) return;
+      const io = new IntersectionObserver((entries) => entries.forEach((en) => { if (en.isIntersecting) { run(en.target as HTMLElement); io.unobserve(en.target); } }), { threshold: 0.5 });
+      els.forEach((e) => io.observe(e));
+    }
+
+    function carousel() {
+      const root = document.querySelector<HTMLElement>('[data-carousel]');
+      if (!root) return;
+      const slides = Array.from(root.querySelectorAll<HTMLElement>('.slide'));
+      const ticks = Array.from(root.querySelectorAll<HTMLButtonElement>('.ticks button'));
+      let i = 0;
+      const go = (n: number) => { i = (n + slides.length) % slides.length;
+        slides.forEach((s, k) => { s.classList.toggle('is-active', k === i); s.setAttribute('aria-hidden', String(k !== i)); });
+        ticks.forEach((t, k) => t.setAttribute('aria-current', String(k === i))); };
+      root.querySelector<HTMLButtonElement>('[data-prev]')!.onclick = () => go(i - 1);
+      root.querySelector<HTMLButtonElement>('[data-next]')!.onclick = () => go(i + 1);
+      ticks.forEach((t, k) => (t.onclick = () => go(k)));
+      root.onkeydown = (e) => { if (e.key === 'ArrowLeft') go(i - 1); if (e.key === 'ArrowRight') go(i + 1); };
+      const stage = root.querySelector<HTMLElement>('.stage')!; let x0 = 0;
+      stage.addEventListener('pointerdown', (e) => (x0 = e.clientX));
+      stage.addEventListener('pointerup', (e) => { const dx = e.clientX - x0; if (Math.abs(dx) > 40) go(dx < 0 ? i + 1 : i - 1); });
+      go(0);
+    }
+
+    function accordion() {
+      document.querySelectorAll<HTMLElement>('[data-acc]').forEach((group) => {
+        const btns = Array.from(group.querySelectorAll<HTMLButtonElement>('.acc__btn'));
+        btns.forEach((b) => (b.onclick = () => { const open = b.getAttribute('aria-expanded') === 'true';
+          btns.forEach((x) => x.setAttribute('aria-expanded', 'false')); b.setAttribute('aria-expanded', String(!open)); }));
+      });
+    }
+
+    function progress() {
+      const bar = document.querySelector<HTMLElement>('[data-progress]');
+      if (!bar) return;
+      const on = () => { const h = document.documentElement.scrollHeight - innerHeight; bar.style.transform = `scaleX(${h > 0 ? scrollY / h : 0})`; };
+      on(); addEventListener('scroll', on, { passive: true });
+    }
+
+    // 卡片跟着鼠标微微倾斜；触控和减少动态时不做
+    function tilt() {
+      if (reduce() || !matchMedia('(hover: hover)').matches) return;
+      document.querySelectorAll<HTMLElement>('[data-tilt]').forEach((el) => {
+        el.addEventListener('pointermove', (e) => {
+          const r = el.getBoundingClientRect(); const x = (e.clientX - r.left) / r.width - .5; const y = (e.clientY - r.top) / r.height - .5;
+          el.style.transform = `perspective(900px) rotateY(${x * 6}deg) rotateX(${-y * 6}deg) translateY(-4px)`;
+          el.style.setProperty('--mx', `${(x + .5) * 100}%`); el.style.setProperty('--my', `${(y + .5) * 100}%`);
+        });
+        el.addEventListener('pointerleave', () => { el.style.transform = ''; });
+      });
+    }
+
+    // 主要按钮会被鼠标轻轻吸过去
+    function magnet() {
+      if (reduce() || !matchMedia('(hover: hover)').matches) return;
+      document.querySelectorAll<HTMLElement>('.btn--primary, .btn--dark').forEach((el) => {
+        el.addEventListener('pointermove', (e) => { const r = el.getBoundingClientRect();
+          el.style.transform = `translate(${(e.clientX - r.left - r.width / 2) * .12}px, ${(e.clientY - r.top - r.height / 2) * .2}px)`; });
+        el.addEventListener('pointerleave', () => { el.style.transform = ''; });
+      });
+    }
+
+    // 中文段落最后一行不要只剩一两个字：把最后三个字（连标点）绑在一起不断开
+    function noOrphan() {
+      document.querySelectorAll<HTMLElement>('main p, main li, main h2, main h3, main figcaption, main dd, main dt, main blockquote, footer p, [class*="__desc"], [class*="__text"], [class*="__sub"], [class*="__note"]').forEach((el) => {
+        if (el.dataset.nw || el.closest('[aria-hidden="true"], .drift, .nw')) return; el.dataset.nw = '1';
+        const w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT); let n: Node | null, last: Text | null = null;
+        while ((n = w.nextNode())) if ((n as Text).data.trim()) last = n as Text;
+        if (!last || last.data.trim().length < 6 || last.parentElement?.closest('.nw')) return;
+        const m = last.data.match(/([\u3400-\u9fffA-Za-z0-9]{3}[^\u3400-\u9fffA-Za-z0-9\s]*)\s*$/);
+        if (!m || !/[\u3400-\u9fff]/.test(m[1])) return;
+        const span = document.createElement('span'); span.className = 'nw'; span.textContent = m[1];
+        last.data = last.data.slice(0, m.index); last.parentNode!.insertBefore(span, last.nextSibling);
+      });
+    }
+    const init = () => { noOrphan(); header(); menu(); reveals(); hero(); counters(); carousel(); accordion(); progress(); tilt(); magnet(); };
+    document.addEventListener('astro:page-load', init);
+    if (!document.querySelector('meta[name="astro-view-transitions-enabled"]')) init();
+  </script>
+</body>
+</html>

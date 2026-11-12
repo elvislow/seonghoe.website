@@ -1,0 +1,43 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import PageHead from '../components/PageHead.astro';
+import { waLink, type Lang } from '../data/site';
+import { faqGroups } from '../data/faq';
+import { tr, pfx, altPath } from '../lib';
+const { lang } = Astro.props as { lang: Lang };
+const t = tr(lang); const pre = pfx(lang);
+const groups = faqGroups(lang);
+const schema = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: groups.flatMap((g) => g.items).map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) };
+---
+<Base lang={lang} active="faq" alt={altPath(lang, '/faq/')} schema={[schema]}
+  title={t('丧礼常见问题｜守灵几天、死亡证怎么办、费用多少｜祥鹤殡仪服务有限公司', 'Funeral FAQ | Wake Duration, Death Certificate, Cost | Seong Hoe')}
+  description={t('家里有人过世最常问的问题：守灵要几天、在家过世怎么办、死亡证去哪里办、配套多少钱、火化和土葬要准备什么。', 'Common questions when someone passes: how long the wake lasts, what to do after a death at home, the death certificate, package costs, cremation and burial.')}>
+  <PageHead crumbs={[{ href: `${pre}/`, label: t('首页', 'Home') }, { href: `${pre}/faq/`, label: t('常见问题', 'FAQ') }]}
+    title={t('家属最常问的，', 'Questions families')} grey={t('都在这里。', 'ask most.')} />
+  <section class="section" style="padding-top:40px">
+    <div class="wrap split">
+      <div>
+        {groups.map((g) => (
+          <div class="svc-sec" data-reveal>
+            <h2 class="h3">{g.title}</h2>
+            <div class="acc" data-acc style="margin-top:8px">
+              {g.items.map(([q, a]) => (
+                <div class="acc__item">
+                  <button class="acc__btn" type="button" aria-expanded="false">{q}<span class="acc__plus"><Icon name="plus" size={18} /></span></button>
+                  <div class="acc__panel"><div><p>{a}</p></div></div>
+                </div>
+              ))}
+            </div>
+            {g.slug && <a class="link" style="margin-top:14px" href={`${pre}/services/${g.slug}/`}>{t('看服务详情', 'Service details')}<Icon name="arrow" /></a>}
+          </div>
+        ))}
+      </div>
+      <aside class="side-card on-dark" data-reveal style="--d:1">
+        <h3>{t('找不到答案？', 'Still have a question?')}</h3>
+        <p style="color:var(--on-dark-muted);font-size:14.5px;margin:12px 0 20px">{t('24 小时都有人接，直接问我们。', 'Someone answers 24 hours a day.')}</p>
+        <a class="btn btn--light" href={waLink(lang)}>WhatsApp<span class="disc"><Icon name="arrow" /></span></a>
+      </aside>
+    </div>
+  </section>
+</Base>

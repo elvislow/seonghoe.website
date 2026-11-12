@@ -1,0 +1,30 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import Photo from '../components/Photo.astro';
+import PageHead from '../components/PageHead.astro';
+import { branches, type Lang } from '../data/site';
+import { tr, pfx, altPath, branchSchema } from '../lib';
+const { lang } = Astro.props as { lang: Lang };
+const t = tr(lang); const pre = pfx(lang);
+---
+<Base lang={lang} active="branches" alt={altPath(lang, '/branches/')}
+  title={t('祥鹤分店地址｜峇株巴辖・新山・新文龙｜祥鹤殡仪服务有限公司', 'Branches | Batu Pahat, Johor Bahru, Senggarang | Seong Hoe Funeral Service Sdn. Bhd.')}
+  description={t('祥鹤殡仪服务有限公司三间分店的地址、电话和 Google 地图：峇株巴辖总店、新山分店、新文龙分店，全部 24 小时服务。', 'Addresses, phone numbers and maps for Seong Hoe branches in Batu Pahat, Johor Bahru and Senggarang. All open 24 hours.')}
+  schema={branches.map((b) => branchSchema(b, Astro.site!))}>
+  <PageHead crumbs={[{ href: `${pre}/`, label: t('首页', 'Home') }, { href: `${pre}/branches/`, label: t('分店', 'Branches') }]}
+    title={t('三间分店，', 'Three branches,')} grey={t('都是 24 小时。', 'all open 24 hours.')} />
+  <section class="section" style="padding-top:48px">
+    <div class="wrap branch-grid">
+      {branches.map((b, i) => (
+        <a class="branch-card" href={`${pre}/branches/${b.slug}/`} data-reveal style={`--d:${i}`}>
+          <div class="branch-card__media"><Photo src={b.photo} pos={b.photoPos} alt={b.googleName} label={t(`照片待补：${b.name.zh}门面`, 'Photo coming soon')} /></div>
+          <div class="branch-card__foot">
+            <div><h3>{b.name[lang]}</h3><p>{b.address}</p><p><strong>{b.phoneDisplay}</strong></p></div>
+            <span class="disc-arrow"><Icon name="arrow" /></span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,60 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import PageHead from '../components/PageHead.astro';
+import { brand, branches, waLink, type Lang } from '../data/site';
+import { tr, pfx, altPath } from '../lib';
+const { lang } = Astro.props as { lang: Lang };
+const t = tr(lang); const pre = pfx(lang);
+---
+<Base lang={lang} active="about" alt={altPath(lang, '/about/')}
+  title={t('关于祥鹤殡仪服务有限公司｜创办人蔡偉中', 'About Seong Hoe Funeral Service Sdn. Bhd.')}
+  description={t('祥鹤殡仪服务有限公司由蔡偉中在 2020 年创办，峇株巴辖殡仪服务总店，另有新山、新文龙分店。灵堂花海布置、丧礼摄影、捐棺助葬，24 小时服务。', 'Seong Hoe Funeral Service Sdn. Bhd. was founded by 蔡偉中, with its HQ in Batu Pahat and branches in Johor Bahru and Senggarang.')}>
+  <PageHead crumbs={[{ href: `${pre}/`, label: t('首页', 'Home') }, { href: `${pre}/about/`, label: t('关于祥鹤', 'About') }]}
+    title={t('关于祥鹤，', 'About Seong Hoe,')} grey={brand.tagline[lang]} />
+  <section class="section" style="padding-top:48px">
+    <div class="wrap collab">
+      <figure class="shot about-photo" data-reveal style="aspect-ratio:4/5;margin:0"><img src="/img/founder-standing.webp" style="width:100%;height:100%;object-fit:cover;object-position:50% 40%" alt={t(`祥鹤创办人${brand.founder.zh}`, `Founder ${brand.founder.en}`)} /></figure>
+      <div data-reveal style="--d:1">
+        <p class="eyebrow">{t('创办人', 'FOUNDER')}</p>
+        <h2 class="h2" style="margin-top:10px">{brand.founder.zh}</h2>
+        <p class="body" style="margin-top:18px">{t(`祥鹤殡仪服务有限公司总店在峇株巴辖，另有${branches.slice(1).map((b) => b.name.zh).join('和')}，三间都是 24 小时服务。`, 'Our HQ is in Batu Pahat, with branches in Johor Bahru and Senggarang. All three are open 24 hours.')}</p>
+        <div class="story">
+          {lang === 'zh' ? (<>
+            <p>很多人一听到殡葬业，就觉得避讳。蔡偉中不一样，他家里长辈本来就是做这行的。12 岁开始，他就跟在爸爸身边看，跟着道士学。那时候他就立下目标：不只要接手家里的事业，还要自己开一间殡仪公司。</p>
+            <p>2020 年 1 月 19 日，他正式投入殡仪服务，在峇株巴辖创办祥鹤。理念是「尊重生命、感恩生命、传承生命」。传统仪式一样照做，但丧礼不一定要死气沉沉，可以庄严，也可以温馨。</p>
+            <h3>祥鹤做的不一样的地方</h3>
+            <ul>
+              <li><strong>门店不压抑。</strong>暖色调、现代的布置，家属一进门不会被一排排棺木围着，心情可以放松一点。</li>
+              <li><strong>灵堂布置。</strong>照主家的要求铺花海，真花假花都有，再配屏风和灯光，色调以白色为主。</li>
+              <li><strong>丧礼摄影。</strong>请专业摄影师帮家属拍合照、拍仪式过程，孙辈长大以后，也看得到这些画面。</li>
+              <li><strong>专人陪同。</strong>从头到尾有专人跟着主家，除了睡觉时间都在场。另外也有照片修复、定期追悼会和各式法会。</li>
+              <li><strong>预算有限，也能办得体面。</strong>丧礼不一定要花大钱，钱少一样可以好好送别。</li>
+            </ul>
+            <h3>捐棺助葬，一直在做</h3>
+            <p>祥鹤会去老人院探访，帮有需要的家庭和团体，也配合捐棺助葬。家里有困难、需要捐棺助葬的，可以联系我们。为了不让善款被滥用，我们会先审核申请条件。想一起行善的朋友，也欢迎联系。</p>
+            <h3>身后事，先讲清楚</h3>
+            <p>蔡偉中希望大家不要太怕谈死亡。趁还在的时候，跟家人讲好想用什么宗教仪式、照哪一种传统，以后家人就不会乱。</p>
+            <p class="story__src">参考报道：<a href="https://www.sinchew.com.my/news/20230401/johor/4580153" target="_blank" rel="noopener">《星洲日报》2023 年 4 月 1 日：尊重生命 感恩生命 传承生命 祥鹤用心 家属安心</a></p>
+          </>) : (<>
+            <p>Many people see the funeral trade as taboo. For our founder it was family life: from the age of 12 he followed his father to work and learned from a Taoist priest, and he set himself a goal to one day start his own funeral company.</p>
+            <p>On 19 January 2020 he founded Seong Hoe in Batu Pahat, guided by three words: respect life, be grateful for life, pass life on. We keep the traditional rites, but a funeral does not have to feel heavy. It can be solemn and warm at the same time.</p>
+            <h3>What we do differently</h3>
+            <ul>
+              <li><strong>A calm showroom.</strong> Warm colours and a modern space, so families are not surrounded by caskets the moment they walk in.</li>
+              <li><strong>Wake decoration.</strong> Flower displays, screens and lighting, mostly in white, set up to the family's wishes.</li>
+              <li><strong>Funeral photography.</strong> A professional photographer captures family photos and the rites, so grandchildren can look back one day.</li>
+              <li><strong>A dedicated attendant.</strong> Someone stays with the family from start to finish. We also offer photo restoration, memorial gatherings and religious rites.</li>
+              <li><strong>Dignified on any budget.</strong> A proper farewell does not need to be expensive.</li>
+            </ul>
+            <h3>Casket sponsorship</h3>
+            <p>We visit elderly homes, support families and groups in need, and sponsor caskets. Families facing hardship can contact us; we check each application so donations go where they are needed.</p>
+            <p class="story__src">Source: <a href="https://www.sinchew.com.my/news/20230401/johor/4580153" target="_blank" rel="noopener">Sin Chew Daily, 1 April 2023</a></p>
+          </>)}
+        </div>
+        <figure class="svc-photo" style="margin-top:28px"><img src="/img/showroom.webp" alt={t('祥鹤棺木展示厅', 'Seong Hoe casket showroom')} /></figure>
+        <p style="margin-top:28px"><a class="btn btn--dark" href={waLink(lang)}>{t('WhatsApp 咨询', 'WhatsApp us')}<span class="disc"><Icon name="arrow" /></span></a></p>
+      </div>
+    </div>
+  </section>
+</Base>

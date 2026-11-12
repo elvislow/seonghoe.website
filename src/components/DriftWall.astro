@@ -1,0 +1,89 @@
+---
+// 3D 漂浮照片墙。效果参考 React Bits 的 DriftWall，用原生 JS/CSS 重写，不需要 React。
+type Item = { src: string; zh: string; en: string };
+const { items, lang, columns = 5 } = Astro.props as { items: Item[]; lang: 'zh' | 'en'; columns?: number };
+const cols: Item[][] = Array.from({ length: columns }, () => []);
+items.forEach((it, i) => cols[i % columns].push(it));
+---
+<div class="drift" data-drift aria-label={lang === 'zh' ? '祥鹤工作照' : 'Seong Hoe at work'}>
+  <div class="drift__plane" data-plane>
+    {cols.map((col, c) => (
+      <div class="drift__col" data-col={c}>
+        <div class="drift__track" data-track>
+          {col.map((it) => (
+            <figure class="drift__tile">
+              <img src={it.src} alt={it[lang]} loading="lazy" />
+              <figcaption>{it[lang]}</figcaption>
+            </figure>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
+
+<style is:global>
+  .drift { --tw: 230px; --th: 160px; --gap: 18px; position: relative; height: clamp(460px, 52vw, 640px); margin-top: clamp(28px, 4vw, 48px); perspective: 1200px; overflow: hidden;
+    -webkit-mask-image: linear-gradient(180deg, transparent, #000 16%, #000 84%, transparent), linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+    -webkit-mask-composite: source-in; mask-image: linear-gradient(180deg, transparent, #000 16%, #000 84%, transparent), linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-composite: intersect; }
+  .drift__plane { position: absolute; inset: -30% -10%; display: flex; justify-content: center; gap: var(--gap); transform-style: preserve-3d; transform: translateZ(-120px) rotateX(var(--rx, 16deg)) rotateY(var(--ry, -14deg)); }
+  .drift__col { width: var(--tw); flex: none; transform-style: preserve-3d; }
+  .drift__track { display: grid; gap: var(--gap); transform-style: preserve-3d; will-change: transform; }
+  .drift__tile { position: relative; margin: 0; width: var(--tw); height: var(--th); border-radius: 14px; overflow: hidden; background: var(--dark-2); transform: translateZ(0); transition: transform 520ms var(--ease-out), box-shadow 520ms var(--ease-out); cursor: default; }
+  .drift__tile img { width: 100%; height: 100%; object-fit: cover; }
+  .drift__tile::after { content: ""; position: absolute; inset: 0; background: rgba(42, 30, 22, .55); transition: opacity 420ms ease; }
+  .drift__tile figcaption { position: absolute; left: 10px; bottom: 10px; z-index: 1; padding: 4px 12px; border-radius: 999px; background: rgba(42, 34, 28, .62); color: #fff; font-size: 12.5px; opacity: 0; transform: translateY(6px); transition: opacity 300ms ease, transform 300ms var(--ease-out); }
+  .drift__tile:hover { transform: translateZ(64px); box-shadow: 0 30px 60px -20px rgba(0, 0, 0, .6); z-index: 2; }
+  .drift__tile:hover::after { opacity: 0; }
+  .drift__tile:hover figcaption { opacity: 1; transform: none; }
+  @media (max-width: 760px) {
+    .drift { --tw: 150px; --th: 110px; --gap: 12px; height: 460px; }
+    .drift__plane { --rx: 10deg; --ry: 0deg; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .drift__plane { transform: none; }
+  }
+</style>
+
+<script>
+  function driftWall() {
+    document.querySelectorAll<HTMLElement>('[data-drift]').forEach((root) => {
+      if (root.dataset.ready) return; root.dataset.ready = '1';
+      const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const plane = root.querySelector<HTMLElement>('[data-plane]')!;
+      const tracks = Array.from(root.querySelectorAll<HTMLElement>('[data-track]'));
+      // 每列复制几份，保证往上往下都铺满
+      const unitH = () => (tracks[0].firstElementChild as HTMLElement).getBoundingClientRect().height + 18;
+      const meta = tracks.map((t) => {
+        const original = Array.from(t.children);
+        const copyH = Math.max(1, original.length) * unitH();
+        const need = Math.ceil((root.clientHeight * 2.2) / copyH) + 1;
+        for (let k = 0; k < need; k++) original.forEach((n) => { const c = n.cloneNode(true) as HTMLElement; c.setAttribute('aria-hidden', 'true'); c.querySelector('img')!.alt = ''; t.appendChild(c); });
+        return { copyH, offset: Math.random() * copyH, hover: false };
+      });
+      if (reduce) return;
+      const speed = 32; const variance = 0.45;
+      const vel = tracks.map((_, c) => speed * (1 + variance * ((((c * 0.618) + 0.35) % 1) * 2 - 1)) * (c % 2 ? -1 : 1));
+      tracks.forEach((t, c) => { t.parentElement!.addEventListener('pointerenter', () => (meta[c].hover = true)); t.parentElement!.addEventListener('pointerleave', () => (meta[c].hover = false)); });
+      let px = 0, py = 0, dx = 0, dy = 0;
+      root.addEventListener('pointermove', (e) => { const r = root.getBoundingClientRect(); px = (e.clientX - r.left) / r.width - .5; py = (e.clientY - r.top) / r.height - .5; });
+      root.addEventListener('pointerleave', () => { px = 0; py = 0; });
+      let visible = false; let last = 0;
+      new IntersectionObserver(([en]) => { visible = en.isIntersecting; if (visible) { last = performance.now(); requestAnimationFrame(tick); } }).observe(root);
+      const mobile = () => innerWidth <= 760;
+      function tick(now: number) {
+        if (!visible) return;
+        const dt = Math.min(0.05, (now - last) / 1000); last = now;
+        tracks.forEach((t, c) => {
+          const m = meta[c]; m.offset = (m.offset + vel[c] * dt * (m.hover ? 0.2 : 1)) % m.copyH; if (m.offset < 0) m.offset += m.copyH;
+          t.style.transform = `translate3d(0, ${-m.offset}px, 0)`;
+        });
+        dx += (px - dx) * 0.06; dy += (py - dy) * 0.06;
+        if (!mobile()) { plane.style.setProperty('--rx', `${16 - dy * 6}deg`); plane.style.setProperty('--ry', `${-14 + dx * 8}deg`); }
+        requestAnimationFrame(tick);
+      }
+    });
+  }
+  document.addEventListener('astro:page-load', driftWall);
+  if (!document.querySelector('meta[name="astro-view-transitions-enabled"]')) driftWall();
+</script>
