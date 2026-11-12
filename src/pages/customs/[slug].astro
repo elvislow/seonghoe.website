@@ -7,10 +7,11 @@ import { waLink, brand } from '../../data/site';
 export function getStaticPaths() { return articles.map((a) => ({ params: { slug: a.slug }, props: { a } })); }
 const { a } = Astro.props;
 const schema = { '@context': 'https://schema.org', '@type': 'Article', headline: a.title, datePublished: a.date, inLanguage: 'zh-Hans-MY', publisher: { '@id': new URL('/#org', Astro.site!).href }, author: { '@id': new URL('/#org', Astro.site!).href }, description: a.summary, mainEntityOfPage: new URL(`/customs/${a.slug}/`, Astro.site!).href, image: new URL('/brand/logo-circle-color.jpg', Astro.site!).href };
+const m = a.title.slice(0, -1).search(/[，？]/); const cut = m >= 0 ? m + 1 : -1;
 const others = articles.filter((x) => x.slug !== a.slug);
 ---
 <Base lang="zh" active="customs" title={`${a.title}｜华人丧礼习俗｜祥鹤殡仪服务有限公司`} description={`${a.summary}祥鹤殡仪整理的华人丧礼习俗，各地讲法略有不同，供大家参考。`} schema={[schema]}>
-  <PageHead crumbs={[{ href: '/', label: '首页' }, { href: '/customs/', label: '习俗知识' }]} title={a.title} />
+  <PageHead crumbs={[{ href: '/', label: '首页' }, { href: '/customs/', label: '习俗知识' }]} title={cut > 0 ? a.title.slice(0, cut) : a.title} grey={cut > 0 ? a.title.slice(cut) : undefined} />
   <section class="section" style="padding-top:40px">
     <div class="wrap split">
       <article class="prose" data-reveal>{a.body.map((p) => <p>{p}</p>)}</article>

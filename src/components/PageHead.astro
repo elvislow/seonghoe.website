@@ -10,7 +10,7 @@ const crumbSchema = crumbs.length ? { '@context': 'https://schema.org', '@type':
     <nav class="crumbs" aria-label="breadcrumb" data-reveal>
       {crumbs.map((c, i) => <>{i > 0 && <Icon name="right" size={14} />}<a href={c.href}>{c.label}</a></>)}
     </nav>
-    <h1 class="page-title" data-reveal style="--d:1">{title}{grey && <span class="grey">{grey.split(/\s*[｜|]\s*/).map((g, i, all) => <>{i > 0 && ' '}<span class="nw">{g}{i < all.length - 1 && ' ｜'}</span></>)}</span>}</h1>
+    <h1 class="page-title" data-reveal style="--d:1">{title}{grey && <span class="grey">{grey.split(/\s*[｜|]\s*/).map((g, i, all) => <>{i > 0 && ' '}<span class={/[\u3400-\u9fff]/.test(g) ? "nw" : undefined}>{g}{i < all.length - 1 && ' ｜'}</span></>)}</span>}</h1>
     {lead && <p class="lead" data-reveal style="--d:2">{lead}</p>}
   </div>
 </section>

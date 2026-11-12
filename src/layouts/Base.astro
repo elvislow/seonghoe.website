@@ -243,6 +243,7 @@ const nav = [
     function noOrphan() {
       document.querySelectorAll<HTMLElement>('main p, main li, main h2, main h3, main figcaption, main dd, main dt, main blockquote, footer p, [class*="__desc"], [class*="__text"], [class*="__sub"], [class*="__note"]').forEach((el) => {
         if (el.dataset.nw || el.closest('[aria-hidden="true"], .drift, .nw')) return; el.dataset.nw = '1';
+        if (/flex|grid/.test(getComputedStyle(el).display)) return;
         const w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT); let n: Node | null, last: Text | null = null;
         while ((n = w.nextNode())) if ((n as Text).data.trim()) last = n as Text;
         if (!last || last.data.trim().length < 6 || last.parentElement?.closest('.nw')) return;
@@ -252,7 +253,30 @@ const nav = [
         last.data = last.data.slice(0, m.index); last.parentNode!.insertBefore(span, last.nextSibling);
       });
     }
-    const init = () => { noOrphan(); header(); menu(); reveals(); hero(); counters(); carousel(); accordion(); progress(); tilt(); magnet(); };
+    // 中文标题按词断行：用浏览器自带的分词，把每个词绑在一起，不会出现「我们这 / 样陪」
+    function keepWords() {
+      const Seg = (Intl as any).Segmenter; if (!Seg) return;
+      const seg = new Seg('zh', { granularity: 'word' });
+      const DICT = /(祥鹤|祥鶴|孝杖|孝子|脚尾饭|手尾钱|披麻戴孝|新文龙|峇株巴辖|新山|捐棺助葬|丧礼|Google 上)/;
+      document.querySelectorAll<HTMLElement>('h1, h2, h3').forEach((el) => {
+        if (el.dataset.kw) return; el.dataset.kw = '1';
+        const w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT); const nodes: Text[] = []; let n: Node | null;
+        while ((n = w.nextNode())) if (/[\u3400-\u9fff]/.test((n as Text).data) && !(n.parentElement?.closest('.nw'))) nodes.push(n as Text);
+        nodes.forEach((t) => {
+          const frag = document.createDocumentFragment(); let buf = '';
+          const parts: string[] = [];
+          t.data.split(DICT).forEach((piece, i) => { if (i % 2) parts.push(piece); else for (const { segment } of seg.segment(piece)) parts.push(segment); });
+          for (const segment of parts) {
+            if (segment.length > 1 && /[\u3400-\u9fff]/.test(segment)) { if (buf) frag.append(buf); buf = ''; const s = document.createElement('span'); s.className = 'nw'; s.textContent = segment; frag.append(s); }
+            else if (/^[，。、；：！？」』）]$/.test(segment) && frag.lastChild instanceof HTMLElement && !buf) { (frag.lastChild as HTMLElement).textContent += segment; }
+            else buf += segment;
+          }
+          if (buf) frag.append(buf);
+          t.replaceWith(frag);
+        });
+      });
+    }
+    const init = () => { keepWords(); noOrphan(); header(); menu(); reveals(); hero(); counters(); carousel(); accordion(); progress(); tilt(); magnet(); };
     document.addEventListener('astro:page-load', init);
     if (!document.querySelector('meta[name="astro-view-transitions-enabled"]')) init();
   </script>

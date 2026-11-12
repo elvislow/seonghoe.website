@@ -495,3 +495,11 @@ a.wm:hover { color: var(--red); }
 .footer__social a:hover { color: var(--gold); }
 .social-card__handle { font-size: 13px; color: #8a7b6e; word-break: break-all; }
 .social-note { margin-top: 14px; font-size: 13px; color: #8a7b6e; }
+
+/* 去掉装饰线条：标题下划线、圆弧、虚线圈、头像外圈 */
+.h2 .grey, .collab__title .grey, .page-title .grey, .is-in .h2 .grey, .is-in.h2 .grey, [data-reveal].is-in .grey, .page-title.is-in .grey { background: none !important; padding-bottom: 0; }
+.band::before, .band::after, .cta-band::before, .cta-band::after { display: none !important; }
+.portrait-ring { display: none !important; }
+/* 手机：标题灰色那句另起一行 */
+@media (max-width: 760px) { .h2 .grey, .band__title .grey, .cta-band h2 .grey, .collab__title .grey { display: block; } }
+@media (max-width: 760px) { .page-title { font-size: 34px; } }
