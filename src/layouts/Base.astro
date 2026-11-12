@@ -2,7 +2,7 @@
 import '../styles/global.css';
 import { ClientRouter } from 'astro:transitions';
 import Icon from '../components/Icon.astro';
-import { brand, branches, waLink, type Lang } from '../data/site';
+import { brand, branches, waLink, socials, type Lang } from '../data/site';
 import { services } from '../data/services';
 import { tr, pfx } from '../lib';
 
@@ -112,7 +112,7 @@ const nav = [
       </div>
       <div class="footer__bar">
         <span>© {new Date().getFullYear()} {brand.en} · {brand.zh}</span>
-        <a href={brand.linktree}>Linktree</a>
+        <span class="footer__social">{socials.map((s) => <a href={s.url} target="_blank" rel="noopener" aria-label={s.name}><Icon name={s.key} /></a>)}<a href={brand.linktree} target="_blank" rel="noopener">Linktree</a></span>
       </div>
     </footer>
   </div>

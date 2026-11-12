@@ -3,7 +3,7 @@ import Base from '../layouts/Base.astro';
 import Icon from '../components/Icon.astro';
 import Photo from '../components/Photo.astro';
 import DriftWall from '../components/DriftWall.astro';
-import { brand, branches, reviews, googleRating, waLink, press, type Lang } from '../data/site';
+import { brand, branches, reviews, googleRating, waLink, press, socials, fmtFollowers, socialsAsOf, type Lang } from '../data/site';
 import { services, serviceIcon, gallery } from '../data/services';
 import { articles } from '../data/customs';
 import { tr, pfx, altPath } from '../lib';
@@ -65,7 +65,7 @@ const faqs = lang === 'zh' ? [
 
       <div class="ticker" data-in style="--d:8">
         {press.length ? (
-          <p class="ticker__label"><strong>{t('媒体报导', 'As featured in')}</strong><br />{t('报章与媒体', 'the press')}</p>
+          <p class="ticker__label"><strong>{t('媒体报道', 'As featured in')}</strong><br />{t('报章与媒体', 'the press')}</p>
         ) : (
           <p class="ticker__label"><strong>{t('三间分店', 'Three branches')}</strong><br />{t('柔佛都到得了', 'across Johor')}</p>
         )}
@@ -75,8 +75,8 @@ const faqs = lang === 'zh' ? [
               <div class="marquee__group" aria-hidden={k === 1 ? 'true' : undefined}>
                 {press.length
                   ? press.map((m) => {
-                      const inner = m.logo ? <img class="press-logo" src={m.logo} alt={m.name} /> : <><i></i>{m.name}</>;
-                      return m.url ? <a class="wm" href={m.url} target="_blank" rel="noopener">{inner}</a> : <span class="wm">{inner}</span>;
+                      const inner = m.logo ? <img class="press-logo" src={m.logo} alt={m.name} /> : <><i></i><b class="wm__outlet">{m.name}</b>{m.title}</>;
+                      return <a class="wm" href={m.url} target="_blank" rel="noopener" tabindex={k === 1 ? -1 : undefined}>{inner}</a>;
                     })
                   : tickerItems.map((w) => <span class="wm"><i></i>{w}</span>)}
               </div>
@@ -190,6 +190,26 @@ const faqs = lang === 'zh' ? [
           </figure>
         ))}
       </div>
+    </div>
+  </section>
+
+  <section class="section social-sec">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>{t('关注祥鹤', 'FOLLOW US')}</p>
+      <h2 class="h2" data-reveal style="margin-top:10px">{lang === 'zh' ? <><span class="nw">{fmtFollowers(socials.reduce((n, s) => n + (s.followers || 0), 0), 'zh')}+ 人</span>在关注祥鹤，</> : `${fmtFollowers(socials.reduce((n, s) => n + (s.followers || 0), 0), 'en')}+ people follow Seong Hoe,`}<span class="grey">{t('习俗、心事、幕后，我们一直在分享。', ' for customs, stories and behind the scenes.')}</span></h2>
+      <div class="social-grid" data-reveal style="--d:1">
+        {socials.map((s) => (
+          <a class={`social-card social-card--${s.key}`} href={s.url} target="_blank" rel="noopener" data-tilt>
+            <span class="social-card__icon"><Icon name={s.key} /></span>
+            <span class="social-card__name">{s.name}</span>
+            {s.followers ? <span class="social-card__num num">{fmtFollowers(s.followers, lang)}</span> : null}
+            <span class="social-card__label">{s.followers ? t('位粉丝', 'followers') : s.handle}</span>
+            <span class="social-card__handle">{s.handle}</span>
+            <span class="social-card__go">{t('去看看', 'Visit')} <Icon name="arrow" /></span>
+          </a>
+        ))}
+      </div>
+      <p class="social-note">{t(`粉丝数统计至 ${socialsAsOf.replace('-', ' 年 ')} 月`, `Follower counts as of ${socialsAsOf}`)}</p>
     </div>
   </section>
 

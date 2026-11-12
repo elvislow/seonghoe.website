@@ -2,7 +2,7 @@
 import Base from '../layouts/Base.astro';
 import Icon from '../components/Icon.astro';
 import PageHead from '../components/PageHead.astro';
-import { brand, branches, waLink, type Lang } from '../data/site';
+import { brand, branches, waLink, press, type Lang } from '../data/site';
 import { tr, pfx, altPath } from '../lib';
 const { lang } = Astro.props as { lang: Lang };
 const t = tr(lang); const pre = pfx(lang);
@@ -29,10 +29,11 @@ const t = tr(lang); const pre = pfx(lang);
               <li><strong>灵堂布置。</strong>照主家的要求铺花海，真花假花都有，再配屏风和灯光，色调以白色为主。</li>
               <li><strong>丧礼摄影。</strong>请专业摄影师帮家属拍合照、拍仪式过程，孙辈长大以后，也看得到这些画面。</li>
               <li><strong>专人陪同。</strong>从头到尾有专人跟着主家，除了睡觉时间都在场。另外也有照片修复、定期追悼会和各式法会。</li>
+              <li><strong>收费写清楚。</strong>费用用书面协议列明，家属事先知道每一项花在哪里。</li>
               <li><strong>预算有限，也能办得体面。</strong>丧礼不一定要花大钱，钱少一样可以好好送别。</li>
             </ul>
             <h3>捐棺助葬，一直在做</h3>
-            <p>祥鹤会去老人院探访，帮有需要的家庭和团体，也配合捐棺助葬。家里有困难、需要捐棺助葬的，可以联系我们。为了不让善款被滥用，我们会先审核申请条件。想一起行善的朋友，也欢迎联系。</p>
+            <p>2020 年 11 月，祥鹤推出捐棺助葬计划，一直做到现在。祥鹤也会去老人院探访，帮有需要的家庭和团体，近年还和峇株巴辖多个团体联办捐血活动。家里有困难、需要捐棺助葬的，可以联系我们。为了不让善款被滥用，我们会先审核申请条件。想一起行善的朋友，也欢迎联系。</p>
             <h3>身后事，先讲清楚</h3>
             <p>蔡偉中希望大家不要太怕谈死亡。趁还在的时候，跟家人讲好想用什么宗教仪式、照哪一种传统，以后家人就不会乱。</p>
             <p class="story__src">参考报道：<a href="https://www.sinchew.com.my/news/20230401/johor/4580153" target="_blank" rel="noopener">《星洲日报》2023 年 4 月 1 日：尊重生命 感恩生命 传承生命 祥鹤用心 家属安心</a></p>
@@ -55,6 +56,17 @@ const t = tr(lang); const pre = pfx(lang);
         <figure class="svc-photo" style="margin-top:28px"><img src="/img/showroom.webp" alt={t('祥鹤棺木展示厅', 'Seong Hoe casket showroom')} /></figure>
         <p style="margin-top:28px"><a class="btn btn--dark" href={waLink(lang)}>{t('WhatsApp 咨询', 'WhatsApp us')}<span class="disc"><Icon name="arrow" /></span></a></p>
       </div>
+    </div>
+  </section>
+  <section class="section" style="padding-top:0">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>{t('媒体报道', 'IN THE PRESS')}</p>
+      <h2 class="h2" data-reveal style="margin-top:10px">{t('报章上的祥鹤', 'Seong Hoe in the news')}</h2>
+      <ul class="press-list" data-reveal style="--d:1">
+        {press.map((m) => (
+          <li><a href={m.url} target="_blank" rel="noopener"><span class="press-list__meta"><b>{m.name}</b>{m.date.replaceAll('-', '.')}</span><span class="press-list__title">{m.title}</span></a></li>
+        ))}
+      </ul>
     </div>
   </section>
 </Base>

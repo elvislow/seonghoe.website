@@ -14,11 +14,10 @@ export const brand = {
   whatsappDisplay: '+60 16-777 3883',
   linktree: 'https://linktr.ee/seonghoe',
   founder: { zh: '蔡偉中', en: 'Chua Wee Chong', photo: '/img/founder-portrait.webp' }, // 英文名照旧官网
-  // TODO：Elvis 提供后填上
   social: {
     facebook: 'https://www.facebook.com/bpseonghoe',
-    instagram: 'https://www.instagram.com/seonghoefuneralservice.sdn.bhd',
-    tiktok: '',
+    instagram: 'https://www.instagram.com/seonghoefuneralservices',
+    tiktok: 'https://www.tiktok.com/@seonghoefuneral',
   },
 };
 
@@ -119,4 +118,22 @@ export const mapEmbed = (b: Branch) =>
 
 // 报导过祥鹤的媒体：首页跑马灯会自动换成这一排。
 // logo 放 public/press/，用媒体官方提供的 logo 档；没有 logo 就只显示名称。
-export const press: { name: string; logo?: string; url?: string }[] = [];
+export const press: { name: string; title: string; date: string; url: string; logo?: string }[] = [
+  { name: '星洲日报', title: '祥鹤——让生命的最后一刻 不留遗憾', date: '2025-12-10', url: 'https://johor.sinchew.com.my/news/20251210/johor/7098601' },
+  { name: '中国报', title: '峇株多个单位联办 成功筹获45包热血', date: '2026-09-24', url: 'https://johor.chinapress.com.my/20260924/%e5%b3%87%e6%a0%aa%e5%a4%9a%e4%b8%aa%e5%8d%95%e4%bd%8d%e8%81%94%e5%8a%9e-%e6%88%90%e5%8a%9f%e7%ad%b9%e8%8e%b745%e5%8c%85%e7%83%ad%e8%a1%80-2/' },
+  { name: '中国报', title: '峇株联合捐血反应好 短短数小时筹获50包', date: '2026-06-24', url: 'https://johor.chinapress.com.my/20260624/%e5%b3%87%e6%a0%aa%e8%81%94%e5%90%88%e6%8d%90%e8%a1%80%e5%8f%8d%e5%ba%94%e5%a5%bd-%e7%9f%ad%e7%9f%ad%e6%95%b0%e5%b0%8f%e6%97%b6%e7%ad%b9%e8%8e%b750%e5%8c%85/' },
+  { name: '中国报', title: '提供便捷专业服务 新文龙祥鹤殡仪服务开张', date: '2024-09-13', url: 'https://johor.chinapress.com.my/20240913/%E6%8F%90%E4%BE%9B%E4%BE%BF%E6%8D%B7%E4%B8%93%E4%B8%9A%E6%9C%8D%E5%8A%A1-%E6%96%B0%E6%96%87%E9%BE%99%E7%A5%A5%E9%B9%A4%E6%AE%A1%E4%BB%AA%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%BC%A0/' },
+  { name: '星洲日报', title: '尊重生命 感恩生命 传承生命 祥鹤用心 家属安心', date: '2023-04-01', url: 'https://www.sinchew.com.my/news/20230401/johor/4580153' },
+  { name: '东方日报', title: '兄弟投身殡葬业 推广捐棺助贫者', date: '2020-12-22', url: 'https://www.orientaldaily.com.my/news/nation/2020/12/22/382304' },
+];
+
+// 社交平台。followers 填数字（例如 52000），asOf 填统计日期；没有数字就只显示账号。
+export const socials: { key: 'facebook' | 'instagram' | 'tiktok'; name: string; url: string; handle: string; followers?: number; asOf?: string }[] = [
+  { key: 'facebook', name: 'Facebook', url: brand.social.facebook, handle: '祥鹤殡仪服务', followers: 22000 },
+  { key: 'tiktok', name: 'TikTok', url: brand.social.tiktok, handle: '@seonghoefuneral', followers: 6600 },
+  { key: 'instagram', name: 'Instagram', url: brand.social.instagram, handle: '@seonghoefuneralservices', followers: 4900 },
+].filter((x) => x.url) as any;
+
+export const socialsAsOf = '2026-11';
+export const fmtFollowers = (n: number, lang: 'zh' | 'en') =>
+  lang === 'zh' ? (n >= 10000 ? `${Math.floor(n / 1000) / 10}万` : n.toLocaleString('en')) : (n >= 1000 ? `${Math.floor(n / 100) / 10}K` : `${n}`);
