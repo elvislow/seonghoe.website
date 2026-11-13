@@ -6,15 +6,18 @@ import PageHead from '../components/PageHead.astro';
 import { branches, mapEmbed, waLink, reviews, googleRating, type Branch, type Lang } from '../data/site';
 import { services, serviceIcon } from '../data/services';
 import { tr, pfx, altPath, branchSchema } from '../lib';
+import { localGuides } from '../data/local';
 const { lang, branch: b } = Astro.props as { lang: Lang; branch: Branch };
 const t = tr(lang); const pre = pfx(lang); const area = b.area[lang];
+const g = localGuides[b.slug]?.[lang];
+const faqSchema = g ? { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: g.faqs.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) } : null;
 ---
 <Base lang={lang} image={b.photo} active="branches" alt={altPath(lang, `/branches/${b.slug}/`)}
-  title={t(`${area}殡仪服务｜祥鹤殡仪服务有限公司${b.name.zh}｜24 小时`, `Funeral Services in ${area} | Seong Hoe ${b.name.en} | 24 Hours`)}
+  title={t(`${area}殡仪服务｜祥鹤殡仪${b.name.zh}｜24 小时 ${b.area.en}`, `Funeral Services in ${area} | Seong Hoe ${b.name.en} | 24 Hours`)}
   description={t(`祥鹤殡仪服务有限公司${b.name.zh}，${b.address}。24 小时殡仪服务，电话 ${b.phoneDisplay}。丧礼策划、各式法事、火化、土葬。`, `Seong Hoe Funeral Service Sdn. Bhd. ${b.name.en}, ${b.address}. 24-hour funeral services, call ${b.phoneDisplay}.`)}
-  schema={[branchSchema(b, Astro.site!)]}>
+  schema={faqSchema ? [branchSchema(b, Astro.site!), faqSchema] : [branchSchema(b, Astro.site!)]}>
   <PageHead crumbs={[{ href: `${pre}/`, label: t('首页', 'Home') }, { href: `${pre}/branches/`, label: t('分店', 'Branches') }, { href: `${pre}/branches/${b.slug}/`, label: b.name[lang] }]}
-    title={t(`${area}殡仪服务，`, `Funeral services in ${area},`)} grey={t(`祥鹤${b.name.zh}。`, `Seong Hoe ${b.name.en}.`)} lead={b.address} />
+    title={t(`${area}殡仪服务，`, `Funeral services in ${area},`)} grey={t(`祥鹤${b.name.zh}。`, `Seong Hoe ${b.name.en}.`)} lead={g ? g.intro : b.address} />
   <section class="section" style="padding-top:40px">
     <div class="wrap split">
       <div>
@@ -34,6 +37,36 @@ const t = tr(lang); const pre = pfx(lang); const area = b.area[lang];
       </aside>
     </div>
   </section>
+  {g && (
+    <section class="section">
+      <div class="wrap">
+        <div style="max-width:820px">
+          {g.sections.map((sec) => (
+            <div class="svc-sec" data-reveal>
+              <h2 class="h3">{sec.h}</h2>
+              {sec.p && <div class="body">{sec.p.map((x) => <p>{x}</p>)}</div>}
+              {sec.steps && (
+                <ol class="steps">
+                  {sec.steps.map(([h, d], i) => <li><span class="steps__n">{String(i + 1).padStart(2, '0')}</span><div><strong>{h}</strong><p>{d}</p></div></li>)}
+                </ol>
+              )}
+            </div>
+          ))}
+          <div class="svc-sec" data-reveal>
+            <h2 class="h3">{t(`${area}常见问题`, `Common questions in ${area}`)}</h2>
+            <div class="acc" data-acc style="margin-top:12px">
+              {g.faqs.map(([q, a], k) => (
+                <div class="acc__item">
+                  <button class="acc__btn" type="button" aria-expanded={k === 0 ? 'true' : 'false'}>{q}<span class="acc__plus"><Icon name="plus" size={18} /></span></button>
+                  <div class="acc__panel"><div><p>{a}</p></div></div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
   <section class="section">
     <div class="wrap">
       <div class="section-head" data-reveal><h2 class="h2">{t(`${b.name.zh}的服务`, `Services at ${b.name.en}`)}</h2></div>
