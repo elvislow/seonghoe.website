@@ -504,3 +504,4 @@ a.wm:hover { color: var(--red); }
 @media (max-width: 760px) { .h2 .grey, .band__title .grey, .cta-band h2 .grey, .collab__title .grey { display: block; } }
 @media (max-width: 760px) { .page-title { font-size: 34px; } }
 .steps p, .acc__panel p { white-space: pre-line; }
+.side-card li > span:first-child { white-space: nowrap; }
