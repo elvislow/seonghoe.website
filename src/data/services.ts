@@ -110,7 +110,7 @@ export const services: Service[] = [
           ['守夜期间的仪式', '灵堂上香、诵经、家属行礼，什么时候做、怎么做，到时有人引导。'],
           ['出殡前的告别', '盖棺前让家属见最后一面，讲完要讲的话。'],
           ['司仪主持', '仪式由司仪带着走，家属照着做就好，不用自己记规矩。'],
-          ['做七、百日', '人走后每七天做一次，传统做到七七四十九天，之后还有百日。现在很多家庭会简化，照长辈的意思就好。'],
+          ['做七、百日', '人走后每七天算一个「七」，一共七个七，到七七四十九天，之后还有百日。一般只做单数的头七、三七、五七、七七，二七、四七、六七不做。各籍贯做法不同，照长辈的意思就好。'],
         ] },
         { h: '规矩不懂，问我们', p: [
           '盖棺为什么要转身、手边的钱是做什么的、守孝能不能办婚事……这些规矩我们整理成文章放在「习俗知识」。家里正在办事，直接 WhatsApp 问我们会比较快。',
@@ -125,7 +125,7 @@ export const services: Service[] = [
           ['During the wake', 'Offering incense, chanting and family rites, with someone guiding you through each one.'],
           ['Farewell before sealing the coffin', 'A last moment for the family before the coffin is sealed.'],
           ['A master of ceremonies', 'Our MC leads each rite so the family can simply follow.'],
-          ['Seventh-day and hundredth-day rites', 'Traditionally held every seven days for 49 days, then at 100 days. Many families now simplify this, following their elders’ wishes.'],
+          ['Seventh-day and hundredth-day rites', 'The 49 days after a death are counted in seven "sevens". Usually only the odd ones are held: the 1st, 3rd, 5th and 7th; the 2nd, 4th and 6th are skipped. The 100th day follows. Practices differ by dialect group, so follow your elders’ wishes.'],
         ] },
         { h: 'Not sure about a custom? Ask us', p: [
           'We explain common customs in our Customs articles. If your family is arranging a funeral now, WhatsApp us for a quicker answer.',
@@ -136,12 +136,12 @@ export const services: Service[] = [
       zh: [
         ['我们什么规矩都不懂，怎么办？', '不用担心，每一步我们都会在旁边提醒，家属照着做就可以。'],
         ['法事可以简化吗？', '可以。做多做少，照家里的意思和长辈的交代决定。'],
-        ['做七一定要做满七次吗？', '传统是每七天做一次，做到七七四十九天。现在很多家庭会简化，各籍贯做法也不同，可以跟长辈商量。'],
+        ['做七一定要做满七次吗？', '不用。一共有七个七，一般只做单数的头七、三七、五七、七七，二七、四七、六七不做。各籍贯做法也不同，可以跟长辈商量。'],
       ],
       en: [
         ['We do not know any of the customs. What should we do?', 'Do not worry. We remind you at every step, and you simply follow.'],
         ['Can the rites be simplified?', 'Yes. How much to do is up to your family and your elders.'],
-        ['Must the seventh-day rites be held seven times?', 'Traditionally yes, every seven days for 49 days. Many families now simplify, and practices differ by dialect group.'],
+        ['Must the seventh-day rites be held seven times?', 'No. Of the seven "sevens", usually only the 1st, 3rd, 5th and 7th are held; the 2nd, 4th and 6th are skipped. Practices differ by dialect group, so check with your elders.'],
       ],
     },
   },
