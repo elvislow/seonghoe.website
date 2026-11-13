@@ -1,0 +1,7 @@
+---
+import AreaPage from '../../../views/AreaPage.astro';
+import { areaPages } from '../../../data/areas';
+export function getStaticPaths() { return areaPages['senggarang'].map((page) => ({ params: { slug: page.slug }, props: { page } })); }
+const { page } = Astro.props;
+---
+<AreaPage lang="en" area="senggarang" page={page} />
