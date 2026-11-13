@@ -1,0 +1,82 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import PageHead from '../components/PageHead.astro';
+import { branches, waLink, brand, type Lang } from '../data/site';
+import { services } from '../data/services';
+import { bpPages, type AreaPage } from '../data/bp';
+import { tr, pfx, altPath } from '../lib';
+const { lang, page } = Astro.props as { lang: Lang; page: AreaPage };
+const t = tr(lang); const pre = pfx(lang); const L = page[lang];
+const hq = branches[0];
+const path = `/batu-pahat/${page.slug}/`;
+const url = new URL(`${pre}${path}`, Astro.site!).href;
+const svc = services.find((s) => s.slug === page.service);
+const serviceSchema = { '@context': 'https://schema.org', '@type': 'Service', name: L.h1.replace(/[，,]$/, ''), serviceType: L.h1.replace(/[，,]$/, ''), url, areaServed: { '@type': 'City', name: 'Batu Pahat', containedInPlace: { '@type': 'State', name: 'Johor' } }, provider: { '@id': new URL('/branches/batu-pahat/#place', Astro.site!).href } };
+const faqSchema = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: L.faqs.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) };
+const others = bpPages.filter((p) => p.slug !== page.slug);
+---
+<Base lang={lang} image={page.photo} active="branches" alt={altPath(lang, path)} title={L.title} description={L.intro} schema={[serviceSchema, faqSchema]}>
+  <PageHead crumbs={[{ href: `${pre}/`, label: t('首页', 'Home') }, { href: `${pre}/branches/batu-pahat/`, label: t('峇株巴辖', 'Batu Pahat') }, { href: `${pre}${path}`, label: L.h1.replace(/[，,]$/, '') }]}
+    title={L.h1} grey={L.grey} lead={L.intro} />
+  <section class="section" style="padding-top:40px">
+    <div class="wrap split">
+      <div>
+        {page.photo && <div class="svc-photo" data-reveal><img src={page.photo} alt={L.h1.replace(/[，,]$/, '')} /></div>}
+        {L.sections.map((sec) => (
+          <div class="svc-sec" data-reveal>
+            <h2 class="h3">{sec.h}</h2>
+            {sec.p && <div class="body">{sec.p.map((x) => <p>{x}</p>)}</div>}
+            {sec.steps && (
+              <ol class="steps">
+                {sec.steps.map(([h, d], i) => <li><span class="steps__n">{String(i + 1).padStart(2, '0')}</span><div><strong>{h}</strong><p>{d}</p></div></li>)}
+              </ol>
+            )}
+          </div>
+        ))}
+        <div class="svc-sec" data-reveal>
+          <h2 class="h3">{t('常见问题', 'Common questions')}</h2>
+          <div class="acc" data-acc style="margin-top:12px">
+            {L.faqs.map(([q, a], k) => (
+              <div class="acc__item">
+                <button class="acc__btn" type="button" aria-expanded={k === 0 ? 'true' : 'false'}>{q}<span class="acc__plus"><Icon name="plus" size={18} /></span></button>
+                <div class="acc__panel"><div><p>{a}</p></div></div>
+              </div>
+            ))}
+          </div>
+        </div>
+        {svc && (
+          <div class="svc-sec" data-reveal>
+            <h2 class="h3">{t('相关服务', 'Related service')}</h2>
+            <div class="tile-list"><a href={`${pre}/services/${svc.slug}/`}><span>{svc.title[lang]}</span><span class="disc-arrow"><Icon name="arrow" /></span></a></div>
+          </div>
+        )}
+      </div>
+      <aside class="side-card on-dark" data-reveal style="--d:1">
+        <h3>{hq.name[lang]}</h3>
+        <ul>
+          <li><span>{t('电话', 'Phone')}</span><a href={`tel:${hq.phone}`}>{hq.phoneDisplay}</a></li>
+          <li><span>{t('营业时间', 'Hours')}</span>{t('24 小时', 'Open 24 hours')}</li>
+          <li><span>{t('地址', 'Address')}</span><span style="color:inherit;text-align:right">{hq.street}, {hq.postalCode} {hq.locality}</span></li>
+        </ul>
+        <a class="btn btn--light" href={waLink(lang)}>WhatsApp {brand.whatsappDisplay}<span class="disc"><Icon name="chat" /></span></a>
+        <a class="btn btn--light" href={`tel:${hq.phone}`}>{t('打电话', 'Call')}<span class="disc"><Icon name="phone" /></span></a>
+        <a class="btn btn--light" href={hq.mapsUrl}>{t('Google 地图导航', 'Directions')}<span class="disc"><Icon name="nav" /></span></a>
+      </aside>
+    </div>
+  </section>
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head" data-reveal><h2 class="h2">{t('峇株巴辖其他服务', 'More in Batu Pahat')}</h2></div>
+      <div class="svc-rows">
+        {others.map((o, i) => (
+          <a class="svc-row" href={`${pre}/batu-pahat/${o.slug}/`} data-reveal style={`--d:${i % 3}`}>
+            <span class="svc-row__icon"><Icon name={o.icon} /></span>
+            <span class="svc-row__title">{o[lang].h1.replace(/[，,]$/, '')}</span>
+            <span class="disc-arrow"><Icon name="arrow" /></span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</Base>
