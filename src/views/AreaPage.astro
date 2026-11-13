@@ -4,20 +4,22 @@ import Icon from '../components/Icon.astro';
 import PageHead from '../components/PageHead.astro';
 import { branches, waLink, brand, type Lang } from '../data/site';
 import { services } from '../data/services';
-import { bpPages, type AreaPage } from '../data/bp';
+import type { AreaPage } from '../data/bp';
+import { areaPages } from '../data/areas';
 import { tr, pfx, altPath } from '../lib';
-const { lang, page } = Astro.props as { lang: Lang; page: AreaPage };
+const { lang, page, area = 'batu-pahat' } = Astro.props as { lang: Lang; page: AreaPage; area?: string };
 const t = tr(lang); const pre = pfx(lang); const L = page[lang];
-const hq = branches[0];
-const path = `/batu-pahat/${page.slug}/`;
+const hq = branches.find((b) => b.slug === area)!;
+const areaName = hq.area[lang];
+const path = `/${area}/${page.slug}/`;
 const url = new URL(`${pre}${path}`, Astro.site!).href;
 const svc = services.find((s) => s.slug === page.service);
-const serviceSchema = { '@context': 'https://schema.org', '@type': 'Service', name: L.h1.replace(/[，,]$/, ''), serviceType: L.h1.replace(/[，,]$/, ''), url, areaServed: { '@type': 'City', name: 'Batu Pahat', containedInPlace: { '@type': 'State', name: 'Johor' } }, provider: { '@id': new URL('/branches/batu-pahat/#place', Astro.site!).href } };
+const serviceSchema = { '@context': 'https://schema.org', '@type': 'Service', name: L.h1.replace(/[，,]$/, ''), serviceType: L.h1.replace(/[，,]$/, ''), url, areaServed: { '@type': 'City', name: hq.area.en, containedInPlace: { '@type': 'State', name: 'Johor' } }, provider: { '@id': new URL(`/branches/${area}/#place`, Astro.site!).href } };
 const faqSchema = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: L.faqs.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) };
-const others = bpPages.filter((p) => p.slug !== page.slug);
+const others = areaPages[area].filter((p) => p.slug !== page.slug);
 ---
 <Base lang={lang} image={page.photo} active="branches" alt={altPath(lang, path)} title={L.title} description={L.intro} schema={[serviceSchema, faqSchema]}>
-  <PageHead crumbs={[{ href: `${pre}/`, label: t('首页', 'Home') }, { href: `${pre}/branches/batu-pahat/`, label: t('峇株巴辖', 'Batu Pahat') }, { href: `${pre}${path}`, label: L.h1.replace(/[，,]$/, '') }]}
+  <PageHead crumbs={[{ href: `${pre}/`, label: t('首页', 'Home') }, { href: `${pre}/branches/${area}/`, label: areaName }, { href: `${pre}${path}`, label: L.h1.replace(/[，,]$/, '') }]}
     title={L.h1} grey={L.grey} lead={L.intro} />
   <section class="section" style="padding-top:40px">
     <div class="wrap split">
@@ -59,7 +61,7 @@ const others = bpPages.filter((p) => p.slug !== page.slug);
           <li><span>{t('营业时间', 'Hours')}</span>{t('24 小时', 'Open 24 hours')}</li>
           <li><span>{t('地址', 'Address')}</span><span style="color:inherit;text-align:right">{hq.street}, {hq.postalCode} {hq.locality}</span></li>
         </ul>
-        <a class="btn btn--light" href={waLink(lang)}>WhatsApp {brand.whatsappDisplay}<span class="disc"><Icon name="chat" /></span></a>
+        <a class="btn btn--light" href={waLink(lang)}>{t('WhatsApp 咨询', 'WhatsApp us')}<span class="disc"><Icon name="chat" /></span></a>
         <a class="btn btn--light" href={`tel:${hq.phone}`}>{t('打电话', 'Call')}<span class="disc"><Icon name="phone" /></span></a>
         <a class="btn btn--light" href={hq.mapsUrl}>{t('Google 地图导航', 'Directions')}<span class="disc"><Icon name="nav" /></span></a>
       </aside>
@@ -67,10 +69,10 @@ const others = bpPages.filter((p) => p.slug !== page.slug);
   </section>
   <section class="section">
     <div class="wrap">
-      <div class="section-head" data-reveal><h2 class="h2">{t('峇株巴辖其他服务', 'More in Batu Pahat')}</h2></div>
+      <div class="section-head" data-reveal><h2 class="h2">{t(`${areaName}其他服务`, `More in ${areaName}`)}</h2></div>
       <div class="svc-rows">
         {others.map((o, i) => (
-          <a class="svc-row" href={`${pre}/batu-pahat/${o.slug}/`} data-reveal style={`--d:${i % 3}`}>
+          <a class="svc-row" href={`${pre}/${area}/${o.slug}/`} data-reveal style={`--d:${i % 3}`}>
             <span class="svc-row__icon"><Icon name={o.icon} /></span>
             <span class="svc-row__title">{o[lang].h1.replace(/[，,]$/, '')}</span>
             <span class="disc-arrow"><Icon name="arrow" /></span>
