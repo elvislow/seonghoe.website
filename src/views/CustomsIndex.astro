@@ -10,17 +10,16 @@ const t = tr(lang); const pre = pfx(lang);
 ---
 <Base lang={lang} active="customs" alt={altPath(lang, '/customs/')}
   title={t('华人丧礼习俗知识｜老一辈的规矩｜祥鹤殡仪服务有限公司', 'Chinese Funeral Customs Explained | Seong Hoe Funeral Service Sdn. Bhd.')}
-  description={t('盖棺为什么要回避、手尾钱是什么、守孝期间婚事怎么办。大家都在做、却很少人解释的华人丧礼习俗。', 'Chinese funeral customs explained: why people turn away at the sealing of the coffin, hand money and more.')}>
+  description={t('盖棺为什么要回避、手尾钱是什么、守孝期间婚事怎么办。大家都在做、却很少人解释的华人丧礼习俗。', 'Chinese funeral customs in Malaysia explained: hand money, mourning clothes colours, the mourning staff, foot-end rice and weddings during mourning.')}>
   <PageHead crumbs={[{ href: `${pre}/`, label: t('首页', 'Home') }, { href: `${pre}/customs/`, label: t('习俗知识', 'Customs') }]}
     title={t('大家都在做的规矩，', 'Customs everyone follows,')} grey={t('很少人解释。', 'few explain.')}
     lead={t('各地、各籍贯习俗略有不同，以下讲法供大家参考，不必迷信。', 'Customs differ by place and dialect group. These are for reference.')} />
   <section class="section" style="padding-top:48px">
     <div class="wrap">
-      {lang === 'en' && <p class="todo" style="margin:0 0 24px">English versions coming soon. The articles below are in Chinese.</p>}
       <div class="article-grid">
-        {articles.map((a, i) => (
-          <a class="a-card" href={`/customs/${a.slug}/`} data-reveal style={`--d:${i % 2}`}>
-            <div><h3>{a.title}</h3><p>{a.summary}</p></div>
+        {articles.filter((a) => lang === 'zh' || a.en).map((a, i) => (
+          <a class="a-card" href={lang === 'en' ? `/en/customs/${a.slug}/` : `/customs/${a.slug}/`} data-reveal style={`--d:${i % 2}`}>
+            <div><h3>{lang === 'en' ? a.en!.title : a.title}</h3><p>{lang === 'en' ? a.en!.summary : a.summary}</p></div>
             <span class="disc-arrow"><Icon name="arrow" /></span>
           </a>
         ))}
