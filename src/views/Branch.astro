@@ -7,6 +7,7 @@ import { branches, mapEmbed, waLink, reviews, googleRating, type Branch, type La
 import { services, serviceIcon } from '../data/services';
 import { tr, pfx, altPath, branchSchema } from '../lib';
 import { localGuides } from '../data/local';
+import { bpPages } from '../data/bp';
 const { lang, branch: b } = Astro.props as { lang: Lang; branch: Branch };
 const t = tr(lang); const pre = pfx(lang); const area = b.area[lang];
 const g = localGuides[b.slug]?.[lang];
@@ -52,6 +53,20 @@ const faqSchema = g ? { '@context': 'https://schema.org', '@type': 'FAQPage', ma
               )}
             </div>
           ))}
+          {b.slug === 'batu-pahat' && (
+            <div class="svc-sec" data-reveal>
+              <h2 class="h3">{t('峇株巴辖服务专页', 'Batu Pahat service guides')}</h2>
+              <div class="svc-rows" style="margin-top:12px">
+                {bpPages.map((o) => (
+                  <a class="svc-row" href={`${pre}/batu-pahat/${o.slug}/`}>
+                    <span class="svc-row__icon"><Icon name={o.icon} /></span>
+                    <span class="svc-row__title">{o[lang].h1.replace(/[，,]$/, '')}</span>
+                    <span class="disc-arrow"><Icon name="arrow" /></span>
+                  </a>
+                ))}
+              </div>
+            </div>
+          )}
           <div class="svc-sec" data-reveal>
             <h2 class="h3">{t(`${area}常见问题`, `Common questions in ${area}`)}</h2>
             <div class="acc" data-acc style="margin-top:12px">
