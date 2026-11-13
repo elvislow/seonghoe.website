@@ -1,0 +1,35 @@
+---
+import Base from '../../../layouts/Base.astro';
+import Icon from '../../../components/Icon.astro';
+import PageHead from '../../../components/PageHead.astro';
+import { articles } from '../../../data/customs';
+import { waLink, brand } from '../../../data/site';
+export function getStaticPaths() { return articles.filter((a) => a.en).map((a) => ({ params: { slug: a.slug }, props: { a } })); }
+const { a } = Astro.props;
+const e = a.en!;
+const url = new URL(`/en/customs/${a.slug}/`, Astro.site!).href;
+const schema = { '@context': 'https://schema.org', '@type': 'Article', headline: e.title, datePublished: a.date, inLanguage: 'en-MY', publisher: { '@id': new URL('/#org', Astro.site!).href }, author: { '@id': new URL('/#org', Astro.site!).href }, description: e.summary, mainEntityOfPage: url, image: new URL('/brand/logo-circle-color.jpg', Astro.site!).href };
+const m = e.title.search(/[?:]/); const cut = m >= 0 && m < e.title.length - 1 ? m + 1 : -1;
+const others = articles.filter((x) => x.slug !== a.slug && x.en);
+---
+<Base lang="en" active="customs" alt={`/customs/${a.slug}/`} title={`${e.title} | Seong Hoe Funeral Service`} description={e.summary} schema={[schema]}>
+  <PageHead crumbs={[{ href: '/en/', label: 'Home' }, { href: '/en/customs/', label: 'Customs' }]} title={cut > 0 ? e.title.slice(0, cut) : e.title} grey={cut > 0 ? e.title.slice(cut).trim() : undefined} />
+  <section class="section" style="padding-top:40px">
+    <div class="wrap split">
+      <article class="prose" data-reveal>{e.body.map((p) => <p>{p}</p>)}</article>
+      <aside class="side-card on-dark" data-reveal style="--d:1">
+        <h3>Arranging a funeral and not sure what to do?</h3>
+        <p style="color:var(--on-dark-muted);font-size:14.5px;margin:12px 0 20px">We answer 24 hours a day. Just WhatsApp us.</p>
+        <a class="btn btn--light" href={waLink('en')}>WhatsApp {brand.whatsappDisplay}<span class="disc"><Icon name="arrow" /></span></a>
+      </aside>
+    </div>
+  </section>
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head" data-reveal><h2 class="h2">More customs</h2></div>
+      <div class="article-grid">
+        {others.map((o, i) => <a class="a-card" href={`/en/customs/${o.slug}/`} data-reveal style={`--d:${i % 2}`}><div><h3>{o.en!.title}</h3><p>{o.en!.summary}</p></div><span class="disc-arrow"><Icon name="arrow" /></span></a>)}
+      </div>
+    </div>
+  </section>
+</Base>
