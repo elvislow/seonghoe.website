@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://seonghoe-website-built.vercel.app/sitemap-index.xml
+Sitemap: https://www.seonghoefuneralservice.com/sitemap-index.xml
