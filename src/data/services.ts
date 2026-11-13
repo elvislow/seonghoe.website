@@ -45,7 +45,15 @@ export const services: Service[] = [
           '最后的费用看几样：办几天、灵堂在哪里、选什么棺木、做什么仪式。先 WhatsApp 我们讲一下家里的情况，我们把每一项列出来给你看，你看清楚了再决定。',
         ] },
         { h: '棺木', p: [
-          '祥鹤的寿板用柚木、Chengal 木等好木料，雕花细致，里面也做得舒服。想先看棺木的，联络我们安排。',
+          '祥鹤的寿板都是东南亚的好硬木，雕花细致，里面也做得舒服。常用的有四种木，每种的木色、硬度和意思都不一样：',
+        ], steps: [
+          ['正艾木（Chengal）', '学名 Neobalanocarpus heimii，是东南亚特有的顶级重硬木。天然耐腐、抗虫，对真菌和白蚁抵抗力很强，所以常被叫做「木材之王」。平时用在桥梁、码头这些要扛重、要耐用的地方，做寿板一样稳。'],
+          ['柚木（Kayu Jati）', '柚木被叫做「万木之王」。木里面有天然油脂，像一层保护膜，防潮、防霉、防白蚁。它是伸缩最小的木种之一，天气再干再湿也不容易变形开裂。越用越亮，还带一点天然的木香。'],
+          ['胭脂梅（Keledang）', '学名 Artocarpus，也叫树波罗、波罗蜜木。木质紧密，颜色是温润的自然红褐色，木纹细，看起来庄重沉稳。耐潮，入土也不容易腐烂，华人传统常拿来做高档的土葬棺木，尤其是梅花棺，象征高寿、福气和子孙孝道。'],
+          ['硅化木（Membatu）', 'Membatu 也叫 Batu 或 Red Balau，是东南亚的一种重硬木，密度高、非常坚硬耐久，平时多用在户外地板和重型结构。马来文「Kayu Membatu」直译是「变成石头的木」，所以华人叫它硅化木，取的是像石头一样坚固的意思。'],
+        ] },
+        { h: '怎样选棺木', p: [
+          '火化的家庭，一般不需要选最重最硬的木；土葬的话，耐潮、耐腐的木会比较放心。颜色和雕花看家里喜欢，也可以照长辈的意思。每种木的价钱不一样，想先看实物的，联络我们安排来展示厅看。',
         ] },
       ],
       en: [
@@ -71,7 +79,15 @@ export const services: Service[] = [
           'The final cost depends on the number of days, the venue, the casket and the rites. WhatsApp us and we will list every item before you decide.',
         ] },
         { h: 'Caskets', p: [
-          'Our caskets are made from quality woods such as teak and chengal, with detailed carving and comfortable interiors. Contact us to arrange a viewing.',
+          'Our caskets are made from fine Southeast Asian hardwoods, with detailed carving and comfortable interiors. We mainly work with four woods, each with its own colour, strength and meaning:',
+        ], steps: [
+          ['Chengal (正艾木)', 'Neobalanocarpus heimii, a top-grade heavy hardwood found only in Southeast Asia. Naturally resistant to rot, fungi and termites, it is often called the "king of timbers" and is used for bridges and jetties.'],
+          ['Teak (Kayu Jati, 柚木)', 'Known as the "king of woods". Its natural oils protect it from damp, mould and termites, and it is one of the most stable woods, resisting warping and cracking. It gains a soft sheen and a light natural scent over time.'],
+          ['Keledang (胭脂梅)', 'An Artocarpus hardwood with a dense grain and a warm reddish-brown colour. It resists damp and decay underground, and is a traditional Chinese choice for burial caskets, symbolising long life, blessings and filial piety.'],
+          ['Membatu (硅化木)', 'Also called Batu or Red Balau, a dense, very hard and durable Southeast Asian hardwood used for outdoor decking and heavy structures. The Malay name means "turning to stone", a nod to its strength.'],
+        ] },
+        { h: 'Choosing a casket', p: [
+          'For cremation, the heaviest woods are usually not needed; for burial, woods that resist damp and decay give more peace of mind. Colour and carving are up to your family. Prices vary by wood, so contact us to view them in our showroom.',
         ] },
       ],
     },
