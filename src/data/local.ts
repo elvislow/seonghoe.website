@@ -65,4 +65,102 @@ export const localGuides: Record<string, Record<Lang, LocalGuide>> = {
       ],
     },
   },
+  'johor-bahru': {
+    zh: {
+      intro: '祥鹤新山分店在依斯干达公主城 SILC 工业区（17, Jalan SILC 2/16），24 小时有人接电话，往士古来、振林山、新山市区都方便。家里有人走了，打 013-288 3883 或 WhatsApp 我们，我们马上安排人和车过去。',
+      sections: [
+        { h: '在新山办丧事，祥鹤从头陪到尾', p: [
+          '从接遗体、布置灵堂、安排法事和司仪，到出殡、火化或土葬，祥鹤新山分店都可以一手包办。佛教、道教、基督教、天主教和自由信仰的丧礼都可以安排，家里不懂规矩也没关系，每一步我们会在旁边提醒。',
+        ] },
+        { h: '新山的灵堂可以设在哪里', p: ['看家里方便和来吊唁的人数，新山常见的选择有：'], steps: [
+          ['中华公会绵裕亭殡仪馆', '1A, Jalan Ulu Air Molek，新山中华公会辖下，24 小时，靠近新山市区。'],
+          ['振林山的殡仪馆', 'Jalan Hang Kasturi, Taman Skudai Baru，靠近振林山中华墓园，离依斯干达公主城不远。'],
+          ['自己家里', '有地房屋可以在家门口搭棚设灵堂。'],
+        ] },
+        { h: '火化和土葬', p: [
+          '新山中华公会辖下的绵裕亭和振林山一带，有殡仪馆、墓园和火化、骨灰安置服务；也有家属选择富贵山庄（乌鲁地南）这类私人纪念园。每个地方的时间、收费和规矩不一样，我们帮你问好、安排。',
+        ] },
+        { h: '新山分店有展示厅', p: [
+          '寿板可以到新山分店的展示厅看实物，先打 013-288 3883 或 WhatsApp 约时间。',
+        ] },
+      ],
+      faqs: [
+        ['新山半夜有人走了，可以马上打来吗？', '可以。祥鹤新山分店 24 小时有人接，专线 013-288 3883，也可以 WhatsApp。'],
+        ['祥鹤新山分店在哪里？', '17, Jalan SILC 2/16, Kawasan Perindustrian SILC, Iskandar Puteri, 79150 Johor。'],
+        ['新山的灵堂一般设在哪里？', '例如中华公会绵裕亭殡仪馆、Taman Skudai Baru 振林山的殡仪馆，或者有地房屋的家里。'],
+        ['新山可以火化吗？', '可以，例如新山中华公会辖下的墓园，或者富贵山庄这类私人纪念园。'],
+        ['新山分店可以看寿板吗？', '可以，新山分店有展示厅，先约时间。'],
+      ],
+    },
+    en: {
+      intro: 'Our Johor Bahru branch is in the SILC industrial area, Iskandar Puteri (17, Jalan SILC 2/16), open 24 hours and close to Skudai, Gelang Patah and JB town. If someone in your family has passed away, call +60 13-288 3883 or WhatsApp us and we will send our team and vehicle straight away.',
+      sections: [
+        { h: 'A funeral in Johor Bahru, handled from start to finish', p: [
+          'From collecting the deceased and setting up the wake to rites, a master of ceremonies, the procession, cremation or burial, our JB branch can take care of everything. We arrange Buddhist, Taoist, Christian, Catholic and freethinker funerals, and guide you through every custom.',
+        ] },
+        { h: 'Where to hold a wake in Johor Bahru', p: ['Common choices in JB include:'], steps: [
+          ['Tiong Hua Memorial Park funeral parlour (绵裕亭殡仪馆)', '1A, Jalan Ulu Air Molek, run by the Johor Bahru Tiong Hua Association, open 24 hours, near JB town.'],
+          ['The funeral parlour at Taman Skudai Baru', 'Jalan Hang Kasturi, next to the Tiong Hua Memorial Park in Gelang Patah, not far from Iskandar Puteri.'],
+          ['At home', 'Landed homes can set up a tent at the front of the house.'],
+        ] },
+        { h: 'Cremation and burial', p: [
+          'The Johor Bahru Tiong Hua Association runs funeral parlours, cemeteries, cremation and columbarium services at Jalan Ulu Air Molek and Gelang Patah. Some families choose private memorial parks such as Nirvana in Ulu Tiram. Times, fees and rules differ, and we arrange it all for you.',
+        ] },
+        { h: 'A showroom at our JB branch', p: [
+          'You can see our caskets at the JB branch showroom. Call +60 13-288 3883 or WhatsApp us to book a time.',
+        ] },
+      ],
+      faqs: [
+        ['Someone has passed away in Johor Bahru at night. Can I call now?', 'Yes. Our JB branch answers 24 hours a day on +60 13-288 3883, or WhatsApp us.'],
+        ['Where is your Johor Bahru branch?', '17, Jalan SILC 2/16, Kawasan Perindustrian SILC, Iskandar Puteri, 79150 Johor.'],
+        ['Where are wakes usually held in Johor Bahru?', 'For example, the Tiong Hua Memorial Park funeral parlour, the funeral parlour at Taman Skudai Baru, or at home for landed houses.'],
+        ['Can we arrange a cremation in Johor Bahru?', 'Yes, for example at the Tiong Hua Association cemeteries or a private memorial park such as Nirvana.'],
+        ['Can we see caskets at the JB branch?', 'Yes, our JB branch has a showroom. Book a time first.'],
+      ],
+    },
+  },
+  senggarang: {
+    zh: {
+      intro: '祥鹤新文龙分店在 Taman Sri Bahagia（1, Jalan Sri Bahagia 1），24 小时有人接电话。新文龙一带的家庭，有人走了不用从峇株巴辖市区叫人，打 016-777 3883 或 WhatsApp 我们，我们就近安排人和车过去。',
+      sections: [
+        { h: '在地分店，离家近', p: [
+          '家里有人走了，最怕等。新文龙分店就在附近，接到电话就能安排；需要更多人手、寿板或法事安排，峇株巴辖总店就在附近支援。',
+          '从接遗体、布置灵堂、法事，到出殡、火化或土葬，祥鹤都可以一手包办，不懂规矩没关系，每一步我们会提醒。',
+        ] },
+        { h: '新文龙的灵堂', p: [
+          '新文龙不少家庭是有地房屋，可以在家门口搭棚设灵堂，亲戚邻居来往方便。想在殡仪馆办的，也可以到峇株巴辖市区，例如仙境生命纪念馆。',
+        ] },
+        { h: '火化和土葬', p: [
+          '新文龙属于峇株巴辖县，火化一般去峇株巴辖，例如巴莪仙境山庄火葬场。土葬可以选新文龙的广福义山（Perkuburan Bukit Batu Senggarang），或者峇株巴辖的华人义山和 Banang Memorial Park。',
+        ] },
+      ],
+      faqs: [
+        ['新文龙有人走了，可以马上打来吗？', '可以，新文龙分店 24 小时有人接，电话 016-777 3883，也可以 WhatsApp。'],
+        ['祥鹤新文龙分店在哪里？', '1, Jalan Sri Bahagia 1, Taman Sri Bahagia, 83200 Senggarang, Johor。'],
+        ['新文龙可以在家里办丧事吗？', '可以，有地房屋可以在家门口搭棚设灵堂。'],
+        ['新文龙火化去哪里？', '新文龙属于峇株巴辖县，火化一般去峇株巴辖，例如巴莪仙境山庄火葬场。'],
+      ],
+    },
+    en: {
+      intro: 'Our Senggarang branch is in Taman Sri Bahagia (1, Jalan Sri Bahagia 1), open 24 hours. Families around Senggarang do not need to call someone from Batu Pahat town: call +60 16-777 3883 or WhatsApp us and we will send our team from nearby.',
+      sections: [
+        { h: 'A local branch, close to home', p: [
+          'When someone passes away, waiting is the hardest part. Our Senggarang branch is close by and can respond quickly, with our Batu Pahat HQ nearby for extra support, caskets and rites.',
+          'From collecting the deceased and setting up the wake to rites, the procession, cremation or burial, we take care of everything and guide you through every custom.',
+        ] },
+        { h: 'Wakes in Senggarang', p: [
+          'Many Senggarang families live in landed homes and hold the wake under a tent at the front of the house. Families who prefer a funeral parlour can use one in Batu Pahat town, such as Fairy Park Funeral Parlour.',
+        ] },
+        { h: 'Cremation and burial', p: [
+          'Senggarang is in Batu Pahat district, so cremation is usually in Batu Pahat, for example at the Bagan Fairy Park crematorium (巴莪仙境山庄). For burial, there is Perkuburan Bukit Batu Senggarang (广福义山) in Senggarang, or Batu Pahat\'s Chinese cemetery and Banang Memorial Park.',
+        ] },
+      ],
+      faqs: [
+        ['Someone has passed away in Senggarang. Can I call now?', 'Yes. Our Senggarang branch answers 24 hours a day on +60 16-777 3883, or WhatsApp us.'],
+        ['Where is your Senggarang branch?', '1, Jalan Sri Bahagia 1, Taman Sri Bahagia, 83200 Senggarang, Johor.'],
+        ['Can we hold the wake at home in Senggarang?', 'Yes, landed homes can set up a tent at the front of the house.'],
+        ['Where are cremations for Senggarang held?', 'Usually in Batu Pahat, for example at the Bagan Fairy Park crematorium.'],
+      ],
+    },
+  },
 };
