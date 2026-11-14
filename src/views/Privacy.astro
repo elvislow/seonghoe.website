@@ -1,0 +1,40 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHead from '../components/PageHead.astro';
+import { brand, type Lang } from '../data/site';
+import { tr, pfx, altPath } from '../lib';
+const { lang } = Astro.props as { lang: Lang };
+const t = tr(lang); const pre = pfx(lang);
+const zh = [
+  ['我们收集什么', '你打电话、WhatsApp 或在社交平台联络我们时，我们会知道你的名字、电话号码，以及你告诉我们的家里情况。这个网站本身没有表格，也不会要你填资料。'],
+  ['用来做什么', '只用来回复你、安排丧礼服务和跟进后续事情，例如出殡时间、骨灰安置。'],
+  ['会不会给别人', '不会卖，也不会给其他公司做宣传。只有在安排服务需要时，例如殡仪馆、墓园、火葬场或宗教人士，我们才会提供必要的资料。'],
+  ['讣告和照片', '讣告和服务照片，我们会先问过家属同意才发布。想撤下，联络我们就可以。'],
+  ['想查看或更改资料', '打 016-777 3883 或 WhatsApp 我们，我们会帮你查看、更改或删除你的资料。'],
+];
+const en = [
+  ['What we collect', 'When you call, WhatsApp or message us on social media, we receive your name, phone number and what you tell us about your family’s situation. This website has no forms and does not ask you for personal details.'],
+  ['How we use it', 'Only to reply to you, arrange funeral services and follow up, for example on the procession time or placing the ashes.'],
+  ['Who we share it with', 'We never sell your details or pass them on for marketing. We share only what is needed to arrange the service, for example with a funeral parlour, cemetery, crematorium or religious officiant.'],
+  ['Obituaries and photos', 'We publish obituaries and service photos only with the family’s consent. Contact us at any time to have them removed.'],
+  ['Seeing or changing your details', 'Call or WhatsApp +60 16-777 3883 and we will help you view, correct or delete your details.'],
+];
+const items = lang === 'zh' ? zh : en;
+---
+<Base lang={lang} active="" alt={altPath(lang, '/privacy/')}
+  title={t('隐私政策｜祥鹤殡仪服务有限公司', 'Privacy Policy | Seong Hoe Funeral Service')}
+  description={t('祥鹤殡仪服务有限公司怎样收集、使用和保护你的个人资料。', 'How Seong Hoe Funeral Service collects, uses and protects your personal data.')}>
+  <PageHead crumbs={[{ href: `${pre}/`, label: t('首页', 'Home') }, { href: `${pre}/privacy/`, label: t('隐私政策', 'Privacy') }]}
+    title={t('隐私政策，', 'Privacy policy,')} grey={t('你的资料我们好好保管。', 'we look after your details.')}
+    lead={t(`${brand.zh}照马来西亚《2010 年个人资料保护法令》（PDPA）处理你的个人资料。`, `${brand.en} handles your personal data in line with Malaysia’s Personal Data Protection Act 2010 (PDPA).`)} />
+  <section class="section" style="padding-top:40px">
+    <div class="wrap" style="max-width:780px">
+      {items.map(([h, p]) => (
+        <div class="svc-sec" data-reveal>
+          <h2 class="h3">{h}</h2>
+          <div class="body"><p>{p}</p></div>
+        </div>
+      ))}
+    </div>
+  </section>
+</Base>

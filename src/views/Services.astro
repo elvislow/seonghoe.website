@@ -7,6 +7,9 @@ import { services, serviceIcon } from '../data/services';
 import { tr, pfx, altPath } from '../lib';
 const { lang } = Astro.props as { lang: Lang };
 const t = tr(lang); const pre = pfx(lang);
+const checklist = lang === 'zh'
+  ? ['24 小时接遗体', '遗体清洁、穿衣、化妆', '灵堂布置', '司仪与礼生', '佛教、道教、基督教、天主教丧礼', '各式法事', '纸扎', '出殡乐队', '白狮致哀', '灵车与出殡车队', '火化与捡骨', '土葬与墓地安排', '骨灰安置（骨灰塔、墓园、海葬）', '寿板、棺木展示厅', '捐棺助葬守护', '宠物殡葬（峇株巴辖）']
+  : ['24-hour collection of the deceased', 'Cleansing, dressing and make-up', 'Memorial altar set-up', 'MC and ritual attendants', 'Buddhist, Taoist, Christian and Catholic funerals', 'Funeral rites', 'Paper offerings', 'Procession band', 'White lion tribute', 'Hearse and funeral cortege', 'Cremation and bone collection', 'Burial and cemetery plots', 'Placing the ashes (columbarium, cemetery, sea)', 'Casket showroom', 'Casket sponsorship', 'Pet funerals (Batu Pahat)'];
 ---
 <Base lang={lang} active="services" alt={altPath(lang, '/services/')}
   title={t('殡仪服务项目｜丧礼策划・法事・火化・土葬｜祥鹤殡仪服务有限公司', 'Funeral Services | Planning, Rites, Cremation, Burial | Seong Hoe')}
@@ -24,4 +27,20 @@ const t = tr(lang); const pre = pfx(lang);
       ))}
     </div>
   </section>
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head" data-reveal><h2 class="h2">{t('服务项目一览，', 'Everything we arrange,')}<span class="grey">{t('一条龙包办。', ' one-stop.')}</span></h2></div>
+      <ul class="svc-list" data-reveal>
+        {checklist.map((c) => <li><Icon name="check" size={18} />{c}</li>)}
+      </ul>
+      <p class="lead" style="margin-top:28px">{t('需要的项目照家里的意思选，不需要的不会硬加。', 'Choose only what your family needs. We never add items you do not want.')}</p>
+    </div>
+  </section>
 </Base>
+<style>
+  .svc-list { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px 28px; }
+  .svc-list li { display: flex; gap: 10px; align-items: flex-start; font-size: 16px; line-height: 1.5; padding: 12px 0; border-bottom: 1px solid var(--line); }
+  .svc-list li :global(svg) { flex: none; margin-top: 3px; color: var(--taupe-deep); }
+  @media (max-width: 900px) { .svc-list { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 520px) { .svc-list { grid-template-columns: 1fr; } }
+</style>

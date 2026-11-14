@@ -1,0 +1,40 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import PageHead from '../components/PageHead.astro';
+import { waLink, type Lang } from '../data/site';
+import { gallery } from '../data/services';
+import { tr, pfx, altPath } from '../lib';
+const { lang } = Astro.props as { lang: Lang };
+const t = tr(lang); const pre = pfx(lang);
+const site = Astro.site!;
+const schema = { '@context': 'https://schema.org', '@type': 'ImageGallery', name: t('祥鹤殡仪服务相册', 'Seong Hoe Funeral Service gallery'), url: new URL(`${pre}/gallery/`, site).href, image: gallery.map((g) => ({ '@type': 'ImageObject', contentUrl: new URL(g.src, site).href, caption: g[lang] })) };
+---
+<Base lang={lang} active="gallery" alt={altPath(lang, '/gallery/')} schema={[schema]}
+  title={t('服务相册｜峇株巴辖丧礼、灵堂、出殡实拍｜祥鹤殡仪', 'Gallery | Funerals, Wakes and Processions in Batu Pahat | Seong Hoe')}
+  description={t('祥鹤殡仪服务有限公司在峇株巴辖、新山、新文龙的服务实拍：灵堂布置、司仪礼生、法事、出殡车队、棺木展示厅。', 'Photos from Seong Hoe funerals in Batu Pahat, Johor Bahru and Senggarang: memorial altars, our MC and attendants, rites, processions and our casket showroom.')}>
+  <PageHead crumbs={[{ href: `${pre}/`, label: t('首页', 'Home') }, { href: `${pre}/gallery/`, label: t('相册', 'Gallery') }]}
+    title={t('服务相册，', 'Our work,')} grey={t('每一场都用心送别。', 'every farewell with care.')}
+    lead={t('这些是祥鹤在峇株巴辖、新山和新文龙服务时拍的照片：灵堂、法事、扶灵、出殡，还有我们的棺木展示厅。', 'Photos from our funerals in Batu Pahat, Johor Bahru and Senggarang: wakes, rites, carrying the casket, processions and our casket showroom.')} />
+  <section class="section" style="padding-top:40px">
+    <div class="wrap">
+      <div class="gal-grid">
+        {gallery.map((g, i) => (
+          <figure class="gal-item" data-reveal style={`--d:${i % 3}`}>
+            <img src={g.src} alt={g[lang]} loading="lazy" />
+            <figcaption>{g[lang]}</figcaption>
+          </figure>
+        ))}
+      </div>
+      <div style="margin-top:40px"><a class="btn btn--dark" href={waLink(lang)}>{t('WhatsApp 咨询', 'WhatsApp us')}<span class="disc"><Icon name="arrow" /></span></a></div>
+    </div>
+  </section>
+</Base>
+<style>
+  .gal-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+  .gal-item { margin: 0; }
+  .gal-item img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 14px; display: block; background: var(--line); }
+  .gal-item figcaption { font-size: 14px; color: var(--muted); margin-top: 8px; }
+  @media (max-width: 900px) { .gal-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 520px) { .gal-grid { grid-template-columns: 1fr; } }
+</style>
