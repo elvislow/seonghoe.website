@@ -1,0 +1,23 @@
+# 每年 1 月 1 日（马来西亚时间 00:05）自动做一次空更新，
+# Vercel 收到后会重新上传网站，标题里的年份就会自动换成新的一年。
+name: New year rebuild
+
+on:
+  schedule:
+    - cron: '5 16 31 12 *'   # UTC 12/31 16:05 = 马来西亚 1/1 00:05
+  workflow_dispatch:          # 也可以在 Actions 页面手动按一次
+
+permissions:
+  contents: write
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Empty commit to trigger Vercel rebuild
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit --allow-empty -m "New year rebuild: refresh year in page titles"
+          git push
