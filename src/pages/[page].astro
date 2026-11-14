@@ -1,0 +1,10 @@
+---
+import Contact from '../views/Contact.astro';
+import Gallery from '../views/Gallery.astro';
+import Privacy from '../views/Privacy.astro';
+export function getStaticPaths() { return ['contact', 'gallery', 'privacy'].map((page) => ({ params: { page } })); }
+const { page } = Astro.params;
+---
+{page === 'contact' && <Contact lang="zh" />}
+{page === 'gallery' && <Gallery lang="zh" />}
+{page === 'privacy' && <Privacy lang="zh" />}
