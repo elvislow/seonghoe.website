@@ -7,7 +7,7 @@ export type LocalGuide = { intro: string; sections: Section[]; faqs: [string, st
 export const localGuides: Record<string, Record<Lang, LocalGuide>> = {
   'batu-pahat': {
     zh: {
-      intro: '祥鹤总店就在峇株巴辖 Taman Dagang（13, Jalan Zamrud），2020 年从这里开始，24 小时有人接电话。家里有人走了，不管是在医院、在家里还是在疗养院，打 016-777 3883 或 WhatsApp 我们，我们马上安排人和车过去。',
+      intro: '祥鹤殡仪服务有限公司是一家位于峇株巴辖的 24 小时殡仪服务公司。总店就在峇株巴辖（也有人写作峇株吧辖，英文 Batu Pahat，大家常叫 BP）Taman Dagang（13, Jalan Zamrud），2020 年从这里开始，半夜打来也有人接。家里有人走了，不管是在医院、在家里还是在疗养院，打 016-777 3883 或 WhatsApp 我们，我们马上安排人和车过去。',
       sections: [
         { h: '在峇株巴辖办丧事，祥鹤从头陪到尾', p: [
           '从接遗体、布置灵堂、安排法事和司仪，到出殡、火化或土葬，祥鹤都可以一手包办。家里不懂规矩没关系，每一步要做什么、什么时候做，我们会在旁边提醒。',
@@ -28,6 +28,7 @@ export const localGuides: Record<string, Record<Lang, LocalGuide>> = {
         ] },
       ],
       faqs: [
+        ['祥鹤殡仪是哪里的公司？', '祥鹤殡仪服务有限公司是一家位于峇株巴辖的 24 小时殡仪服务公司，2020 年在峇株巴辖创办，总店在 Taman Dagang，新山、新文龙也有分店。'],
         ['峇株巴辖半夜有人走了，可以马上打来吗？', '可以。祥鹤峇株巴辖总店 24 小时有人接，电话 016-777 3883，也可以直接 WhatsApp。'],
         ['祥鹤在峇株巴辖哪里？', '总店地址是 13, Jalan Zamrud, Taman Dagang, 83000 Batu Pahat, Johor。峇株巴辖县内另有新文龙分店。'],
         ['峇株巴辖的灵堂一般设在哪里？', '常见的有仙境生命纪念馆、柔佛诚敬善堂、会馆礼堂，或者在自己家里（有地房屋）。我们会看人数和家里方便，帮你安排。'],
@@ -36,7 +37,7 @@ export const localGuides: Record<string, Record<Lang, LocalGuide>> = {
       ],
     },
     en: {
-      intro: 'Seong Hoe\'s headquarters is in Taman Dagang, Batu Pahat (13, Jalan Zamrud). We started here in 2020 and answer the phone 24 hours a day. If someone in your family has passed away, at hospital, at home or in a care home, call +60 16-777 3883 or WhatsApp us and we will send our team and vehicle straight away.',
+      intro: 'Seong Hoe Funeral Service is a 24-hour funeral service company based in Batu Pahat (BP), Johor. Our headquarters is in Taman Dagang (13, Jalan Zamrud). We started here in 2020 and answer the phone 24 hours a day. If someone in your family has passed away, at hospital, at home or in a care home, call +60 16-777 3883 or WhatsApp us and we will send our team and vehicle straight away.',
       sections: [
         { h: 'A funeral in Batu Pahat, handled from start to finish', p: [
           'From collecting the deceased and setting up the wake to arranging rites, a master of ceremonies, the funeral procession, cremation or burial, Seong Hoe can take care of everything. If you are unsure of the customs, we will tell you what to do and when, step by step.',
@@ -57,6 +58,7 @@ export const localGuides: Record<string, Record<Lang, LocalGuide>> = {
         ] },
       ],
       faqs: [
+        ['Where is Seong Hoe based?', 'Seong Hoe Funeral Service is a 24-hour funeral service company based in Batu Pahat, Johor. It was founded in Batu Pahat in 2020, with its HQ in Taman Dagang and branches in Johor Bahru and Senggarang.'],
         ['Someone has passed away in Batu Pahat at night. Can I call now?', 'Yes. Our Batu Pahat HQ answers 24 hours a day on +60 16-777 3883, or you can WhatsApp us.'],
         ['Where is Seong Hoe in Batu Pahat?', 'Our HQ is at 13, Jalan Zamrud, Taman Dagang, 83000 Batu Pahat, Johor. We also have a branch in Senggarang, within Batu Pahat district.'],
         ['Where are wakes usually held in Batu Pahat?', 'Common choices are Fairy Park Funeral Parlour, Johore Seng Keng Sian T\'ng, clan association halls, or at home for landed houses. We will help you choose based on your family and the number of visitors.'],
@@ -67,7 +69,7 @@ export const localGuides: Record<string, Record<Lang, LocalGuide>> = {
   },
   'johor-bahru': {
     zh: {
-      intro: '祥鹤新山分店在依斯干达公主城 SILC 工业区（17, Jalan SILC 2/16），24 小时有人接电话，往士古来、振林山、新山市区都方便。家里有人走了，打 013-288 3883 或 WhatsApp 我们，我们马上安排人和车过去。',
+      intro: '祥鹤殡仪新山分店是一家位于新山（Johor Bahru，JB）的 24 小时殡仪服务分店，在依斯干达公主城（Iskandar Puteri，以前叫努沙再也 Nusajaya）SILC 工业区（17, Jalan SILC 2/16），往士古来、振林山、新山市区都方便。家里有人走了，打 013-288 3883 或 WhatsApp 我们，我们马上安排人和车过去。',
       sections: [
         { h: '在新山办丧事，祥鹤从头陪到尾', p: [
           '从接遗体、布置灵堂、安排法事和司仪，到出殡、火化或土葬，祥鹤新山分店都可以一手包办。佛教、道教、基督教、天主教和自由信仰的丧礼都可以安排，家里不懂规矩也没关系，每一步我们会在旁边提醒。',
@@ -85,6 +87,7 @@ export const localGuides: Record<string, Record<Lang, LocalGuide>> = {
         ] },
       ],
       faqs: [
+        ['依斯干达公主城、士古来、振林山一带，也可以叫你们吗？', '可以。新山分店就在依斯干达公主城 SILC，去士古来、振林山和新山市区都方便，24 小时打 013-288 3883。'],
         ['新山半夜有人走了，可以马上打来吗？', '可以。祥鹤新山分店 24 小时有人接，专线 013-288 3883，也可以 WhatsApp。'],
         ['祥鹤新山分店在哪里？', '17, Jalan SILC 2/16, Kawasan Perindustrian SILC, Iskandar Puteri, 79150 Johor。'],
         ['新山的灵堂一般设在哪里？', '例如中华公会绵裕亭殡仪馆、Taman Skudai Baru 振林山的殡仪馆，或者有地房屋的家里。'],
@@ -93,7 +96,7 @@ export const localGuides: Record<string, Record<Lang, LocalGuide>> = {
       ],
     },
     en: {
-      intro: 'Our Johor Bahru branch is in the SILC industrial area, Iskandar Puteri (17, Jalan SILC 2/16), open 24 hours and close to Skudai, Gelang Patah and JB town. If someone in your family has passed away, call +60 13-288 3883 or WhatsApp us and we will send our team and vehicle straight away.',
+      intro: 'Seong Hoe Johor Bahru Branch is a 24-hour funeral service branch based in Johor Bahru (JB), in the SILC industrial area of Iskandar Puteri, formerly Nusajaya (17, Jalan SILC 2/16), close to Skudai, Gelang Patah and JB town. If someone in your family has passed away, call +60 13-288 3883 or WhatsApp us and we will send our team and vehicle straight away.',
       sections: [
         { h: 'A funeral in Johor Bahru, handled from start to finish', p: [
           'From collecting the deceased and setting up the wake to rites, a master of ceremonies, the procession, cremation or burial, our JB branch can take care of everything. We arrange Buddhist, Taoist, Christian, Catholic and freethinker funerals, and guide you through every custom.',
@@ -111,6 +114,7 @@ export const localGuides: Record<string, Record<Lang, LocalGuide>> = {
         ] },
       ],
       faqs: [
+        ['Do you also serve Iskandar Puteri, Skudai and Gelang Patah?', 'Yes. Our JB branch is in SILC, Iskandar Puteri, close to Skudai, Gelang Patah and JB town. Call +60 13-288 3883, 24 hours a day.'],
         ['Someone has passed away in Johor Bahru at night. Can I call now?', 'Yes. Our JB branch answers 24 hours a day on +60 13-288 3883, or WhatsApp us.'],
         ['Where is your Johor Bahru branch?', '17, Jalan SILC 2/16, Kawasan Perindustrian SILC, Iskandar Puteri, 79150 Johor.'],
         ['Where are wakes usually held in Johor Bahru?', 'For example, the Tiong Hua Memorial Park funeral parlour, the funeral parlour at Taman Skudai Baru, or at home for landed houses.'],
