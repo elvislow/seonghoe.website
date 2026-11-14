@@ -25,6 +25,11 @@ const nav = [
   { key: 'faq', href: `${pre}/faq/`, label: t('常见问题', 'FAQ') },
   { key: 'about', href: `${pre}/about/`, label: t('关于祥鹤', 'About') },
 ];
+const footExtra = [
+  { href: `${pre}/contact/`, label: t('联络我们', 'Contact') },
+  { href: `${pre}/gallery/`, label: t('服务相册', 'Gallery') },
+  { href: `${pre}/privacy/`, label: t('隐私政策', 'Privacy') },
+];
 ---
 <!doctype html>
 <html lang={lang === 'zh' ? 'zh-Hans-MY' : 'en-MY'}>
@@ -100,7 +105,7 @@ const nav = [
         </div>
         <div>
           <h4>{t('页面', 'PAGES')}</h4>
-          <ul>{nav.map((n) => <li><a href={n.href}>{n.label}</a></li>)}</ul>
+          <ul>{[...nav, ...footExtra].map((n) => <li><a href={n.href}>{n.label}</a></li>)}</ul>
         </div>
         <div>
           <h4>{t('服务', 'SERVICES')}</h4>
