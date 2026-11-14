@@ -18,7 +18,7 @@ const serviceSchema = { '@context': 'https://schema.org', '@type': 'Service', na
 const faqSchema = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: L.faqs.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) };
 const others = areaPages[area].filter((p) => p.slug !== page.slug);
 ---
-<Base lang={lang} image={page.photo} active="branches" alt={altPath(lang, path)} title={L.title} description={L.intro} schema={[serviceSchema, faqSchema]}>
+<Base lang={lang} image={page.photo} active="branches" alt={altPath(lang, path)} title={L.title} description={L.desc ?? L.intro} schema={[serviceSchema, faqSchema]}>
   <PageHead crumbs={[{ href: `${pre}/`, label: t('首页', 'Home') }, { href: `${pre}/branches/${area}/`, label: areaName }, { href: `${pre}${path}`, label: L.h1.replace(/[，,]$/, '') }]}
     title={L.h1} grey={L.grey} lead={L.intro} />
   <section class="section" style="padding-top:40px">
