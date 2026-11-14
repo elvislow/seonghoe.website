@@ -273,7 +273,7 @@ export const jbPages: AreaPage[] = [
     photo: '/img/branch-johor-bahru.webp',
     service: 'funeral-planning',
     zh: {
-      title: '新山寿板、棺材｜4 种木料怎么选｜祥鹤新山展示厅',
+      title: '新山长生店｜寿板、棺材，4 种木料怎么选｜祥鹤新山展示厅',
       desc: '新山寿板、棺材：正艾木、柚木、胭脂梅、硅化木 4 种木料，火化、土葬怎么选一次讲清楚，可以到祥鹤新山分店展示厅（依斯干达公主城 SILC）看实物。电话 013-288 3883。',
       h1: '新山寿板、棺木，',
       grey: '来新山分店看实物。',

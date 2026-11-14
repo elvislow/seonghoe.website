@@ -351,7 +351,7 @@ export const bpPages: AreaPage[] = [
     photo: '/img/showroom.webp',
     service: 'funeral-planning',
     zh: {
-      title: '峇株巴辖寿板、棺木｜4 种木料怎么选｜祥鹤展示厅',
+      title: '峇株巴辖长生店｜寿板、棺木，4 种木料怎么选｜祥鹤展示厅',
       desc: '峇株巴辖寿板、棺木：正艾木、柚木、胭脂梅、硅化木 4 种木料，火化、土葬怎么选一次讲清楚，可以到祥鹤总店展示厅看实物。电话 016-777 3883。',
       h1: '峇株巴辖寿板、棺木，',
       grey: '来展示厅看实物。',
