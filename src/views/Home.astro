@@ -25,7 +25,7 @@ const faqs = lang === 'zh' ? [
 ---
 <Base lang={lang} active="home" alt={altPath(lang, '/')} schema={[{ '@context': 'https://schema.org', '@type': 'WebSite', name: '祥鹤殡仪服务', alternateName: ['祥鹤', 'Seong Hoe Funeral Service', 'Seong Hoe Funeral Services'], url: new URL(lang === 'zh' ? '/' : '/en/', Astro.site!).href }]}
   title={t('峇株巴辖殡仪服务｜24 小时一条龙丧礼配套｜祥鹤殡仪', 'Batu Pahat Funeral Services 24/7 | One-Stop Packages | Seong Hoe')}
-  description={t('峇株巴辖 24 小时殡仪服务，半夜打来也有人接。祥鹤一条龙安排丧礼、法事、火化、土葬和寿板，配套和费用先讲清楚。总店在 Taman Dagang，新山、新文龙也有分店。电话 016-777 3883。', 'Seong Hoe is a 24/7 funeral service in Batu Pahat, Johor. One-stop funeral packages covering rites, cremation, burial and caskets, with costs explained upfront. Branches in Johor Bahru and Senggarang. Call +60 16-777 3883.')}>
+  description={t('祥鹤殡仪服务有限公司是一家位于峇株巴辖的 24 小时殡仪服务公司，半夜打来也有人接。一条龙安排丧礼、法事、火化、土葬和寿板，配套和费用先讲清楚。新山、新文龙也有分店，电话 016-777 3883。', 'Seong Hoe Funeral Service is based in Batu Pahat, Johor, offering 24-hour one-stop funeral services: rites, cremation, burial and caskets, with costs explained upfront. Branches in Johor Bahru and Senggarang. Call +60 16-777 3883.')}>
 
   <section class="hero">
     <img class="hero__crane" src="/brand/logo-ink.png" alt="" aria-hidden="true" />
@@ -111,7 +111,7 @@ const faqs = lang === 'zh' ? [
     <div class="wrap svc-index">
       <div class="svc-index__intro" data-reveal>
         <h2 class="h2">{t('峇株巴辖殡仪服务，', 'Funeral services in Batu Pahat,')}<span class="grey">{t('总店就在 ', ' from our HQ in ')}<span class="nw">Taman Dagang{t('。', '.')}</span></span></h2>
-        <p class="lead">{t('祥鹤总店在峇株巴辖 Taman Dagang（13, Jalan Zamrud），24 小时有人接电话。峇株巴辖市区和附近一带，家里有人走了，打 016-777 3883，我们马上派人和车过去。守灵、法事、出殡，到火化或土葬，我们一手包办；佛教、道教、基督教丧礼都可以安排。总店也有寿板展示厅，还有宠物火化服务。', 'Our headquarters is in Taman Dagang, Batu Pahat (13, Jalan Zamrud), and someone answers 24 hours a day. If someone in your family passes away in or around Batu Pahat, call +60 16-777 3883 and we will send our team and vehicle straight away. We handle the wake, rites, procession, cremation or burial for Buddhist, Taoist and Christian families. Our HQ also has a casket showroom and offers pet cremation.')}</p>
+        <p class="lead">{t('祥鹤殡仪服务有限公司是一家位于峇株巴辖的 24 小时殡仪服务公司，总店在 Taman Dagang（13, Jalan Zamrud），24 小时有人接电话。峇株巴辖市区和附近一带，家里有人走了，打 016-777 3883，我们马上派人和车过去。守灵、法事、出殡，到火化或土葬，我们一手包办；佛教、道教、基督教丧礼都可以安排。总店也有寿板展示厅，还有宠物火化服务。', 'Seong Hoe Funeral Service is based in Batu Pahat, with our HQ in Taman Dagang (13, Jalan Zamrud), and someone answers 24 hours a day. If someone in your family passes away in or around Batu Pahat, call +60 16-777 3883 and we will send our team and vehicle straight away. We handle the wake, rites, procession, cremation or burial for Buddhist, Taoist and Christian families. Our HQ also has a casket showroom and offers pet cremation.')}</p>
         <a class="link" href={`${pre}/branches/batu-pahat/`}>{t('峇株巴辖总店地址与地图', 'Batu Pahat HQ address and map')}<Icon name="arrow" /></a>
         <p class="lead" style="margin-top:20px">{t('在新山或新文龙？', 'In Johor Bahru or Senggarang?')} <a class="link" href={`${pre}/branches/johor-bahru/`}>{t('新山分店', 'Johor Bahru branch')}</a> · <a class="link" href={`${pre}/branches/senggarang/`}>{t('新文龙分店', 'Senggarang branch')}</a></p>
       </div>
