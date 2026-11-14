@@ -7,12 +7,13 @@ import { services, serviceIcon } from '../data/services';
 import { tr, pfx, altPath } from '../lib';
 const { lang } = Astro.props as { lang: Lang };
 const t = tr(lang); const pre = pfx(lang);
+const Y = new Date().getFullYear();
 const checklist = lang === 'zh'
   ? ['24 小时接遗体', '遗体清洁、穿衣、化妆', '灵堂布置', '司仪与礼生', '佛教、道教、基督教、天主教丧礼', '各式法事', '纸扎', '出殡乐队', '白狮致哀', '灵车与出殡车队', '火化与捡骨', '土葬与墓地安排', '骨灰安置（骨灰塔、墓园、海葬）', '寿板、棺木展示厅', '捐棺助葬守护', '宠物殡葬（峇株巴辖）']
   : ['24-hour collection of the deceased', 'Cleansing, dressing and make-up', 'Memorial altar set-up', 'MC and ritual attendants', 'Buddhist, Taoist, Christian and Catholic funerals', 'Funeral rites', 'Paper offerings', 'Procession band', 'White lion tribute', 'Hearse and funeral cortege', 'Cremation and bone collection', 'Burial and cemetery plots', 'Placing the ashes (columbarium, cemetery, sea)', 'Casket showroom', 'Casket sponsorship', 'Pet funerals (Batu Pahat)'];
 ---
 <Base lang={lang} active="services" alt={altPath(lang, '/services/')}
-  title={t('殡仪服务项目｜丧礼策划・法事・火化・土葬｜祥鹤殡仪服务有限公司', 'Funeral Services | Planning, Rites, Cremation, Burial | Seong Hoe')}
+  title={t(`殡仪服务项目 ${Y}｜丧礼、法事、火化、土葬一条龙，24 小时｜祥鹤殡仪`, `Funeral Services ${Y} | Planning, Rites, Cremation, Burial, 24/7 | Seong Hoe`)}
   description={t('祥鹤殡仪服务有限公司是一家位于峇株巴辖的 24 小时殡仪服务公司，服务项目有丧礼策划、各式法事、火化、土葬、捐棺助葬守护和宠物殡葬，新山、新文龙也有分店。', 'Seong Hoe Funeral Service is based in Batu Pahat, Johor, offering 24-hour funeral planning, rites, cremation, burial, casket sponsorship and pet funerals, with branches in Johor Bahru and Senggarang.')}>
   <PageHead crumbs={[{ href: `${pre}/`, label: t('首页', 'Home') }, { href: `${pre}/services/`, label: t('服务', 'Services') }]}
     title={t('服务项目，', 'Our services,')} grey={t('照家里的习惯安排。', 'arranged around your family.')} />

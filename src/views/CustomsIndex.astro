@@ -7,9 +7,10 @@ import { articles } from '../data/customs';
 import { tr, pfx, altPath } from '../lib';
 const { lang } = Astro.props as { lang: Lang };
 const t = tr(lang); const pre = pfx(lang);
+const Y = new Date().getFullYear();
 ---
 <Base lang={lang} active="customs" alt={altPath(lang, '/customs/')}
-  title={t('华人丧礼习俗知识｜老一辈的规矩｜祥鹤殡仪服务有限公司', 'Chinese Funeral Customs Explained | Seong Hoe Funeral Service Sdn. Bhd.')}
+  title={t(`华人丧礼习俗 ${Y}｜头七、白金、守孝过年怎么做｜祥鹤殡仪`, `Chinese Funeral Customs ${Y} | First Seventh Day, Condolence Money | Seong Hoe`)}
   description={t('盖棺为什么要回避、手尾钱是什么、守孝期间婚事怎么办。大家都在做、却很少人解释的华人丧礼习俗。', 'Chinese funeral customs in Malaysia explained: hand money, mourning clothes colours, the mourning staff, foot-end rice and weddings during mourning.')}>
   <PageHead crumbs={[{ href: `${pre}/`, label: t('首页', 'Home') }, { href: `${pre}/customs/`, label: t('习俗知识', 'Customs') }]}
     title={t('大家都在做的规矩，', 'Customs everyone follows,')} grey={t('很少人解释。', 'few explain.')}

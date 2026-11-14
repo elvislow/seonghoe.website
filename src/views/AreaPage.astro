@@ -9,6 +9,7 @@ import { areaPages } from '../data/areas';
 import { tr, pfx, altPath } from '../lib';
 const { lang, page, area = 'batu-pahat' } = Astro.props as { lang: Lang; page: AreaPage; area?: string };
 const t = tr(lang); const pre = pfx(lang); const L = page[lang];
+const Y = new Date().getFullYear();
 const hq = branches.find((b) => b.slug === area)!;
 const areaName = hq.area[lang];
 const path = `/${area}/${page.slug}/`;
@@ -18,7 +19,7 @@ const serviceSchema = { '@context': 'https://schema.org', '@type': 'Service', na
 const faqSchema = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: L.faqs.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) };
 const others = areaPages[area].filter((p) => p.slug !== page.slug);
 ---
-<Base lang={lang} image={page.photo} active="branches" alt={altPath(lang, path)} title={L.title} description={L.desc ?? L.intro} schema={[serviceSchema, faqSchema]}>
+<Base lang={lang} image={page.photo} active="branches" alt={altPath(lang, path)} title={L.title.replace(/(｜| \| )/, ` ${Y}$1`)} description={L.desc ?? L.intro} schema={[serviceSchema, faqSchema]}>
   <PageHead crumbs={[{ href: `${pre}/`, label: t('首页', 'Home') }, { href: `${pre}/branches/${area}/`, label: areaName }, { href: `${pre}${path}`, label: L.h1.replace(/[，,]$/, '') }]}
     title={L.h1} grey={L.grey} lead={L.intro} />
   <section class="section" style="padding-top:40px">

@@ -7,6 +7,7 @@ import { services, type Service } from '../data/services';
 import { tr, pfx, altPath } from '../lib';
 const { lang, service: s } = Astro.props as { lang: Lang; service: Service };
 const t = tr(lang); const pre = pfx(lang);
+const Y = new Date().getFullYear();
 const idx = services.findIndex((x) => x.slug === s.slug);
 const next = services[(idx + 1) % services.length];
 const faqSchema = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: s.faqs[lang].map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) };
@@ -18,7 +19,7 @@ const descZh = isPet ? `${s.intro.zh}祥鹤宠物殡葬只在峇株巴辖服务�
 const descEn = isPet ? `${s.intro.en} Pet funerals are offered in Batu Pahat only. Pet line +60 18-909 3883.` : `Seong Hoe Funeral Service is based in Batu Pahat, Johor, offering 24-hour funeral services. ${s.intro.en} Branches in Johor Bahru and Senggarang. Call +60 16-777 3883.`;
 ---
 <Base lang={lang} active="services" alt={altPath(lang, `/services/${s.slug}/`)}
-  title={t(`${s.title.zh}｜${areaZh}｜祥鹤殡仪服务有限公司`, `${s.title.en} | ${areaEn} | Seong Hoe`)}
+  title={t(`${s.title.zh}${/[）)]$/.test(s.title.zh) ? '' : ' '}${Y}｜${areaZh}${isPet ? '' : ' 24 小时'}｜祥鹤殡仪`, `${s.title.en} ${Y} | ${areaEn}${isPet ? '' : ', 24/7'} | Seong Hoe`)}
   image={s.photo} description={t(descZh, descEn)} schema={[serviceSchema, faqSchema]}>
   <PageHead crumbs={[{ href: `${pre}/`, label: t('首页', 'Home') }, { href: `${pre}/services/`, label: t('服务', 'Services') }, { href: `${pre}/services/${s.slug}/`, label: s.title[lang] }]}
     title={s.title[lang]} lead={s.intro[lang]} />
