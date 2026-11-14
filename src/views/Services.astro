@@ -9,8 +9,8 @@ const { lang } = Astro.props as { lang: Lang };
 const t = tr(lang); const pre = pfx(lang);
 const Y = new Date().getFullYear();
 const checklist = lang === 'zh'
-  ? ['24 小时接遗体', '遗体清洁、穿衣、化妆', '灵堂布置', '司仪与礼生', '佛教、道教、基督教、天主教丧礼', '各式法事', '纸扎', '出殡乐队', '白狮致哀', '灵车与出殡车队', '火化与捡骨', '土葬与墓地安排', '骨灰安置（骨灰塔、墓园、海葬）', '寿板、棺木展示厅', '捐棺助葬守护', '宠物殡葬（峇株巴辖）']
-  : ['24-hour collection of the deceased', 'Cleansing, dressing and make-up', 'Memorial altar set-up', 'MC and ritual attendants', 'Buddhist, Taoist, Christian and Catholic funerals', 'Funeral rites', 'Paper offerings', 'Procession band', 'White lion tribute', 'Hearse and funeral cortege', 'Cremation and bone collection', 'Burial and cemetery plots', 'Placing the ashes (columbarium, cemetery, sea)', 'Casket showroom', 'Casket sponsorship', 'Pet funerals (Batu Pahat)'];
+  ? ['24 小时接遗体', '遗体清洁、穿衣、化妆', '灵堂布置', '司仪与礼生', '佛教、道教、基督教、天主教丧礼', '各式法事', '纸扎', '出殡乐队', '白狮致哀', '灵车与出殡车队', '帐篷、巴士', '鲜花布置', '寿衣', '遗体防腐', '遗体跨国运送（运返外国或从外国运回）', '火化与捡骨', '土葬与墓地安排', '骨灰塔、墓地安排（也可海葬）', '长生店：寿板、棺木展示厅', '捐棺助葬守护', '宠物殡葬（峇株巴辖）']
+  : ['24-hour collection of the deceased', 'Cleansing, dressing and make-up', 'Memorial altar set-up', 'MC and ritual attendants', 'Buddhist, Taoist, Christian and Catholic funerals', 'Funeral rites', 'Paper offerings', 'Procession band', 'White lion tribute', 'Hearse and funeral cortege', 'Tents and buses', 'Floral arrangements', 'Burial garments', 'Embalming', 'International repatriation of remains (to or from overseas)', 'Cremation and bone collection', 'Burial and cemetery plots', 'Columbarium and cemetery arrangements (sea burial also available)', 'Casket shop and showroom', 'Casket sponsorship', 'Pet funerals (Batu Pahat)'];
 ---
 <Base lang={lang} active="services" alt={altPath(lang, '/services/')}
   title={t(`殡仪服务项目 ${Y}｜丧礼、法事、火化、土葬一条龙，24 小时｜祥鹤殡仪`, `Funeral Services ${Y} | Planning, Rites, Cremation, Burial, 24/7 | Seong Hoe`)}
