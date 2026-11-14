@@ -37,7 +37,8 @@ const nav = [
   <link rel="canonical" href={canonical} />
   {alt && <link rel="alternate" hreflang={lang === 'zh' ? 'en-MY' : 'zh-Hans-MY'} href={new URL(alt, site).href} />}
   <link rel="alternate" hreflang={lang === 'zh' ? 'zh-Hans-MY' : 'en-MY'} href={canonical} />
-  <link rel="icon" href="/favicon.png" type="image/png" />
+  <link rel="icon" href="/favicon.ico" sizes="48x48" />
+  <link rel="icon" href="/favicon.png" type="image/png" sizes="192x192" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
@@ -257,7 +258,7 @@ const nav = [
     function keepWords() {
       const Seg = (Intl as any).Segmenter; if (!Seg) return;
       const seg = new Seg('zh', { granularity: 'word' });
-      const DICT = /(祥鹤|祥鶴|孝杖|孝子|脚尾饭|手尾钱|披麻戴孝|新文龙|峇株巴辖|新山|捐棺助葬|丧礼|Google 上)/;
+      const DICT = /(祥鹤|祥鶴|孝杖|孝子|脚尾饭|手尾钱|披麻戴孝|新文龙|峇株巴辖|新山|捐棺助葬|丧礼|总店|殡仪服务|Google 上)/;
       document.querySelectorAll<HTMLElement>('h1, h2, h3').forEach((el) => {
         if (el.dataset.kw) return; el.dataset.kw = '1';
         const w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT); const nodes: Text[] = []; let n: Node | null;
