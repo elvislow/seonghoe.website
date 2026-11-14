@@ -11,7 +11,8 @@ export const sgPages: AreaPage[] = [
     photo: '/img/work-procession.webp',
     service: 'cremation',
     zh: {
-      title: '新文龙火化服务｜Senggarang｜祥鹤殡仪新文龙分店',
+      title: '新文龙火化服务｜24 小时：出殡、火化、捡骨｜祥鹤新文龙',
+      desc: '祥鹤殡仪新文龙分店是一家位于新文龙（Senggarang）的 24 小时殡仪服务分店。守灵、出殡、火化、捡骨到安置骨灰，一条龙安排，费用先讲清楚。电话 016-777 3883。',
       h1: '新文龙火化服务，',
       grey: '在地分店，随叫随到。',
       intro: `住在新文龙一带的家庭，不用从峇株巴辖市区叫人。祥鹤新文龙分店就在 Taman Sri Bahagia，从守灵、出殡到火化和捡骨，全程陪着家属。${callZh}`,
@@ -33,7 +34,8 @@ export const sgPages: AreaPage[] = [
       ],
     },
     en: {
-      title: 'Cremation in Senggarang | Seong Hoe Senggarang Branch',
+      title: 'Cremation in Senggarang | 24/7, Procession to Ashes | Seong Hoe',
+      desc: 'Seong Hoe Senggarang Branch is a 24-hour funeral service branch based in Senggarang, Johor. We arrange the wake, procession, cremation, bone collection and ashes, with costs explained upfront. Call +60 16-777 3883.',
       h1: 'Cremation in Senggarang,',
       grey: 'a local branch, close to home.',
       intro: `Families around Senggarang do not need to call someone from Batu Pahat town. Our Senggarang branch in Taman Sri Bahagia stays with you from the wake and procession to cremation and bone collection. ${callEn}`,
@@ -61,7 +63,8 @@ export const sgPages: AreaPage[] = [
     photo: '/img/work-coffin-carry.webp',
     service: 'burial',
     zh: {
-      title: '新文龙土葬服务｜广福义山｜祥鹤殡仪新文龙分店',
+      title: '新文龙土葬｜广福义山墓地安排｜24 小时｜祥鹤新文龙',
+      desc: '祥鹤殡仪新文龙分店是一家位于新文龙的 24 小时殡仪服务分店。土葬可选新文龙广福义山，或峇株巴辖的义山和纪念园，墓地、出殡和下葬我们帮你安排。电话 016-777 3883。',
       h1: '新文龙土葬，',
       grey: '义山、墓地帮你安排。',
       intro: `新文龙的家庭选择土葬，祥鹤新文龙分店协助安排墓地、出殡和下葬。${callZh}`,
@@ -82,7 +85,8 @@ export const sgPages: AreaPage[] = [
       ],
     },
     en: {
-      title: 'Burial in Senggarang | Chinese Cemetery | Seong Hoe Senggarang',
+      title: 'Burial in Senggarang | Chinese Cemetery Plots, 24/7 | Seong Hoe',
+      desc: 'Burial in Senggarang: Seong Hoe arranges plots at Perkuburan Bukit Batu Senggarang or in Batu Pahat, plus the procession and burial. Open 24/7, call +60 16-777 3883.',
       h1: 'Burial in Senggarang,',
       grey: 'from the plot to the burial.',
       intro: `For Senggarang families choosing burial, our Senggarang branch helps arrange the plot, the procession and the burial. ${callEn}`,
@@ -109,7 +113,8 @@ export const sgPages: AreaPage[] = [
     photo: '/img/work-taoist.webp',
     service: 'funeral-rites',
     zh: {
-      title: '新文龙道教丧礼｜法事、做七｜祥鹤殡仪新文龙分店',
+      title: '新文龙道教丧礼｜法事、打斋、做七｜24 小时｜祥鹤',
+      desc: '祥鹤殡仪新文龙分店是一家位于新文龙的 24 小时殡仪服务分店。道教丧礼照籍贯和长辈的意思安排法事、出殡和做七，有地房屋也可以在家搭棚设灵堂。电话 016-777 3883。',
       h1: '新文龙道教丧礼，',
       grey: '老规矩照着做。',
       intro: `新文龙很多家庭还是照传统办丧事。祥鹤新文龙分店先问清楚籍贯和长辈的意思，再安排道士、法事和出殡。${callZh}`,
@@ -131,7 +136,8 @@ export const sgPages: AreaPage[] = [
       ],
     },
     en: {
-      title: 'Taoist Funeral in Senggarang | Rites | Seong Hoe Senggarang',
+      title: 'Taoist Funeral in Senggarang | Rites & Prayers, 24/7 | Seong Hoe',
+      desc: 'Taoist funerals in Senggarang, arranged by your dialect group\'s customs, with the wake at home if you wish. Open 24/7, call +60 16-777 3883.',
       h1: 'Taoist funerals in Senggarang,',
       grey: 'the traditional way.',
       intro: `Many Senggarang families still follow traditional rites. Our Senggarang branch first asks about your dialect group and your elders' wishes, then arranges the priests, rites and procession. ${callEn}`,
@@ -158,7 +164,8 @@ export const sgPages: AreaPage[] = [
     icon: 'lotus',
     service: 'funeral-rites',
     zh: {
-      title: '新文龙佛教丧礼｜助念、诵经｜祥鹤殡仪新文龙分店',
+      title: '新文龙佛教丧礼｜助念、诵经、灵堂｜24 小时｜祥鹤',
+      desc: '祥鹤殡仪新文龙分店是一家位于新文龙的 24 小时殡仪服务分店。佛教丧礼的助念、诵经、灵堂布置到出殡火化，都配合你熟悉的寺院安排。电话 016-777 3883。',
       h1: '新文龙佛教丧礼，',
       grey: '安静、庄严地送别。',
       intro: `家里信佛，祥鹤新文龙分店照佛教的方式安排：助念、诵经、灵堂，到出殡和火化。${callZh}`,
@@ -176,7 +183,8 @@ export const sgPages: AreaPage[] = [
       ],
     },
     en: {
-      title: 'Buddhist Funeral in Senggarang | Seong Hoe Senggarang',
+      title: 'Buddhist Funeral in Senggarang | Chanting & Wake, 24/7 | Seong Hoe',
+      desc: 'Buddhist funerals in Senggarang: recitation, sutra chanting, a calm wake, the procession and cremation, arranged with your temple. Open 24/7, call +60 16-777 3883.',
       h1: 'Buddhist funerals in Senggarang,',
       grey: 'a quiet, dignified farewell.',
       intro: `For Buddhist families, our Senggarang branch arranges recitation, chanting, the wake, the procession and cremation. ${callEn}`,
