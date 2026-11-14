@@ -11,7 +11,8 @@ export const jbPages: AreaPage[] = [
     photo: '/img/work-cortege.webp',
     service: 'cremation',
     zh: {
-      title: '新山火化服务｜依斯干达公主城、士古来｜祥鹤殡仪新山分店',
+      title: '新山火化服务｜24 小时：出殡、火化、捡骨｜祥鹤殡仪新山分店',
+      desc: '祥鹤殡仪新山分店是一家位于新山的 24 小时殡仪服务分店，在依斯干达公主城 SILC。守灵、出殡、火化、捡骨到安置骨灰，一条龙安排，费用先讲清楚。电话 013-288 3883。',
       h1: '新山火化服务，',
       grey: '出殡到骨灰都安排好。',
       intro: `家里在新山选择火化，祥鹤新山分店从守灵、出殡、火化，到捡骨和安置骨灰，全程陪着家属。分店在依斯干达公主城 SILC，往士古来、振林山、新山市区都方便。${callZh}`,
@@ -35,7 +36,8 @@ export const jbPages: AreaPage[] = [
       ],
     },
     en: {
-      title: 'Cremation in Johor Bahru | Iskandar Puteri & Skudai | Seong Hoe JB Branch',
+      title: 'Cremation in Johor Bahru | 24/7, Procession to Ashes | Seong Hoe JB',
+      desc: 'Seong Hoe Johor Bahru Branch is a 24-hour funeral service branch based in Iskandar Puteri, Johor Bahru. We arrange the wake, procession, cremation, bone collection and ashes, with costs explained upfront. Call +60 13-288 3883.',
       h1: 'Cremation in Johor Bahru,',
       grey: 'from the wake to the ashes.',
       intro: `If your family chooses cremation in Johor Bahru, our JB branch stays with you through the wake, procession and cremation to bone collection and placing the ashes. We are in SILC, Iskandar Puteri, close to Skudai, Gelang Patah and JB town. ${callEn}`,
@@ -65,7 +67,8 @@ export const jbPages: AreaPage[] = [
     photo: '/img/work-lotus-casket.webp',
     service: 'burial',
     zh: {
-      title: '新山土葬服务｜绵裕亭、振林山义山｜祥鹤殡仪新山分店',
+      title: '新山土葬｜绵裕亭、振林山义山墓地安排｜24 小时｜祥鹤新山',
+      desc: '祥鹤殡仪新山分店是一家位于新山的 24 小时殡仪服务分店。新山土葬可选绵裕亭义山、振林山中华墓园或私人纪念园，墓地、出殡和下葬我们帮你安排。电话 013-288 3883。',
       h1: '新山土葬，',
       grey: '义山、墓园帮你安排。',
       intro: `家里在新山选择土葬，祥鹤新山分店协助安排墓地、出殡和下葬。${callZh}`,
@@ -86,7 +89,8 @@ export const jbPages: AreaPage[] = [
       ],
     },
     en: {
-      title: 'Burial in Johor Bahru | Chinese Cemeteries | Seong Hoe JB Branch',
+      title: 'Burial in Johor Bahru | Chinese Cemetery Plots, 24/7 | Seong Hoe JB',
+      desc: 'Burial in Johor Bahru: Seong Hoe JB Branch arranges plots at the Tiong Hua Memorial Parks or private memorial parks, plus the procession and burial. Open 24/7, call +60 13-288 3883.',
       h1: 'Burial in Johor Bahru,',
       grey: 'from the plot to the burial.',
       intro: `For families choosing burial in Johor Bahru, our JB branch helps arrange the plot, the procession and the burial. ${callEn}`,
@@ -112,7 +116,8 @@ export const jbPages: AreaPage[] = [
     icon: 'lotus',
     service: 'funeral-rites',
     zh: {
-      title: '新山佛教丧礼｜诵经、助念｜祥鹤殡仪新山分店',
+      title: '新山佛教丧礼｜助念、诵经、灵堂｜24 小时｜祥鹤新山',
+      desc: '祥鹤殡仪新山分店是一家位于新山的 24 小时殡仪服务分店。佛教丧礼的助念、诵经、灵堂布置到出殡火化，都配合你熟悉的寺院安排。电话 013-288 3883。',
       h1: '新山佛教丧礼，',
       grey: '清净、庄严地送别。',
       intro: `家里信佛，祥鹤新山分店照佛教的方式安排：助念、请法师或居士诵经、灵堂布置，到出殡和火化。${callZh}`,
@@ -134,7 +139,8 @@ export const jbPages: AreaPage[] = [
       ],
     },
     en: {
-      title: 'Buddhist Funeral in Johor Bahru | Chanting & Wake | Seong Hoe JB',
+      title: 'Buddhist Funeral in Johor Bahru | Chanting & Wake, 24/7 | Seong Hoe JB',
+      desc: 'Buddhist funerals in Johor Bahru: recitation, sutra chanting, a calm wake, the procession and cremation, arranged with your temple by Seong Hoe JB Branch. Open 24/7, call +60 13-288 3883.',
       h1: 'Buddhist funerals in Johor Bahru,',
       grey: 'a calm, dignified farewell.',
       intro: `For Buddhist families, our JB branch arranges recitation, chanting by monks or lay practitioners, a serene wake, the procession and cremation. ${callEn}`,
@@ -162,7 +168,8 @@ export const jbPages: AreaPage[] = [
     photo: '/img/work-taoist.webp',
     service: 'funeral-rites',
     zh: {
-      title: '新山道教丧礼｜法事、打斋、做七｜祥鹤殡仪新山分店',
+      title: '新山道教丧礼｜法事、打斋、做七｜24 小时｜祥鹤新山',
+      desc: '祥鹤殡仪新山分店是一家位于新山的 24 小时殡仪服务分店。道教丧礼照福建、潮州、客家、广东各籍贯的规矩，安排法事、打斋、出殡和做七，不硬加项目。电话 013-288 3883。',
       h1: '新山道教丧礼，',
       grey: '各籍贯的规矩都照做。',
       intro: `新山华人家庭福建、潮州、客家、广东都有，祥鹤新山分店先问清楚家里的籍贯和长辈的意思，再安排道士、法事和出殡。${callZh}`,
@@ -185,7 +192,8 @@ export const jbPages: AreaPage[] = [
       ],
     },
     en: {
-      title: 'Taoist Funeral in Johor Bahru | Rites & Prayers | Seong Hoe JB',
+      title: 'Taoist Funeral in Johor Bahru | Rites & Prayers, 24/7 | Seong Hoe JB',
+      desc: 'Taoist funerals in Johor Bahru, arranged by your dialect group\'s customs: rites, prayers, the procession and the "sevens", with nothing added you do not need. Open 24/7, call +60 13-288 3883.',
       h1: 'Taoist funerals in Johor Bahru,',
       grey: 'by your dialect group\'s customs.',
       intro: `JB families come from Hokkien, Teochew, Hakka, Cantonese and other backgrounds. Our JB branch first asks about your family's customs and your elders' wishes, then arranges the priests, rites and procession. ${callEn}`,
@@ -213,7 +221,8 @@ export const jbPages: AreaPage[] = [
     icon: 'book',
     service: 'funeral-rites',
     zh: {
-      title: '新山基督教、天主教丧礼｜追思礼拜、安息弥撒｜祥鹤殡仪新山分店',
+      title: '新山基督教、天主教丧礼｜追思礼拜｜24 小时｜祥鹤新山',
+      desc: '祥鹤殡仪新山分店是一家位于新山的 24 小时殡仪服务分店。基督教、天主教丧礼，我们配合教会安排追思礼拜或安息弥撒、灵堂、出殡，以及火化或土葬。电话 013-288 3883。',
       h1: '新山基督教丧礼，',
       grey: '天主教也一样安排。',
       intro: `家里是基督徒或天主教徒，祥鹤新山分店配合教会安排追思礼拜或弥撒、灵堂、出殡和火化或土葬。${callZh}`,
@@ -235,7 +244,8 @@ export const jbPages: AreaPage[] = [
       ],
     },
     en: {
-      title: 'Christian & Catholic Funeral in Johor Bahru | Seong Hoe JB',
+      title: 'Christian & Catholic Funeral in Johor Bahru, 24/7 | Seong Hoe JB',
+      desc: 'Christian and Catholic funerals in Johor Bahru: Seong Hoe JB Branch works with your church on the memorial service or Mass, the wake, the procession and cremation or burial. Call +60 13-288 3883.',
       h1: 'Christian funerals in Johor Bahru,',
       grey: 'Catholic funerals too.',
       intro: `For Christian and Catholic families, our JB branch works with your church on the memorial service or funeral Mass, the wake, the procession and cremation or burial. ${callEn}`,
@@ -263,7 +273,8 @@ export const jbPages: AreaPage[] = [
     photo: '/img/branch-johor-bahru.webp',
     service: 'funeral-planning',
     zh: {
-      title: '新山寿板、棺木｜正艾木、柚木、胭脂梅｜祥鹤新山展示厅',
+      title: '新山寿板、棺材｜4 种木料怎么选｜祥鹤新山展示厅',
+      desc: '新山寿板、棺材：正艾木、柚木、胭脂梅、硅化木 4 种木料，火化、土葬怎么选一次讲清楚，可以到祥鹤新山分店展示厅（依斯干达公主城 SILC）看实物。电话 013-288 3883。',
       h1: '新山寿板、棺木，',
       grey: '来新山分店看实物。',
       intro: `祥鹤新山分店有展示厅，在依斯干达公主城 SILC（17, Jalan SILC 2/16）。家属可以亲眼看木料、颜色和雕花再决定，先打 013-288 3883 或 WhatsApp 约时间。`,
@@ -285,7 +296,8 @@ export const jbPages: AreaPage[] = [
       ],
     },
     en: {
-      title: 'Caskets in Johor Bahru | Chengal, Teak, Keledang | Seong Hoe JB Showroom',
+      title: 'Caskets in Johor Bahru | 4 Woods Compared | Seong Hoe JB Showroom',
+      desc: 'Caskets in Johor Bahru: Chengal, Teak, Keledang and Membatu compared, which wood suits cremation or burial, and where to see them at our showroom in SILC, Iskandar Puteri. Call +60 13-288 3883.',
       h1: 'Caskets in Johor Bahru,',
       grey: 'see them at our JB showroom.',
       intro: 'Our JB branch has a casket showroom in SILC, Iskandar Puteri (17, Jalan SILC 2/16). See the wood, colour and carving in person before deciding. Call +60 13-288 3883 or WhatsApp us to book a time.',
