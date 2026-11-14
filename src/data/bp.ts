@@ -3,7 +3,7 @@ import type { Section } from './services';
 
 // 峇株巴辖专页：每页对准一个「峇株巴辖 + 服务」的搜索。
 // 地点都在 Google 地图核对过；祥鹤自己的做法写得比较概括，细节等祥鹤补。
-export type AreaPageLang = { title: string; h1: string; grey: string; intro: string; sections: Section[]; faqs: [string, string][] };
+export type AreaPageLang = { title: string; desc?: string; h1: string; grey: string; intro: string; sections: Section[]; faqs: [string, string][] };
 export type AreaPage = { slug: string; icon: string; photo?: string; service?: string; zh: AreaPageLang; en: AreaPageLang };
 
 const callZh = '24 小时都有人接，打 016-777 3883 或 WhatsApp 我们。';
@@ -16,7 +16,8 @@ export const bpPages: AreaPage[] = [
     photo: '/img/work-hearse-classic.webp',
     service: 'cremation',
     zh: {
-      title: '峇株巴辖火化服务｜出殡、火化、捡骨一手安排｜祥鹤殡仪',
+      title: '峇株巴辖火化服务｜24 小时一条龙：出殡、火化、捡骨｜祥鹤',
+      desc: '峇株巴辖家里有人走了，祥鹤 24 小时有人接。守灵、出殡、火化、捡骨到安置骨灰，一条龙安排，费用先讲清楚。电话 016-777 3883。',
       h1: '峇株巴辖火化服务，',
       grey: '从出殡陪到捡骨。',
       intro: `家里选择火化，祥鹤峇株巴辖总店从出殡、到火化场、最后告别，到捡骨和安置骨灰，全程陪着家属走。${callZh}`,
@@ -44,7 +45,8 @@ export const bpPages: AreaPage[] = [
       ],
     },
     en: {
-      title: 'Cremation in Batu Pahat | Procession, Cremation & Ashes | Seong Hoe',
+      title: 'Cremation in Batu Pahat | 24/7, Procession to Ashes | Seong Hoe',
+      desc: 'Someone has passed away in Batu Pahat? Seong Hoe answers 24/7 and arranges the wake, procession, cremation, bone collection and ashes, with costs explained upfront. Call +60 16-777 3883.',
       h1: 'Cremation in Batu Pahat,',
       grey: 'from the procession to the ashes.',
       intro: `If your family chooses cremation, our Batu Pahat HQ stays with you from the funeral procession and the final farewell to bone collection and placing the ashes. ${callEn}`,
@@ -78,7 +80,8 @@ export const bpPages: AreaPage[] = [
     photo: '/img/work-hearse-arch.webp',
     service: 'burial',
     zh: {
-      title: '峇株巴辖土葬服务｜义山、纪念园、出殡下葬｜祥鹤殡仪',
+      title: '峇株巴辖土葬服务｜义山、纪念园墓地安排｜24 小时｜祥鹤',
+      desc: '峇株巴辖土葬，祥鹤帮你安排义山或纪念园墓地、出殡和下葬，寿板可以到总店展示厅看实物。24 小时服务，电话 016-777 3883。',
       h1: '峇株巴辖土葬，',
       grey: '从墓地陪到下葬。',
       intro: `选择土葬的家庭，祥鹤峇株巴辖总店协助安排墓地、出殡和下葬，每一步都陪着家属。${callZh}`,
@@ -104,7 +107,8 @@ export const bpPages: AreaPage[] = [
       ],
     },
     en: {
-      title: 'Burial in Batu Pahat | Chinese Cemetery & Memorial Parks | Seong Hoe',
+      title: 'Burial in Batu Pahat | Cemetery Plots Arranged, 24/7 | Seong Hoe',
+      desc: 'Burial in Batu Pahat: Seong Hoe arranges the cemetery plot, procession and burial, and you can see caskets at our HQ showroom. Open 24/7, call +60 16-777 3883.',
       h1: 'Burial in Batu Pahat,',
       grey: 'from the plot to the final rites.',
       intro: `For families choosing burial, our Batu Pahat HQ helps arrange the burial plot, the procession and the burial itself, staying with you at every step. ${callEn}`,
@@ -135,7 +139,8 @@ export const bpPages: AreaPage[] = [
     icon: 'lotus',
     service: 'funeral-rites',
     zh: {
-      title: '峇株巴辖佛教丧礼｜诵经、念佛、灵堂布置｜祥鹤殡仪',
+      title: '峇株巴辖佛教丧礼｜助念、诵经、灵堂｜24 小时｜祥鹤',
+      desc: '峇株巴辖佛教丧礼，祥鹤安排助念、诵经、灵堂布置，到出殡和火化，配合你熟悉的寺院。24 小时服务，电话 016-777 3883。',
       h1: '峇株巴辖佛教丧礼，',
       grey: '庄严、清净地送别。',
       intro: `家里信佛，祥鹤峇株巴辖总店按佛教的方式安排丧礼：请法师或居士诵经念佛、布置灵堂，到出殡和火化。${callZh}`,
@@ -158,7 +163,8 @@ export const bpPages: AreaPage[] = [
       ],
     },
     en: {
-      title: 'Buddhist Funeral in Batu Pahat | Chanting & Wake | Seong Hoe',
+      title: 'Buddhist Funeral in Batu Pahat | Chanting & Wake, 24/7 | Seong Hoe',
+      desc: 'Buddhist funerals in Batu Pahat: recitation, sutra chanting, a calm wake, the procession and cremation, arranged with your temple. Open 24/7, call +60 16-777 3883.',
       h1: 'Buddhist funerals in Batu Pahat,',
       grey: 'a calm and dignified farewell.',
       intro: `For Buddhist families, our Batu Pahat HQ arranges the funeral the Buddhist way: monks or lay practitioners for chanting, a serene wake, the procession and cremation. ${callEn}`,
@@ -187,7 +193,8 @@ export const bpPages: AreaPage[] = [
     photo: '/img/work-taoist.webp',
     service: 'funeral-rites',
     zh: {
-      title: '峇株巴辖道教丧礼｜法事、打斋、做七｜祥鹤殡仪',
+      title: '峇株巴辖道教丧礼｜法事、打斋、做七｜24 小时｜祥鹤',
+      desc: '峇株巴辖道教丧礼，祥鹤照籍贯和长辈的意思安排法事、打斋、出殡和做七，不硬加项目。24 小时服务，电话 016-777 3883。',
       h1: '峇株巴辖道教丧礼，',
       grey: '照籍贯的规矩来做。',
       intro: `家里照传统做道教丧礼，祥鹤峇株巴辖总店安排道士做法事、灵堂布置、出殡，各籍贯的讲究都可以配合。${callZh}`,
@@ -210,7 +217,8 @@ export const bpPages: AreaPage[] = [
       ],
     },
     en: {
-      title: 'Taoist Funeral in Batu Pahat | Rites & Prayers | Seong Hoe',
+      title: 'Taoist Funeral in Batu Pahat | Rites & Prayers, 24/7 | Seong Hoe',
+      desc: 'Taoist funerals in Batu Pahat, arranged by your dialect group\'s customs: rites, prayers, the procession and the "sevens", with nothing added you do not need. Open 24/7, call +60 16-777 3883.',
       h1: 'Taoist funerals in Batu Pahat,',
       grey: 'following your dialect group\'s customs.',
       intro: `For families following traditional Taoist rites, our Batu Pahat HQ arranges the Taoist priests, the wake and the procession, in line with your dialect group's customs. ${callEn}`,
@@ -238,7 +246,8 @@ export const bpPages: AreaPage[] = [
     icon: 'book',
     service: 'funeral-rites',
     zh: {
-      title: '峇株巴辖基督教、天主教丧礼｜追思礼拜、安息弥撒｜祥鹤殡仪',
+      title: '峇株巴辖基督教、天主教丧礼｜追思礼拜｜24 小时｜祥鹤',
+      desc: '峇株巴辖基督教、天主教丧礼，祥鹤配合教会安排追思礼拜或安息弥撒、灵堂、出殡，以及火化或土葬。24 小时服务，电话 016-777 3883。',
       h1: '峇株巴辖基督教丧礼，',
       grey: '天主教也一样安排。',
       intro: `家里是基督徒或天主教徒，祥鹤峇株巴辖总店配合教会安排追思礼拜或弥撒、灵堂布置、出殡和火化或土葬。${callZh}`,
@@ -260,7 +269,8 @@ export const bpPages: AreaPage[] = [
       ],
     },
     en: {
-      title: 'Christian & Catholic Funeral in Batu Pahat | Seong Hoe',
+      title: 'Christian & Catholic Funeral in Batu Pahat, 24/7 | Seong Hoe',
+      desc: 'Christian and Catholic funerals in Batu Pahat: we work with your church on the memorial service or Mass, the wake, the procession and cremation or burial. Open 24/7, call +60 16-777 3883.',
       h1: 'Christian and Catholic funerals in Batu Pahat,',
       grey: 'working with your church.',
       intro: `For Christian and Catholic families, our Batu Pahat HQ works with your church on the memorial service or funeral Mass, the wake, the procession and cremation or burial. ${callEn}`,
@@ -288,6 +298,7 @@ export const bpPages: AreaPage[] = [
     service: 'pet-funeral',
     zh: {
       title: '峇株巴辖宠物火化｜单炉火化、接送、怀宠阁｜祥鹤宠物殡葬',
+      desc: '峇株巴辖宠物火化，祥鹤宠物殡葬安排上门接送、单炉火化和骨灰安放，怀宠阁首月免费。宠物专线 018-909 3883。',
       h1: '峇株巴辖宠物火化，',
       grey: '好好送它最后一程。',
       intro: '猫、狗、兔子，养久了就是家人。祥鹤在峇株巴辖提供宠物殡葬：接送、告别仪式、单炉火化，到骨灰安放。宠物专线 018-909 3883。',
@@ -311,6 +322,7 @@ export const bpPages: AreaPage[] = [
     },
     en: {
       title: 'Pet Cremation in Batu Pahat | Individual Cremation | Seong Hoe Pet Funeral',
+      desc: 'Pet cremation in Batu Pahat: pick-up, individual cremation and a place for the ashes at our pet columbarium, first month free. Pet line +60 18-909 3883.',
       h1: 'Pet cremation in Batu Pahat,',
       grey: 'a proper goodbye.',
       intro: 'Cats, dogs, rabbits: after years together, they are family. Seong Hoe provides pet funerals in Batu Pahat, from collection and a farewell ceremony to individual cremation and a resting place for the ashes. Pet hotline: +60 18-909 3883.',
@@ -339,7 +351,8 @@ export const bpPages: AreaPage[] = [
     photo: '/img/showroom.webp',
     service: 'funeral-planning',
     zh: {
-      title: '峇株巴辖寿板、棺木｜正艾木、柚木、胭脂梅｜祥鹤殡仪展示厅',
+      title: '峇株巴辖寿板、棺木｜4 种木料怎么选｜祥鹤展示厅',
+      desc: '峇株巴辖寿板、棺木：正艾木、柚木、胭脂梅、硅化木 4 种木料，火化、土葬怎么选一次讲清楚，可以到祥鹤总店展示厅看实物。电话 016-777 3883。',
       h1: '峇株巴辖寿板、棺木，',
       grey: '来展示厅看实物。',
       intro: `祥鹤峇株巴辖总店设有棺木展示厅，家属可以亲眼看木料、颜色和雕花再决定。${callZh}`,
@@ -361,7 +374,8 @@ export const bpPages: AreaPage[] = [
       ],
     },
     en: {
-      title: 'Caskets in Batu Pahat | Chengal, Teak, Keledang | Seong Hoe Showroom',
+      title: 'Caskets in Batu Pahat | 4 Woods Compared | Seong Hoe Showroom',
+      desc: 'Caskets in Batu Pahat: Chengal, Teak, Keledang and Membatu compared, which wood suits cremation or burial, and where to see them at our HQ showroom. Call +60 16-777 3883.',
       h1: 'Caskets in Batu Pahat,',
       grey: 'see them in our showroom.',
       intro: `Our Batu Pahat HQ has a casket showroom, so families can see the wood, colour and carving in person before deciding. ${callEn}`,
