@@ -100,13 +100,17 @@ export const branches: Branch[] = [
 
 // Google 评价原文（峇株巴辖总店），不改字
 export const reviews = [
+  "非常感谢你们专业又贴心的服务。在这段艰难的时间里，你们的团队做事非常有效率，每一个细节都安排得很好，也都非常配合，让我们家人感到很安心。\n整个流程都处理得很顺利，也减轻了我们很多负担。\n\n特别感谢老板小中耐心又认真地为我们讲解每一个细节，让我们对整个流程更加了解和放心。祥鹤团队也提供了非常多不同的款式选择，服务非常周到。\n\n谢谢你们的体贴与用心，真的帮了我们很大的忙，衷心推荐给有需要的人。🙏🙏",
+  "谢谢祥鹤的服务，让我们能安心地送别沈爸。五天的葬礼，从礼节到宾客招待，祥鹤都面面俱到、一应俱全，而且收费合理。\n沈爸在生时，事事都讲求体面，他往生后，我们都希望能不负他的期望，办一场体面的葬礼。小中在了解我们的要求后，非常有效率地打点好一切。真心感谢祥鹤的小中和他的团队🙏🏻…...",
+  "谢谢祥鹤的服务，已经卜杯问过沈爷爷，他很满意这场葬礼❤️ 感谢小中和团队的专业与细心，将整个仪式安排得井然有序、庄重且有温度，也给予了家属很大的安慰与支持。",
+  "他们把阿嬷的丧事处理得非常好 精致时尚 但是又不失传统 👍🏻 我们的每个小要求都帮我们尽力做到 💪🏻 就连礼簿问题，都帮我们当天处理好，大力推荐！！是一群有热血的团队 💪🏻…...",
   'smooth planing. Great service. Accompany us though out the whole journey till the end. We don\'t have to worry about everything in planing and organising everything they planing and execute it. Strongly Recommended.',
   'Highly recommended undertaker in Batu Pahat. Very experienced. And also understand the difference in culture and religion within the same family. A new generation that merges the new and the old into 1 service',
   'Great service for my brother’s last journey in life. No unreasonable add-ons and well executed plans. Highly recommended.',
   'Good and professional burial service for my father\'s final journey in life. Thank you.',
 ];
 
-export const googleRating = { value: '4.9', count: 13, branch: 'batu-pahat' };
+export const googleRating = { value: '5.0', count: 29, branch: 'batu-pahat' };
 
 export const waLink = (lang: Lang) =>
   `https://wa.me/${brand.whatsapp}?text=${encodeURIComponent(
