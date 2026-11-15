@@ -5,6 +5,7 @@ import PageHead from '../components/PageHead.astro';
 import { branches, waLink, brand, type Lang } from '../data/site';
 import { services, type Service } from '../data/services';
 import { tr, pfx, altPath } from '../lib';
+import { areaPages } from '../data/areas';
 const { lang, service: s } = Astro.props as { lang: Lang; service: Service };
 const t = tr(lang); const pre = pfx(lang);
 const Y = new Date().getFullYear();
@@ -12,6 +13,7 @@ const idx = services.findIndex((x) => x.slug === s.slug);
 const next = services[(idx + 1) % services.length];
 const faqSchema = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: s.faqs[lang].map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) };
 const isPet = s.slug === 'pet-funeral';
+const localPages = Object.entries(areaPages).flatMap(([area, ps]) => ps.filter((p) => p.service === s.slug).map((p) => ({ href: `${pre}/${area}/${p.slug}/`, label: p[lang].h1.replace(/[，,]$/, '') })));
 const serviceSchema = { '@context': 'https://schema.org', '@type': 'Service', name: s.title[lang], description: s.intro[lang], provider: { '@id': new URL('/#org', Astro.site!).href }, areaServed: isPet ? ['Batu Pahat'] : ['Batu Pahat', 'Johor Bahru', 'Senggarang', 'Johor'] };
 const areaZh = isPet ? '峇株巴辖' : '峇株巴辖・新山・新文龙';
 const areaEn = isPet ? 'Batu Pahat' : 'Batu Pahat, Johor Bahru, Senggarang';
@@ -49,6 +51,12 @@ const descEn = isPet ? `${s.intro.en} Pet funerals are offered in Batu Pahat onl
             ))}
           </div>
         </div>
+        {localPages.length > 0 && (
+          <div class="svc-sec" data-reveal>
+            <h2 class="h3">{t('各地服务', 'By area')}</h2>
+            <div class="tile-list">{localPages.map((p) => <a href={p.href}><span>{p.label}</span><span class="disc-arrow"><Icon name="arrow" /></span></a>)}</div>
+          </div>
+        )}
         <div class="svc-sec" data-reveal>
           <h2 class="h3">{t('下一个服务', 'Next service')}</h2>
           <div class="tile-list"><a href={`${pre}/services/${next.slug}/`}><span>{next.title[lang]}</span><span class="disc-arrow"><Icon name="arrow" /></span></a></div>
