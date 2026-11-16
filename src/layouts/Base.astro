@@ -13,7 +13,7 @@ const canonical = new URL(Astro.url.pathname, site).href;
 const t = tr(lang); const pre = pfx(lang);
 const orgSchema = {
   '@context': 'https://schema.org', '@type': 'Organization', '@id': new URL('/#org', site).href,
-  name: brand.en, alternateName: brand.zh, url: site.href, logo: new URL('/brand/logo-ink.png', site).href,
+  name: brand.en, alternateName: [brand.zh, '祥鹤', '祥鹤殡仪', '祥鹤殡仪服务', 'Seong Hoe', 'Seong Hoe Funeral Service'], url: site.href, logo: new URL('/brand/logo-ink.png', site).href,
   founder: { '@type': 'Person', name: brand.founder.zh },
   sameAs: [brand.linktree, ...Object.values(brand.social).filter(Boolean)],
 };
