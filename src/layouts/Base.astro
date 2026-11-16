@@ -42,6 +42,22 @@ const footExtra = [
   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
   })(window,document,'script','dataLayer','GTM-5F6CNVHX');</script>
   <!-- End Google Tag Manager -->
+  <!-- Google Analytics 4 -->
+  <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-2BFXZQKQDN"></script>
+  <script is:inline>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-2BFXZQKQDN');
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a[href]');
+      if (!a) return;
+      var h = a.getAttribute('href') || '';
+      if (/^tel:/i.test(h)) gtag('event', 'phone_click', { link_url: h, page_path: location.pathname });
+      else if (/wa\.me|whatsapp\.com/i.test(h)) gtag('event', 'whatsapp_click', { link_url: h.split('?')[0], page_path: location.pathname });
+    });
+  </script>
+  <!-- End Google Analytics 4 -->
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#a78b73" />
   <title>{title}</title>
