@@ -133,6 +133,30 @@ const faqs = lang === 'zh' ? [
   </section>
 
   <section class="section">
+    <div class="wrap">
+      <div style="max-width:820px">
+        <div class="svc-sec" data-reveal>
+          <h2 class="h2">{t('峇株巴辖家里有人走了，', 'Someone has passed away in Batu Pahat?')}<span class="grey">{t('先做这三件事。', ' Start with these three things.')}</span></h2>
+          <ol class="steps">
+            {[
+              [t('先打电话给祥鹤', 'Call Seong Hoe first'), t('打 016-777 3883，不管几点都有人接。我们会先问清楚人在哪里、家里拜什么，然后马上派人和车过去。', 'Call +60 16-777 3883, someone answers at any hour. We ask where your loved one is and what your family believes, then send our team and vehicle straight away.')],
+              [t('死亡证我们陪你办', 'We handle the death certificate with you'), t('在家里走的，我们会带家属去警局，文件我们帮你处理，家属一般只要签名就好。在医院走的，手续我们一样帮你跟进。', 'If your loved one passed away at home, we take the family to the police station and handle the paperwork. Usually the family only needs to sign. If it happened in hospital, we follow up the procedures for you too.')],
+              [t('跟家人商量怎么办', 'Decide together as a family'), t('佛教、道教、基督教，火化还是土葬，守灵几天，我们先讲清楚每一种怎么做、大概要多少钱，再照家里的意思安排。', 'Buddhist, Taoist or Christian, cremation or burial, how many days of wake: we explain how each works and roughly what it costs first, then arrange it your family’s way.')],
+            ].map(([h, d], i) => <li><span class="steps__n">{String(i + 1).padStart(2, '0')}</span><div><strong>{h}</strong><p>{d}</p></div></li>)}
+          </ol>
+        </div>
+        <div class="svc-sec" data-reveal>
+          <h3 class="h3">{t('峇株巴辖殡葬一条龙，包括什么？', 'What does our one-stop funeral service in Batu Pahat include?')}</h3>
+          <div class="body">
+            <p>{t('接遗体、遗体清洁和化妆、灵堂布置、法事、出殡车队、火化或土葬、捡骨和安置骨灰，祥鹤都可以一手安排；寿板可以到总店长生店看实物。配套和价钱先讲清楚，需要的项目照家里的意思选，不需要的不硬加。', 'Collecting the deceased, cleansing and make-up, setting up the wake, rites, the funeral cortege, cremation or burial, bone collection and placing the ashes: Seong Hoe can arrange all of it, and you can see caskets in person at our HQ showroom. We explain packages and costs upfront. Choose only what your family needs; we never add items you do not want.')}</p>
+            <p>{t('峇株巴辖市区，以及龙引、亚依淡、巴力士隆、巴罗、三板头一带，我们都会过去。住在新文龙，可以直接找新文龙分店。', 'We serve Batu Pahat town and the surrounding areas, including Yong Peng, Ayer Hitam, Parit Sulong and Parit Raja. Families in Senggarang can contact our Senggarang branch directly.')}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
     <div class="wrap collab">
       <div data-reveal>
         <h2 class="collab__title">{t('不懂规矩没关系，', 'You do not need to know the customs.')}<span class="grey">{t('我们会在旁边一步一步提醒。', ' We will remind you of every step.')}</span></h2>
