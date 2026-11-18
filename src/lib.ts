@@ -18,6 +18,7 @@ export function branchSchema(b: Branch, site: URL) {
     address: { '@type': 'PostalAddress', streetAddress: b.street, addressLocality: b.locality, postalCode: b.postalCode, addressRegion: 'Johor', addressCountry: 'MY' },
     geo: { '@type': 'GeoCoordinates', latitude: b.lat, longitude: b.lng },
     openingHoursSpecification: { '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'], opens: '00:00', closes: '23:59' },
+    ...(b.slug === 'batu-pahat' ? { areaServed: ['Batu Pahat', 'Yong Peng', 'Ayer Hitam', 'Parit Sulong', 'Parit Raja'].map((name) => ({ '@type': 'City', name })) } : {}),
     parentOrganization: { '@id': new URL('/#org', site).href },
   };
 }
