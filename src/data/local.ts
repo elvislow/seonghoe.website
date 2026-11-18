@@ -23,12 +23,16 @@ export const localGuides: Record<string, Record<Lang, LocalGuide>> = {
           '选火化的话，例如巴莪仙境山庄火葬场。选土葬的话，峇株巴辖有华人义山（Jalan Tanjong Laboh），也有 Banang Memorial Park 这类有人管理的纪念园。',
           '每个地方的空档、收费和规矩都不一样，家属不用自己一间一间去问，跟我们讲家里的想法，我们帮你安排。',
         ] },
+        { h: '峇株巴辖周边地区，我们一样过去', p: [
+          '除了峇株巴辖市区，龙引、亚依淡、巴力士隆、巴罗、三板头一带的家庭，家里有人走了，一样打 016-777 3883，我们从总店派人和车过去，24 小时都可以。',
+        ] },
         { h: '峇株巴辖县内还有新文龙分店', p: [
           '住在新文龙一带的家庭，可以直接找祥鹤新文龙分店，一样 24 小时。新山也有分店，家里有人在新山走了，一样可以找我们。',
         ] },
       ],
       faqs: [
         ['祥鹤殡仪是哪里的公司？', '祥鹤殡仪服务有限公司是一家位于峇株巴辖的 24 小时殡仪服务公司，2020 年在峇株巴辖创办，总店在 Taman Dagang，新山、新文龙也有分店。'],
+        ['龙引、亚依淡、巴力士隆、巴罗、三板头一带，也可以叫你们吗？', '可以。峇株巴辖周边地区我们都会过去，24 小时打 016-777 3883，我们从总店派人和车过去。'],
         ['峇株巴辖半夜有人走了，可以马上打来吗？', '可以。祥鹤峇株巴辖总店 24 小时有人接，电话 016-777 3883，也可以直接 WhatsApp。'],
         ['祥鹤在峇株巴辖哪里？', '总店地址是 13, Jalan Zamrud, Taman Dagang, 83000 Batu Pahat, Johor。峇株巴辖县内另有新文龙分店。'],
         ['峇株巴辖的灵堂一般设在哪里？', '常见的有仙境生命纪念馆、柔佛诚敬善堂、会馆礼堂，或者在自己家里（有地房屋）。我们会看人数和家里方便，帮你安排。'],
@@ -53,12 +57,16 @@ export const localGuides: Record<string, Record<Lang, LocalGuide>> = {
           'For cremation, one option is the crematorium at Fairy Park Memorial Park in Bagan (巴莪仙境山庄). For burial, Batu Pahat has the Chinese cemetery on Jalan Tanjong Laboh and managed memorial parks such as Banang Memorial Park.',
           'Availability, fees and rules differ at each place. You do not need to call around yourself: tell us what your family has in mind and we will arrange it.',
         ] },
+        { h: 'We also serve the areas around Batu Pahat', p: [
+          'Besides Batu Pahat town, families in Yong Peng, Ayer Hitam, Parit Sulong and Parit Raja can call +60 16-777 3883 at any hour. We send our team and vehicle from our HQ.',
+        ] },
         { h: 'Also in Batu Pahat district: our Senggarang branch', p: [
           'Families around Senggarang can contact our Senggarang branch directly, also open 24 hours. We also have a branch in Johor Bahru.',
         ] },
       ],
       faqs: [
         ['Where is Seong Hoe based?', 'Seong Hoe Funeral Service is a 24-hour funeral service company based in Batu Pahat, Johor. It was founded in Batu Pahat in 2020, with its HQ in Taman Dagang and branches in Johor Bahru and Senggarang.'],
+        ['Do you also serve Yong Peng, Ayer Hitam, Parit Sulong and Parit Raja?', 'Yes. We serve the areas around Batu Pahat. Call +60 16-777 3883 any time and we will send our team and vehicle from our HQ.'],
         ['Someone has passed away in Batu Pahat at night. Can I call now?', 'Yes. Our Batu Pahat HQ answers 24 hours a day on +60 16-777 3883, or you can WhatsApp us.'],
         ['Where is Seong Hoe in Batu Pahat?', 'Our HQ is at 13, Jalan Zamrud, Taman Dagang, 83000 Batu Pahat, Johor. We also have a branch in Senggarang, within Batu Pahat district.'],
         ['Where are wakes usually held in Batu Pahat?', 'Common choices are Fairy Park Funeral Parlour, Johore Seng Keng Sian T\'ng, clan association halls, or at home for landed houses. We will help you choose based on your family and the number of visitors.'],
