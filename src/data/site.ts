@@ -110,7 +110,7 @@ export const reviews = [
   'Good and professional burial service for my father\'s final journey in life. Thank you.',
 ];
 
-export const googleRating = { value: '5.0', count: 29, branch: 'batu-pahat' };
+export const googleRating = { value: '5.0', count: 32, branch: 'batu-pahat' };
 
 export const waLink = (lang: Lang) =>
   `https://wa.me/${brand.whatsapp}?text=${encodeURIComponent(

@@ -154,6 +154,8 @@ export const bpPages: AreaPage[] = [
         ['峇株巴辖的火葬场在哪里？', '峇株巴辖家属可以选巴莪仙境山庄火葬场。火化时间要先约，我们会帮你安排。'],
         ['火化后什么时候可以捡骨？', '火化完成后就会安排捡骨，时间看火葬场当天的安排，我们会陪家属一起。'],
         ['骨灰可以放在哪里？', '可以放骨灰塔、纪念园，也可以照家里的意思安排。我们会把选择列出来给你比较。'],
+        ['峇株巴辖火化一般在哪一天？', '一般在出殡当天火化，守灵几天看家里安排。火化时间要先跟火葬场约，我们会帮你订好。'],
+        ['峇株巴辖火化费用怎么算？', '主要看寿板、守灵天数和地点、法事、火葬场费用，还有骨灰放在哪里。我们会先把配套和价钱讲清楚，不需要的不硬加。'],
         ['峇株巴辖可以直接火化，不办守灵吗？', '可以。有的家庭选择简单处理，直接火化。WhatsApp 我们讲家里的想法，我们帮你安排。'],
       ],
     },
@@ -183,6 +185,8 @@ export const bpPages: AreaPage[] = [
         ['Where is the crematorium for Batu Pahat?', 'Batu Pahat families can use the crematorium at Fairy Park Memorial Park in Bagan (巴莪仙境山庄). Cremation times must be booked, and we arrange this for you.'],
         ['When is bone collection done?', 'After the cremation is complete, depending on the crematorium\'s schedule that day. We stay with the family throughout.'],
         ['Where can the ashes be placed?', 'In a columbarium, a memorial park, or as your family wishes. We will lay out the options for you to compare.'],
+        ['When does the cremation usually take place?', 'Usually on the day of the procession, after the wake. The cremation time has to be booked with the crematorium, and we do this for you.'],
+        ['How is the cost of a cremation in Batu Pahat worked out?', 'It mainly depends on the casket, the length and venue of the wake, the rites, the crematorium fee and where the ashes will rest. We explain packages and costs upfront and never add items you do not need.'],
         ['Can we arrange a direct cremation without a wake in Batu Pahat?', 'Yes. Some families prefer a simple direct cremation. WhatsApp us and we will arrange it.'],
       ],
     },
@@ -216,6 +220,8 @@ export const bpPages: AreaPage[] = [
       faqs: [
         ['峇株巴辖有哪些华人墓地？', '例如 Jalan Tanjong Laboh 的峇株巴辖华人义山，以及 Banang Memorial Park 这类有人管理的纪念园。'],
         ['土葬选什么棺木比较好？', '要选耐潮、耐腐的木，例如胭脂梅或正艾木。我们会按家里的预算和意思推荐。'],
+        ['峇株巴辖土葬墓地多少钱？', '看是义山还是纪念园、墓地位置和大小，价钱都不一样。跟我们讲家里的预算，我们帮你问好再给你比较。'],
+        ['土葬一般在哪一天？', '守灵结束、出殡当天下葬。守灵几天看家里安排，下葬时间我们会帮你跟墓地确认。'],
         ['墓地要自己去问吗？', '不用。跟我们讲家里的想法，我们帮你问好、安排。'],
       ],
     },
@@ -243,6 +249,8 @@ export const bpPages: AreaPage[] = [
       faqs: [
         ['Where are the Chinese burial grounds in Batu Pahat?', 'For example, the Batu Pahat Chinese Cemetery on Jalan Tanjong Laboh, and managed memorial parks such as Banang Memorial Park.'],
         ['Which casket is best for burial?', 'A wood that resists damp and decay, such as Keledang or Chengal. We will recommend options to suit your family and budget.'],
+        ['How much does a burial plot cost in Batu Pahat?', 'It depends on whether it is a Chinese cemetery or a memorial park, and on the location and size of the plot. Tell us your budget and we will compare the options for you.'],
+        ['When does the burial take place?', 'On the day of the procession, after the wake. We confirm the burial time with the cemetery for you.'],
         ['Do we need to contact the cemetery ourselves?', 'No. Tell us what your family has in mind and we will arrange it.'],
       ],
     },
@@ -483,6 +491,8 @@ export const bpPages: AreaPage[] = [
       faqs: [
         ['峇株巴辖哪里可以看寿板？', '祥鹤峇株巴辖总店有棺木展示厅，地址 13, Jalan Zamrud, Taman Dagang, 83000 Batu Pahat。先 WhatsApp 我们约时间。'],
         ['火化和土葬的寿板有什么不同？', '火化一般不需要最重最硬的木；土葬要选耐潮、耐腐的木，例如胭脂梅或正艾木。'],
+        ['峇株巴辖长生店半夜也开吗？', '祥鹤 24 小时有人接电话，家里有急事半夜打 016-777 3883 也可以。想来展示厅看寿板，先 WhatsApp 约时间。'],
+        ['峇株巴辖寿板要提前买吗？', '不一定。有的长辈想先看好、先订好，也可以等需要时再来选。来展示厅看过、问清楚价钱再决定。'],
         ['寿板多少钱？', '看木料、尺寸和雕花，价钱都不一样。WhatsApp 我们，我们把选择和价钱列出来给你看。'],
       ],
     },
@@ -506,6 +516,8 @@ export const bpPages: AreaPage[] = [
       faqs: [
         ['Where can I see caskets in Batu Pahat?', 'At our Batu Pahat HQ showroom, 13, Jalan Zamrud, Taman Dagang, 83000 Batu Pahat. WhatsApp us to arrange a visit.'],
         ['What is the difference between caskets for cremation and burial?', 'Cremation usually does not need the heaviest wood; burial needs a wood that resists damp and decay, such as Keledang or Chengal.'],
+        ['Is your casket shop in Batu Pahat open at night?', 'Seong Hoe answers the phone 24 hours a day, so you can call +60 16-777 3883 at night if something urgent happens. To visit the showroom, WhatsApp us to make an appointment first.'],
+        ['Can we choose a casket in advance?', 'Yes. Some elders like to choose and reserve one in advance, or you can come when the need arises. See the woods and ask about prices at our showroom first.'],
         ['How much does a casket cost?', 'It depends on the wood, size and carving. WhatsApp us and we will list the options and prices for you.'],
       ],
     },
