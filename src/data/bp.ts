@@ -11,6 +11,119 @@ const callEn = 'We answer 24 hours a day. Call +60 16-777 3883 or WhatsApp us.';
 
 export const bpPages: AreaPage[] = [
   {
+    slug: 'funeral-guide',
+    icon: 'clock',
+    photo: '/img/work-altar.webp',
+    zh: {
+      title: 'Batu Pahat 丧礼怎么办？峇株巴辖丧礼流程｜祥鹤殡仪',
+      desc: '峇株巴辖（Batu Pahat，BP）家里有人走了，丧礼从第一通电话到出殡怎么办？守灵几天、灵堂设在哪里、火化还是土葬，一页讲清楚。祥鹤 24 小时，☎ 016-777 3883',
+      h1: '峇株巴辖丧礼怎么办，',
+      grey: '从第一通电话到出殡。',
+      intro: `在 Batu Pahat（峇株巴辖）家里有人走了，很多家属第一次办丧礼，不知道从哪里开始。这一页把峇株巴辖丧礼的流程从头讲一遍，看完心里比较有底。${callZh}`,
+      sections: [
+        { h: '峇株巴辖丧礼，第一步做什么', steps: [
+          ['先打电话给祥鹤', '打 016-777 3883，半夜也有人接。我们会问清楚人在哪里、家里拜什么，然后马上派人和车过去。'],
+          ['死亡证我们陪你办', '在家里走的，我们会带家属去警局，文件我们帮你处理，家属一般只要签名就好。在医院走的，手续我们一样帮你跟进。'],
+          ['接遗体、整理仪容', '我们把遗体接回来，做清洁、换寿衣、化妆，让家人见最后一面时安心。'],
+          ['跟家人商量怎么办', '守灵几天、灵堂设在哪里、做什么宗教仪式、火化还是土葬，我们一样一样讲清楚，再照家里的意思安排。'],
+        ] },
+        { h: '峇株巴辖丧礼一般办几天', p: [
+          '3 天、5 天、7 天都有，主要看家里的意思、亲戚从外地回来要多久，还有出殡的日子。有的家庭会看日子，有的不讲究，都可以。',
+          '天数会影响灵堂、法事和费用，不用急着马上决定，先跟我们讲家里的情况，我们帮你算清楚再定。',
+        ] },
+        { h: '峇株巴辖的灵堂设在哪里', steps: [
+          ['仙境生命纪念馆（Fairy Park Funeral Parlour）', 'Jalan Dapat, Kampung Pegawai。室内殡仪馆，有冷气大厅、休息室和冲凉间，家属守夜比较方便。'],
+          ['柔佛诚敬善堂', 'Jalan Jenang, Kampung Pegawai，峇株巴辖市区的殡仪场地。'],
+          ['会馆礼堂', '有些会馆可以借来办丧事，例如 Jalan Sultanah 的云诏东会馆。'],
+          ['在家里搭棚', '住有地房屋的，可以在家门口搭帐篷设灵堂，亲戚邻居来往方便。帐篷、桌椅我们都可以安排。'],
+        ] },
+        { h: '佛教、道教、基督教丧礼，做法不一样', p: [
+          '佛教丧礼一般请师父诵经；道教丧礼有道士做法事，规矩比较多；基督教、天主教丧礼以追思礼拜为主，比较简单安静。也有家庭不拜宗教，只办简单的告别仪式。',
+          '不管家里拜什么，我们都会先讲清楚每一步怎么做、有什么要注意的，到时也会在旁边提醒。',
+        ] },
+        { h: '火化还是土葬', p: [
+          '选火化的话，峇株巴辖家属一般去巴莪仙境山庄火葬场，火化后捡骨，骨灰可以放骨灰塔或纪念园。选土葬的话，有 Jalan Tanjong Laboh 的峇株巴辖华人义山，也有 Banang Memorial Park 这类有人管理的纪念园。',
+          '寿板可以到峇株巴辖总店长生店看实物，火化和土葬适合的木料不一样，我们会照预算帮你挑。',
+        ] },
+        { h: '出殡当天怎么走', steps: [
+          ['最后一次仪式', '出殡前做最后的法事或礼拜，家属瞻仰遗容、告别。'],
+          ['封棺', '封棺有一些规矩，例如哪些人要回避，到时我们会提醒。'],
+          ['出殡车队', '灵车在前，家属和亲友跟在后面。需要乐队、巴士载亲戚，我们都可以安排。'],
+          ['火化或下葬', '到火葬场或墓地，做完最后的仪式，送最后一程。'],
+        ] },
+        { h: '峇株巴辖丧礼费用怎么算', p: [
+          '丧礼费用主要看几样：寿板、守灵天数和地点、法事或宗教仪式、火化还是土葬、骨灰塔或墓地，还有帐篷、巴士、鲜花这些加项。',
+          '我们会先把配套和价钱讲清楚，需要的项目照家里的意思选，不需要的不硬加。想先了解大概费用，可以直接 WhatsApp 我们。',
+        ] },
+        { h: '峇株巴辖周边地区，我们一样过去', p: [
+          '峇株巴辖市区，以及龙引、亚依淡、巴力士隆、巴罗一带，家里有人走了，一样打 016-777 3883，我们从总店派人和车过去。住在新文龙，可以直接找新文龙分店。',
+        ] },
+      ],
+      faqs: [
+        ['峇株巴辖丧礼一般办几天？', '3 天、5 天、7 天都有，看家里的意思、亲戚回来要多久和出殡的日子。我们会先帮你算好每一种的安排和费用。'],
+        ['BP 丧礼可以在家里办吗？', '可以。住有地房屋的，可以在家门口搭帐篷设灵堂，帐篷、桌椅、灯我们都可以安排。'],
+        ['半夜有人走了，可以马上打来吗？', '可以。祥鹤 24 小时有人接，打 016-777 3883，我们马上派人和车过去。'],
+        ['死亡证要自己去办吗？', '不用。在家里走的，我们会带家属去警局，文件我们帮你处理，家属一般只要签名。'],
+        ['丧礼期间家属要准备什么？', '先准备往生者的身份证，还有一张清楚的照片做遗照。其他的东西我们会一样一样提醒你。'],
+        ['不拜宗教的丧礼可以办吗？', '可以。不拜宗教的家庭，可以办简单的告别仪式，我们照家里的意思安排。'],
+      ],
+    },
+    en: {
+      title: 'Funeral in Batu Pahat: A Family\'s Guide | Seong Hoe',
+      desc: 'Someone has passed away in Batu Pahat (BP)? What to do first, how many days the wake lasts, where to hold it, cremation or burial. A simple guide from Seong Hoe, open 24/7. Call +60 16-777 3883.',
+      h1: 'Funeral in Batu Pahat,',
+      grey: 'a family\'s guide.',
+      intro: `Many families in Batu Pahat arrange a funeral for the first time and do not know where to begin. This page walks you through a funeral in Batu Pahat from the first call to the final farewell. ${callEn}`,
+      sections: [
+        { h: 'What to do first', steps: [
+          ['Call Seong Hoe', 'Call +60 16-777 3883, someone answers at any hour. We ask where your loved one is and what your family believes, then send our team and vehicle straight away.'],
+          ['We handle the death certificate with you', 'If your loved one passed away at home, we take the family to the police station and handle the paperwork. Usually the family only needs to sign. If it happened in hospital, we follow up the procedures for you too.'],
+          ['Collecting and preparing your loved one', 'We bring your loved one back, then cleanse, dress and do the make-up, so the family can say goodbye in peace.'],
+          ['Decide together as a family', 'How many days of wake, where to hold it, which rites, cremation or burial: we explain each option, then arrange it your family\'s way.'],
+        ] },
+        { h: 'How many days does a funeral last in Batu Pahat?', p: [
+          'Three, five or seven days are all common. It depends on the family, how long relatives need to travel home, and the date chosen for the procession.',
+          'The number of days affects the wake, the rites and the cost. You do not need to decide straight away. Tell us about your family and we will work it out with you.',
+        ] },
+        { h: 'Where to hold the wake in Batu Pahat', steps: [
+          ['Fairy Park Funeral Parlour (仙境生命纪念馆)', 'Jalan Dapat, Kampung Pegawai. An indoor funeral parlour with an air-conditioned hall, rest rooms and showers.'],
+          ['Johore Seng Keng Sian T\'ng (柔佛诚敬善堂)', 'Jalan Jenang, Kampung Pegawai, in Batu Pahat town.'],
+          ['Clan association halls', 'Some associations make their halls available for funerals, such as Hoon Cheow Tong on Jalan Sultanah.'],
+          ['At home', 'Families in landed homes can hold the wake under a tent at the front of the house. We arrange the tent, tables and chairs.'],
+        ] },
+        { h: 'Buddhist, Taoist and Christian funerals', p: [
+          'A Buddhist funeral usually has monks chanting. A Taoist funeral has priests performing rites, with more customs to follow. Christian and Catholic funerals centre on a memorial service and are simpler and quieter. Some families hold a simple non-religious farewell.',
+          'Whatever your family believes, we explain each step first and remind you of what to do on the day.',
+        ] },
+        { h: 'Cremation or burial', p: [
+          'For cremation, Batu Pahat families usually use the crematorium at Fairy Park Memorial Park in Bagan (巴莪仙境山庄), followed by bone collection, and the ashes can rest in a columbarium or memorial park. For burial, there is the Batu Pahat Chinese Cemetery on Jalan Tanjong Laboh, and managed memorial parks such as Banang Memorial Park.',
+          'You can see caskets in person at our Batu Pahat HQ showroom. Cremation and burial suit different woods, and we will help you choose within your budget.',
+        ] },
+        { h: 'On the day of the procession', steps: [
+          ['The final rites', 'A last ceremony or service before the procession, and the family says goodbye.'],
+          ['Closing the casket', 'There are a few customs, such as who should look away. We will remind you on the day.'],
+          ['The cortege', 'The hearse leads, with family and friends following. We can arrange a band and buses for relatives.'],
+          ['Cremation or burial', 'The final rites at the crematorium or graveside, to see your loved one off.'],
+        ] },
+        { h: 'How funeral costs work', p: [
+          'The cost mainly depends on the casket, the length and venue of the wake, the rites, cremation or burial, the columbarium or plot, and extras such as tents, buses and flowers.',
+          'We explain packages and costs upfront. Choose only what your family needs; we never add items you do not want. WhatsApp us for a rough idea of the cost.',
+        ] },
+        { h: 'We also serve the areas around Batu Pahat', p: [
+          'Besides Batu Pahat town, families in Yong Peng, Ayer Hitam, Parit Sulong and Parit Raja can call +60 16-777 3883 at any hour. Families in Senggarang can contact our Senggarang branch directly.',
+        ] },
+      ],
+      faqs: [
+        ['How many days does a funeral last in Batu Pahat?', 'Three, five or seven days are all common, depending on the family, relatives travelling home and the procession date. We will set out each option and its cost for you.'],
+        ['Can we hold the funeral at home in BP?', 'Yes. Families in landed homes can hold the wake under a tent at the front of the house. We arrange the tent, tables, chairs and lights.'],
+        ['Someone passed away at night. Can I call now?', 'Yes. Seong Hoe answers 24 hours a day. Call +60 16-777 3883 and we will send our team and vehicle straight away.'],
+        ['Do we have to get the death certificate ourselves?', 'No. If your loved one passed away at home, we take the family to the police station and handle the paperwork. Usually the family only needs to sign.'],
+        ['What does the family need to prepare?', 'Your loved one\'s IC and a clear photo for the memorial portrait. We will remind you of everything else as we go.'],
+        ['Can we hold a non-religious funeral?', 'Yes. We can arrange a simple farewell ceremony your family\'s way.'],
+      ],
+    },
+  },
+  {
     slug: 'cremation',
     icon: 'flame',
     photo: '/img/work-hearse-classic.webp',
