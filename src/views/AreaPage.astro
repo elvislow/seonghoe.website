@@ -2,7 +2,7 @@
 import Base from '../layouts/Base.astro';
 import Icon from '../components/Icon.astro';
 import PageHead from '../components/PageHead.astro';
-import { branches, waLink, brand, type Lang } from '../data/site';
+import { branches, waLink, brand, reviews, type Lang } from '../data/site';
 import { services } from '../data/services';
 import type { AreaPage } from '../data/bp';
 import { areaPages } from '../data/areas';
@@ -19,6 +19,8 @@ const svc = services.find((s) => s.slug === page.service);
 const serviceSchema = { '@context': 'https://schema.org', '@type': 'Service', name: L.h1.replace(/[，,]$/, ''), serviceType: L.h1.replace(/[，,]$/, ''), url, areaServed: { '@type': 'City', name: hq.area.en, containedInPlace: { '@type': 'State', name: 'Johor' } }, provider: { '@id': new URL(`/branches/${area}/#place`, Astro.site!).href } };
 const faqSchema = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: L.faqs.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) };
 const others = areaPages[area].filter((p) => p.slug !== page.slug);
+const picked = area === 'batu-pahat' ? reviews.filter((r) => /[\u4e00-\u9fff]/.test(r) === (lang === 'zh')).slice(0, 2) : [];
+const imgAlt = `${L.h1.replace(/[，,]$/, '')}${lang === 'zh' ? '' : ' '}${L.grey.replace(/[。.]$/, '')}`;
 ---
 <Base lang={lang} image={page.photo} active="branches" alt={altPath(lang, path)} title={L.title.replace(/(｜| \| )/, ` ${Y}$1`)} description={(L.desc ?? L.intro).replace('{R}', googleRating.value)} schema={[serviceSchema, faqSchema]}>
   <PageHead crumbs={[{ href: `${pre}/`, label: t('首页', 'Home') }, { href: `${pre}/branches/${area}/`, label: areaName }, { href: `${pre}${path}`, label: L.h1.replace(/[，,]$/, '') }]}
@@ -26,7 +28,7 @@ const others = areaPages[area].filter((p) => p.slug !== page.slug);
   <section class="section" style="padding-top:40px">
     <div class="wrap split">
       <div>
-        {page.photo && <div class="svc-photo" data-reveal><img src={page.photo} alt={L.h1.replace(/[，,]$/, '')} /></div>}
+        {page.photo && <div class="svc-photo" data-reveal><img src={page.photo} alt={imgAlt} /></div>}
         {L.sections.map((sec) => (
           <div class="svc-sec" data-reveal>
             <h2 class="h3">{sec.h}</h2>
@@ -49,6 +51,12 @@ const others = areaPages[area].filter((p) => p.slug !== page.slug);
             ))}
           </div>
         </div>
+        {picked.length > 0 && (
+          <div class="svc-sec" data-reveal>
+            <h2 class="h3">{t(`峇株巴辖家属的 Google 评价（${googleRating.value} 分，${googleRating.count} 则）`, `Google reviews from Batu Pahat families (${googleRating.value} stars, ${googleRating.count} reviews)`)}</h2>
+            <div class="body">{picked.map((r) => <blockquote style="margin:12px 0"><p>“{r}”</p></blockquote>)}</div>
+          </div>
+        )}
         {svc && (
           <div class="svc-sec" data-reveal>
             <h2 class="h3">{t('相关服务', 'Related service')}</h2>
