@@ -15,11 +15,11 @@ const g = localGuides[b.slug]?.[lang];
 const faqSchema = g ? { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: g.faqs.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) } : null;
 ---
 <Base lang={lang} image={b.photo} active="branches" alt={altPath(lang, `/branches/${b.slug}/`)}
-  title={t(`${area}殡仪服务 ${Y}｜24 小时殡葬一条龙｜祥鹤${b.name.zh}`, `Funeral Services in ${area} ${Y} | 24/7 One-Stop | Seong Hoe`)}
+  title={t(`${area}殡仪服务 ${Y}｜24 小时殡葬一条龙｜祥鹤${b.name.zh}`, `${area} Funeral Home ${Y} | Funeral Service, Cremation & Burial | Seong Hoe`)}
   description={t(`${b.isHQ ? `祥鹤殡仪服务有限公司是一家位于峇株巴辖的 24 小时殡葬服务公司，Google ${googleRating.value} 分家属好评` : `祥鹤殡仪服务有限公司${b.name.zh}是一家位于${b.area.zh}的 24 小时殡葬服务分店`}。半夜打来也有人接，丧礼、法事、火化、土葬一条龙，价钱先讲清楚，不需要的不硬加。地址 ${b.street}，☎ ${b.phoneDisplay}`, `${b.isHQ ? 'Seong Hoe Funeral Service is based in Batu Pahat, Johor, offering 24-hour funeral services' : `Seong Hoe ${b.name.en} is based in ${b.area.en}, Johor, offering 24-hour funeral services`}: planning, rites, cremation and burial. ${b.address}. Call ${b.phoneDisplay}.`)}
   schema={faqSchema ? [branchSchema(b, Astro.site!), faqSchema] : [branchSchema(b, Astro.site!)]}>
   <PageHead crumbs={[{ href: `${pre}/`, label: t('首页', 'Home') }, { href: `${pre}/branches/`, label: t('分店', 'Branches') }, { href: `${pre}/branches/${b.slug}/`, label: b.name[lang] }]}
-    title={t(`${area}殡仪服务，`, `Funeral services in ${area},`)} grey={t(`祥鹤${b.name.zh}。`, `Seong Hoe ${b.name.en}.`)} lead={g ? g.intro : b.address} />
+    title={t(`${area}殡仪服务，`, `Funeral service in ${area},`)} grey={t(`祥鹤${b.name.zh}。`, `Seong Hoe ${b.name.en}.`)} lead={g ? g.intro : b.address} />
   <section class="section" style="padding-top:40px">
     <div class="wrap split">
       <div>
