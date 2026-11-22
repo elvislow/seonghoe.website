@@ -17,14 +17,15 @@ const localPages = Object.entries(areaPages).flatMap(([area, ps]) => ps.filter((
 const serviceSchema = { '@context': 'https://schema.org', '@type': 'Service', name: s.title[lang], description: s.intro[lang], provider: { '@id': new URL('/#org', Astro.site!).href }, areaServed: isPet ? ['Batu Pahat'] : ['Batu Pahat', 'Johor Bahru', 'Senggarang', 'Johor'] };
 const areaZh = isPet ? '峇株巴辖' : '峇株巴辖・新山・新文龙';
 const areaEn = isPet ? 'Batu Pahat' : 'Batu Pahat, Johor Bahru, Senggarang';
+const seo = s.seo?.[lang];
 const descZh = isPet ? `${s.intro.zh}祥鹤宠物殡葬只在峇株巴辖服务，宠物专线 018-909 3883。` : `祥鹤殡仪服务有限公司是一家位于峇株巴辖的 24 小时殡仪服务公司。${s.intro.zh}新山、新文龙也有分店，电话 016-777 3883。`;
 const descEn = isPet ? `${s.intro.en} Pet funerals are offered in Batu Pahat only. Pet line +60 18-909 3883.` : `Seong Hoe Funeral Service is based in Batu Pahat, Johor, offering 24-hour funeral services. ${s.intro.en} Branches in Johor Bahru and Senggarang. Call +60 16-777 3883.`;
 ---
 <Base lang={lang} waHref={isPet ? petWaLink(lang) : undefined} active="services" alt={altPath(lang, `/services/${s.slug}/`)}
-  title={t(`${s.title.zh}${/[）)]$/.test(s.title.zh) ? '' : ' '}${Y}｜${areaZh}${isPet ? '' : ' 24 小时'}｜祥鹤殡仪`, `${s.title.en} ${Y} | ${areaEn}${isPet ? '' : ', 24/7'} | Seong Hoe`)}
-  image={s.photo} description={t(descZh, descEn)} schema={[serviceSchema, faqSchema]}>
+  title={seo ? seo.title.replace(/(｜| \| )/, ` ${Y}$1`) : t(`${s.title.zh}${/[）)]$/.test(s.title.zh) ? '' : ' '}${Y}｜${areaZh}${isPet ? '' : ' 24 小时'}｜祥鹤殡仪`, `${s.title.en} ${Y} | ${areaEn}${isPet ? '' : ', 24/7'} | Seong Hoe`)}
+  image={s.photo} description={seo ? seo.desc : t(descZh, descEn)} schema={[serviceSchema, faqSchema]}>
   <PageHead crumbs={[{ href: `${pre}/`, label: t('首页', 'Home') }, { href: `${pre}/services/`, label: t('服务', 'Services') }, { href: `${pre}/services/${s.slug}/`, label: s.title[lang] }]}
-    title={s.title[lang]} lead={s.intro[lang]} />
+    title={seo?.h1 ?? s.title[lang]} grey={seo?.grey} lead={s.intro[lang]} />
   <section class="section" style="padding-top:48px">
     <div class="wrap split">
       <div>
