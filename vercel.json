@@ -1,0 +1,8 @@
+{
+  "redirects": [
+    { "source": "/batu-pahat/pet-cremation", "destination": "/services/pet-funeral/", "permanent": true },
+    { "source": "/batu-pahat/pet-cremation/", "destination": "/services/pet-funeral/", "permanent": true },
+    { "source": "/en/batu-pahat/pet-cremation", "destination": "/en/services/pet-funeral/", "permanent": true },
+    { "source": "/en/batu-pahat/pet-cremation/", "destination": "/en/services/pet-funeral/", "permanent": true }
+  ]
+}
