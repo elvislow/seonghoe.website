@@ -335,7 +335,7 @@ export const services: Service[] = [
   },
   {
     slug: 'pet-funeral',
-    title: { zh: '宠物殡葬（怀宠阁）', en: 'Pet Funeral (怀宠阁)' },
+    title: { zh: '宠物殡葬・宠物火化（怀宠阁）', en: 'Pet Funeral & Pet Cremation (怀宠阁)' },
     intro: {
       zh: '怀宠阁是祥鹤的宠物殡葬服务，陪主人好好送别家里的毛孩子。',
       en: '怀宠阁 is Seong Hoe’s pet funeral service, helping owners say a proper goodbye to their companions.',
@@ -344,6 +344,9 @@ export const services: Service[] = [
       zh: [
         { h: '它陪了我们很多年', p: [
           '猫、狗、兔子，甚至一缸鱼，养久了就是家里的一份子。它走的时候，主人会难过，也是正常的。怀宠阁想做的，就是陪主人好好送它一程。',
+        ] },
+        { h: '峇株巴辖宠物火化，单炉火化', p: [
+          '祥鹤的宠物殡葬在峇株巴辖总店，每只毛孩子都单独火化，骨灰不会跟别的宠物混在一起。骨灰可以放进骨灰罐带回家，也可以放在怀宠阁，首月免费。宠物专线 018-909 3883。',
         ] },
         { h: '我们怎么陪你', steps: [
           ['联络我们', 'WhatsApp 或打电话给我们，讲一下毛孩子的情况。'],
@@ -356,6 +359,9 @@ export const services: Service[] = [
       en: [
         { h: 'They were family for years', p: [
           'Cats, dogs, rabbits, even a tank of fish become part of the family. Grief is natural when they go. 怀宠阁 is here to help you say goodbye properly.',
+        ] },
+        { h: 'Individual pet cremation in Batu Pahat', p: [
+          'Seong Hoe’s pet funeral service is based at our Batu Pahat HQ. Every pet is cremated individually, so the ashes are never mixed. You can take the ashes home in an urn or let them rest at our pet columbarium, with the first month free. Pet line: +60 18-909 3883.',
         ] },
         { h: 'How we help', steps: [
           ['Contact us', 'WhatsApp or call us and tell us about your companion.'],
@@ -370,10 +376,14 @@ export const services: Service[] = [
       zh: [
         ['什么动物都可以办吗？', '猫、狗、兔子、鱼都可以先联络我们，讲一下情况。'],
         ['骨灰可以带回家吗？', '可以，火化后骨灰会交回主人。'],
+        ['是单独火化吗？', '是，每只毛孩子都单炉火化，骨灰不会跟别的宠物混在一起。'],
+        ['新山、新文龙分店有宠物殡葬吗？', '宠物殡葬只在峇株巴辖总店，宠物专线 018-909 3883。'],
       ],
       en: [
         ['Which animals can you help with?', 'Cats, dogs, rabbits and fish. Contact us and tell us about your pet.'],
         ['Can we take the ashes home?', 'Yes. The ashes are returned to you after cremation.'],
+        ['Is each pet cremated individually?', 'Yes. Every pet is cremated on its own, so the ashes are never mixed.'],
+        ['Do the Johor Bahru and Senggarang branches offer pet funerals?', 'Pet funerals are only available at our Batu Pahat HQ. Pet line: +60 18-909 3883.'],
       ],
     },
   },

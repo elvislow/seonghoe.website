@@ -112,6 +112,12 @@ export const reviews = [
 
 export const googleRating = { value: '5.0', count: 32, branch: 'batu-pahat' };
 
+export const pet = { phone: '+60189093883', phoneDisplay: '018-909 3883', whatsapp: '60189093883' };
+export const petWaLink = (lang: Lang) =>
+  `https://wa.me/${pet.whatsapp}?text=${encodeURIComponent(
+    lang === 'zh' ? '你好，我想询问祥鹤的宠物殡葬服务。' : 'Hi, I would like to ask about your pet funeral services.'
+  )}`;
+
 export const waLink = (lang: Lang) =>
   `https://wa.me/${brand.whatsapp}?text=${encodeURIComponent(
     lang === 'zh' ? '你好，我想询问祥鹤的殡仪服务。' : 'Hi, I would like to ask about your funeral services.'
