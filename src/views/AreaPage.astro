@@ -2,7 +2,7 @@
 import Base from '../layouts/Base.astro';
 import Icon from '../components/Icon.astro';
 import PageHead from '../components/PageHead.astro';
-import { branches, waLink, brand, reviews, type Lang } from '../data/site';
+import { branches, waLink, brand, reviews, pet, petWaLink, type Lang } from '../data/site';
 import { services } from '../data/services';
 import type { AreaPage } from '../data/bp';
 import { areaPages } from '../data/areas';
@@ -22,7 +22,7 @@ const others = areaPages[area].filter((p) => p.slug !== page.slug);
 const picked = area === 'batu-pahat' ? reviews.filter((r) => /[\u4e00-\u9fff]/.test(r) === (lang === 'zh')).slice(0, 2) : [];
 const imgAlt = `${L.h1.replace(/[，,]$/, '')}${lang === 'zh' ? '' : ' '}${L.grey.replace(/[。.]$/, '')}`;
 ---
-<Base lang={lang} image={page.photo} active="branches" alt={altPath(lang, path)} title={L.title.replace(/(｜| \| )/, ` ${Y}$1`)} description={(L.desc ?? L.intro).replace('{R}', googleRating.value)} schema={[serviceSchema, faqSchema]}>
+<Base lang={lang} waHref={page.service === 'pet-funeral' ? petWaLink(lang) : undefined} image={page.photo} active="branches" alt={altPath(lang, path)} title={L.title.replace(/(｜| \| )/, ` ${Y}$1`)} description={(L.desc ?? L.intro).replace('{R}', googleRating.value)} schema={[serviceSchema, faqSchema]}>
   <PageHead crumbs={[{ href: `${pre}/`, label: t('首页', 'Home') }, { href: `${pre}/branches/${area}/`, label: areaName }, { href: `${pre}${path}`, label: L.h1.replace(/[，,]$/, '') }]}
     title={L.h1} grey={L.grey} lead={L.intro} />
   <section class="section" style="padding-top:40px">
@@ -67,12 +67,12 @@ const imgAlt = `${L.h1.replace(/[，,]$/, '')}${lang === 'zh' ? '' : ' '}${L.gre
       <aside class="side-card on-dark" data-reveal style="--d:1">
         <h3>{hq.name[lang]}</h3>
         <ul>
-          <li><span>{t('电话', 'Phone')}</span><a href={`tel:${hq.phone}`}>{hq.phoneDisplay}</a></li>
+          {page.service === 'pet-funeral' ? <li><span>{t('宠物专线', 'Pet line')}</span><a href={`tel:${pet.phone}`}>{pet.phoneDisplay}</a></li> : <li><span>{t('电话', 'Phone')}</span><a href={`tel:${hq.phone}`}>{hq.phoneDisplay}</a></li>}
           <li><span>{t('营业时间', 'Hours')}</span>{t('24 小时', 'Open 24 hours')}</li>
           <li><span>{t('地址', 'Address')}</span><span style="color:inherit;text-align:right">{hq.street}, {hq.postalCode} {hq.locality}</span></li>
         </ul>
-        <a class="btn btn--light" href={waLink(lang)}>{t('WhatsApp 咨询', 'WhatsApp us')}<span class="disc"><Icon name="chat" /></span></a>
-        <a class="btn btn--light" href={`tel:${hq.phone}`}>{t('打电话', 'Call')}<span class="disc"><Icon name="phone" /></span></a>
+        <a class="btn btn--light" href={page.service === 'pet-funeral' ? petWaLink(lang) : waLink(lang)}>{t('WhatsApp 咨询', 'WhatsApp us')}<span class="disc"><Icon name="chat" /></span></a>
+        <a class="btn btn--light" href={`tel:${page.service === 'pet-funeral' ? pet.phone : hq.phone}`}>{t('打电话', 'Call')}<span class="disc"><Icon name="phone" /></span></a>
         <a class="btn btn--light" href={hq.mapsUrl}>{t('Google 地图导航', 'Directions')}<span class="disc"><Icon name="nav" /></span></a>
       </aside>
     </div>
