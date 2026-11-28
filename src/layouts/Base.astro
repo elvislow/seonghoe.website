@@ -6,8 +6,8 @@ import { brand, branches, waLink, socials, type Lang } from '../data/site';
 import { services } from '../data/services';
 import { tr, pfx } from '../lib';
 
-interface Props { lang: Lang; title: string; description: string; alt?: string; schema?: object[]; active?: string; image?: string; waHref?: string; }
-const { lang, title, description, alt, schema = [], active = '', image = '/brand/logo-circle-color.jpg', waHref } = Astro.props;
+interface Props { lang: Lang; title: string; description: string; alt?: string; schema?: object[]; active?: string; image?: string; waHref?: string; phone?: string; }
+const { lang, title, description, alt, schema = [], active = '', image = '/brand/logo-circle-color.jpg', waHref, phone = branches[0].phone } = Astro.props;
 const wa = waHref ?? waLink(lang);
 const site = Astro.site!;
 const canonical = new URL(Astro.url.pathname, site).href;
@@ -142,7 +142,7 @@ const footExtra = [
 
   <nav class="dock" aria-label={t('快速联络', 'Quick contact')}>
     <a class="d-wa" href={wa}><Icon name="chat" size={18} />WhatsApp</a>
-    <a class="d-call" href={`tel:${branches[0].phone}`}><Icon name="phone" size={18} />{t('打电话', 'Call')}</a>
+    <a class="d-call" href={`tel:${phone}`}><Icon name="phone" size={18} />{t('打电话', 'Call')}</a>
   </nav>
 
   <script>
