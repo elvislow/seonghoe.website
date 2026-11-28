@@ -178,6 +178,8 @@ figure { margin: 0; }
 .hero__name { font-size: var(--fs-name); line-height: 1.12; letter-spacing: .02em; margin: 22px 0 22px; }
 .hero__name .ln { display: block; overflow: hidden; padding-bottom: .06em; }
 .hero__name .ln > span { display: block; white-space: nowrap; }
+.hero__name--wrap .ln > span { white-space: normal; }
+.hero__location { margin-top: 16px; }
 .hero__name .ln--2 > span { color: var(--soft); }
 .hero__lead { font-size: 16px; line-height: 1.8; color: var(--muted); max-width: 22em; }
 .hero__ctas { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 28px; }
