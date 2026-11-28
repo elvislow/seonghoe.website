@@ -22,7 +22,7 @@ const others = areaPages[area].filter((p) => p.slug !== page.slug);
 const picked = area === 'batu-pahat' ? reviews.filter((r) => /[\u4e00-\u9fff]/.test(r) === (lang === 'zh')).slice(0, 2) : [];
 const imgAlt = `${L.h1.replace(/[，,]$/, '')}${lang === 'zh' ? '' : ' '}${L.grey.replace(/[。.]$/, '')}`;
 ---
-<Base lang={lang} waHref={page.service === 'pet-funeral' ? petWaLink(lang) : undefined} image={page.photo} active="branches" alt={altPath(lang, path)} title={L.title.replace(/(｜| \| )/, ` ${Y}$1`)} description={(L.desc ?? L.intro).replace('{R}', googleRating.value)} schema={[serviceSchema, faqSchema]}>
+<Base lang={lang} waHref={page.service === 'pet-funeral' ? petWaLink(lang) : undefined} image={page.photo} active="branches" alt={altPath(lang, path)} title={L.showYear === false ? L.title : L.title.replace(/(｜| \| )/, ` ${Y}$1`)} description={(L.desc ?? L.intro).replace('{R}', googleRating.value)} schema={[serviceSchema, faqSchema]}>
   <PageHead crumbs={[{ href: `${pre}/`, label: t('首页', 'Home') }, { href: `${pre}/branches/${area}/`, label: areaName }, { href: `${pre}${path}`, label: L.h1.replace(/[，,]$/, '') }]}
     title={L.h1} grey={L.grey} lead={L.intro} />
   <section class="section" style="padding-top:40px">

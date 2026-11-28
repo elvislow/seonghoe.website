@@ -3,7 +3,7 @@ import type { Section } from './services';
 
 // 峇株巴辖专页：每页对准一个「峇株巴辖 + 服务」的搜索。
 // 地点都在 Google 地图核对过；祥鹤自己的做法写得比较概括，细节等祥鹤补。
-export type AreaPageLang = { title: string; desc?: string; h1: string; grey: string; intro: string; sections: Section[]; faqs: [string, string][] };
+export type AreaPageLang = { title: string; showYear?: boolean; desc?: string; h1: string; grey: string; intro: string; sections: Section[]; faqs: [string, string][] };
 export type AreaPage = { slug: string; icon: string; photo?: string; service?: string; zh: AreaPageLang; en: AreaPageLang };
 
 const callZh = '24 小时都有人接，打 016-777 3883 或 WhatsApp 我们。';
@@ -160,13 +160,19 @@ export const bpPages: AreaPage[] = [
       ],
     },
     en: {
-      title: 'Cremation in Batu Pahat | 24/7, Procession to Ashes | Seong Hoe',
-      desc: 'Someone has passed away in Batu Pahat? Seong Hoe answers 24/7 and arranges the wake, procession, cremation, bone collection and ashes, with costs explained upfront. Call +60 16-777 3883.',
-      h1: 'Cremation in Batu Pahat,',
-      grey: 'from the procession to the ashes.',
-      intro: `If your family chooses cremation, our Batu Pahat HQ stays with you from the funeral procession and the final farewell to bone collection and placing the ashes. ${callEn}`,
+      title: 'Cremation Services in Batu Pahat | Seong Hoe',
+      showYear: false,
+      desc: 'Compare direct cremation and a wake followed by cremation in Batu Pahat. Seong Hoe explains costs and arranges the booking. Call +60 16-777 3883 any time.',
+      h1: 'Cremation services in Batu Pahat,',
+      grey: 'with or without a wake.',
+      intro: `Our Batu Pahat team can arrange direct cremation or a wake followed by cremation. We book the crematorium and guide your family through collecting the ashes. ${callEn}`,
       sections: [
-        { h: 'How a cremation works in Batu Pahat', steps: [
+        { h: 'Direct cremation or cremation after a wake?', p: [
+          'With direct cremation, we arrange transport and book the crematorium. Your family can ask about a short farewell and how to collect the ashes.',
+          'With a wake before cremation, we help you choose a venue and the number of days, coordinate any rites you want, and arrange the hearse to the crematorium.',
+          'For a quote, tell us where your loved one is, whether you want a wake, and if you already have a plan for the ashes. We’ll explain which items are included and which will be priced separately, such as the crematorium fee, wake venue, rites and any arrangements for the ashes.',
+        ] },
+        { h: 'What happens when you choose a wake before cremation?', steps: [
           ['The wake', 'Held at a funeral parlour, an association hall or at home, for as many days as the family decides.'],
           ['The procession', 'After the wake, the hearse takes your loved one to the crematorium, with the family.'],
           ['At the crematorium', 'Batu Pahat families can use the crematorium at Fairy Park Memorial Park in Bagan (巴莪仙境山庄). We confirm the time for you.'],
