@@ -13,6 +13,41 @@ export type Service = {
   seo?: Record<Lang, { title: string; desc: string; h1?: string; grey?: string }>;
 };
 
+export const petWeightBands = {
+  zh: ['低于 10 kg', '10–20 kg', '20–30 kg', '超过 30 kg'],
+  en: ['Under 10 kg', '10–20 kg', '20–30 kg', 'Over 30 kg'],
+};
+
+export const petPackages = [
+  {
+    name: { zh: '简约告别', en: 'Simple Farewell' },
+    prices: [738, 838, 938, 1038],
+    includes: {
+      zh: '宠物接送、单炉火化、骨灰红布包裹、基本往生纸钱，可安排撒海或骨灰安葬。',
+      en: 'Pet collection, individual cremation, ashes wrapped in red cloth, basic offering paper, and arrangements for scattering at sea or burial of the ashes.',
+    },
+  },
+  {
+    name: { zh: '告别祭拜', en: 'Farewell & Prayer' },
+    prices: [988, 1088, 1188, 1288],
+    includes: {
+      zh: '宠物接送、单炉火化或安葬、净身整理、灵堂与祭拜仪式、骨灰瓮、怀宠阁首月安放、撒海或安葬、往生被和往生钱、遗照和脚印卡。',
+      en: 'Pet collection, individual cremation or burial, cleansing and grooming, a memorial altar and prayer ceremony, an urn, a month at our pet columbarium, scattering or burial, a blanket and offering paper, a portrait and a paw-print card.',
+    },
+  },
+  {
+    name: { zh: '纪念珍藏', en: 'Treasured Memories' },
+    prices: [1688, 1788, 1888, 1988],
+    includes: {
+      zh: '包含告别祭拜配套，再加宠物寿棺、往生被和金银纸、鲜花、宠物毛发钥匙圈和照片定制钥匙扣。',
+      en: 'Includes Farewell & Prayer, plus a pet casket, blanket and gold and silver paper, flowers, a fur keyring and a custom photo keyring.',
+    },
+  },
+];
+
+export const petStartingPrice = petPackages[0].prices[0];
+const petPrayerFee = 600;
+
 export const services: Service[] = [
   {
     slug: 'funeral-planning',
@@ -338,40 +373,31 @@ export const services: Service[] = [
     slug: 'pet-funeral',
     title: { zh: '宠物殡葬・宠物火化（怀宠阁）', en: 'Pet Funeral & Pet Cremation (怀宠阁)' },
     seo: {
-      zh: { title: '峇株巴辖宠物殡葬｜宠物火化 RM738 起、猫狗火化、骨灰安放｜祥鹤怀宠阁', desc: '峇株巴辖宠物殡葬、宠物火化，RM738 起，按体重算，价钱清楚。猫、狗、兔子都可以，单炉火化或安葬，送怀宠阁 1 个月安置。宠物专线 018-909 3883', h1: '峇株巴辖宠物殡葬，', grey: '好好送它最后一程。' },
-      en: { title: 'Pet Cremation & Pet Funeral in Batu Pahat | From RM738 | Seong Hoe', desc: 'Pet cremation and pet funeral in Batu Pahat for dogs, cats and rabbits: we collect your pet, cremate individually, and return the ashes or keep them at our pet columbarium, first month free. Pet line +60 18-909 3883.', h1: 'Pet cremation in Batu Pahat,', grey: 'a proper goodbye.' },
+      zh: { title: `峇株巴辖宠物火化与殡葬｜RM${petStartingPrice} 起｜祥鹤怀宠阁`, desc: `峇株巴辖怀宠阁提供猫咪、狗狗及兔子单炉火化，可安排上门接送、告别仪式和骨灰安放。RM${petStartingPrice} 起。宠物专线 018-909 3883。`, h1: '峇株巴辖宠物火化与殡葬' },
+      en: { title: `Pet Cremation in Batu Pahat | From RM${petStartingPrice} | Seong Hoe`, desc: `Individual pet cremation and pet funeral services in Batu Pahat for cats, dogs and rabbits. Pickup, farewell and ash care. From RM${petStartingPrice}. Call +60 18-909 3883.`, h1: 'Pet Cremation in Batu Pahat' },
     },
     intro: {
-      zh: '猫、狗、兔子，养久了就是家人。祥鹤在峇株巴辖提供宠物殡葬和宠物火化：接毛孩子、告别仪式、单炉火化，到骨灰安放，一条龙帮你安排。宠物专线 018-909 3883。',
-      en: 'Cats, dogs, rabbits: after years together, they are family. Seong Hoe provides pet funerals in Batu Pahat, from collection and a farewell ceremony to individual cremation and a resting place for the ashes. Pet hotline: +60 18-909 3883.',
+      zh: '祥鹤怀宠阁为猫咪、狗狗和兔子安排单炉火化、上门接送、告别仪式和骨灰安放。',
+      en: 'Seong Hoe offers individual cremation and pet funeral services for cats, dogs and rabbits. We can arrange home pickup, a farewell ceremony and care for the ashes.',
     },
     body: {
       zh: [
-        { h: '它陪了我们很多年', p: [
-          '猫、狗、兔子，甚至一缸鱼，养久了就是家里的一份子。它走的时候，主人会难过，也是正常的。怀宠阁想做的，就是陪主人好好送它一程。',
-        ] },
         { h: '我们提供的宠物殡葬服务', steps: [
           ['专业遗体接送', '打电话或 WhatsApp 我们，我们安排接毛孩子。'],
           ['温馨告别仪式', '火化前，主人可以陪它最后一段时间，讲完要讲的话。'],
           ['单炉火化', '每只宠物单独火化，骨灰不会跟其他宠物混在一起。'],
-          ['骨灰捡拾与骨灰罐', '火化后捡拾骨灰，放进骨灰罐交回主人。'],
+          ['骨灰处理', '火化后可商量领回、安放、撒海或安葬。不同配套的处理方式有别，预约时可确认。'],
           ['怀宠阁骨灰安放', '想让它有个地方安放的，可以放在祥鹤的宠物骨灰阁怀宠阁。'],
-        ] },
-        { h: '宠物殡葬配套价格（2026）', steps: [
-          ['简约告别配套：RM738 起', '遗体接送、单炉专属火化、骨灰红布包裹处理、基本往生纸钱、骨灰撒海或安葬服务。10KG 以下 RM738，10–20KG RM838，20–30KG RM938，30KG 以上 RM1038。'],
-          ['告别祭拜配套：RM988 起', '遗体接送、单炉专属火化或安葬、遗体净身整理、灵堂设立与拜祭仪式、精美骨灰瓮、骨灰阁 1 个月、撒海或安葬服务、往生被和往生钱、遗照打印和脚印纪念卡。10KG 以下 RM988，10–20KG RM1088，20–30KG RM1188，30KG 以上 RM1288。'],
-          ['纪念珍藏配套：RM1688 起', '告别祭拜配套的内容，再加宠物专属寿棺、往生被和金银纸、鲜花、宠物毛发钥匙圈、照片定制钥匙扣。10KG 以下 RM1688，10–20KG RM1788，20–30KG RM1888，30KG 以上 RM1988。'],
-          ['宠物超度服务', '需要安排超度的，额外 RM600，可以预约。'],
         ] },
         { h: '毛孩子走了，主人可以先做这几件事', steps: [
           ['先打宠物专线', '打 018-909 3883 或 WhatsApp 我们，讲一下毛孩子的情况，我们安排时间来接它。'],
           ['用毛巾包好它', '用它平时睡的毛巾或小被子把它包好，放在阴凉通风的地方。'],
           ['准备它喜欢的东西', '它喜欢的玩具、零食，告别的时候可以放在它身边，陪它最后一段路。'],
         ] },
-        { h: '猫、狗、兔子，我们都一样用心', p: [
+        { h: '峇株巴辖猫咪、狗狗与兔子火化', p: [
           '不管是陪了你十几年的老狗、每天等你回家的猫咪，还是家里的小兔子，在主人心里都是家人。峇株巴辖的宠物殡葬，我们照办人的丧事一样用心，每只毛孩子都单炉火化，骨灰不会跟别的宠物混在一起。',
         ] },
-        { h: '怀宠阁首月免费', p: [
+        { h: '怀宠阁宠物骨灰安放', p: [
           '凡由祥鹤协助处理后事的宠物，放在怀宠阁的第一个月费用全免。主人可以先慢慢想清楚，要带它回家，还是让它在怀宠阁安放。',
         ] },
         { h: '峇株巴辖周边地区，宠物殡葬一样过去', p: [
@@ -379,31 +405,22 @@ export const services: Service[] = [
         ] },
       ],
       en: [
-        { h: 'They were family for years', p: [
-          'Cats, dogs, rabbits, even a tank of fish become part of the family. Grief is natural when they go. 怀宠阁 is here to help you say goodbye properly.',
-        ] },
         { h: 'Our pet funeral services', steps: [
           ['Pet collection', 'Call or WhatsApp us and we will arrange to collect your pet.'],
           ['Farewell ceremony', 'Spend some last moments together before cremation.'],
           ['Individual cremation', 'Each pet is cremated on its own, so the ashes are never mixed.'],
-          ['Ash collection and urn', 'The ashes are collected into an urn and returned to you.'],
+          ['Care for the ashes', 'Ask about taking the ashes home, keeping them at our columbarium, scattering them or arranging burial. We can confirm the options for your package when you book.'],
           ['Pet columbarium (怀宠阁)', 'If you would like a resting place, the ashes can stay at our pet columbarium.'],
-        ] },
-        { h: 'Pet funeral packages and prices (2026)', steps: [
-          ['Simple Farewell package: from RM738', 'Pet collection, individual cremation, ashes wrapped in red cloth, basic offering paper, and scattering at sea or burial of the ashes. Under 10KG RM738, 10–20KG RM838, 20–30KG RM938, over 30KG RM1038.'],
-          ['Farewell & Prayer package: from RM988', 'Pet collection, individual cremation or burial, cleansing and grooming, a memorial altar and prayer ceremony, a quality urn, 1 month at our pet columbarium, scattering or burial service, a blanket and offering paper, a printed portrait and paw-print card. Under 10KG RM988, 10–20KG RM1088, 20–30KG RM1188, over 30KG RM1288.'],
-          ['Treasured Memories package: from RM1688', 'Everything in the Farewell & Prayer package, plus a pet casket, blanket and gold and silver paper, flowers, a fur keychain and a custom photo keychain. Under 10KG RM1688, 10–20KG RM1788, 20–30KG RM1888, over 30KG RM1988.'],
-          ['Prayer rites for your pet', 'Available by appointment for an extra RM600.'],
         ] },
         { h: 'What to do when your pet passes away', steps: [
           ['Call our pet line', 'Call or WhatsApp +60 18-909 3883 and tell us about your pet. We will arrange a time to collect them.'],
           ['Wrap them gently', 'Wrap your pet in their favourite towel or blanket and keep them in a cool, airy place.'],
           ['Bring their favourite things', 'Their favourite toys or treats can stay beside them for the farewell.'],
         ] },
-        { h: 'Dogs, cats and rabbits, cared for the same way', p: [
+        { h: 'Cat, dog and rabbit cremation in Batu Pahat', p: [
           'Whether it is a dog who stayed with you for over ten years, a cat who waited for you every evening, or a little rabbit, they are family. We give every pet funeral in Batu Pahat the same care, and every pet is cremated individually, so the ashes are never mixed.',
         ] },
-        { h: 'First month free at our pet columbarium', p: [
+        { h: 'Pet columbarium in Batu Pahat', p: [
           'For every pet we lay to rest, the first month at our pet columbarium is free. Take your time to decide whether to bring them home or let them rest with us.',
         ] },
         { h: 'We also serve the areas around Batu Pahat', p: [
@@ -415,26 +432,26 @@ export const services: Service[] = [
       zh: [
         ['龙引、亚依淡、巴力士隆、巴罗也可以办宠物火化吗？', '可以。峇株巴辖周边地区我们都会过去接毛孩子，打宠物专线 018-909 3883。'],
         ['宠物走了，要多快安排火化？', '一般建议尽早安排。先打宠物专线 018-909 3883，我们跟你约好时间来接毛孩子。'],
-        ['狗狗、猫咪火化要多少钱？', '按体重和配套算，RM738 起。10KG 以下的简约告别配套 RM738，告别祭拜配套 RM988 起，纪念珍藏配套 RM1688 起，每个配套都送怀宠阁 1 个月安置。'],
+        ['狗狗、猫咪火化要多少钱？', `RM${petStartingPrice} 起，按体重和配套计算。上方列有各档价格，预约时可提供宠物体重及接送地点确认报价。`],
         ['宠物可以土葬（安葬）吗？', '可以。告别祭拜配套和纪念珍藏配套可以选单炉专属火化或安葬，打宠物专线 018-909 3883 问清楚。'],
-        ['可以帮宠物做超度吗？', '可以，宠物超度服务额外 RM600，需要先预约。'],
+        ['可以帮宠物做超度吗？', `可以，宠物超度服务额外 RM${petPrayerFee}，需要先预约。`],
         ['怀宠阁是什么？', '怀宠阁是祥鹤的宠物骨灰阁。不想把骨灰带回家，可以让毛孩子在这里安放，首月免费。'],
         ['峇株巴辖宠物火化是单独火化吗？', '是，祥鹤提供单炉火化，每只宠物单独火化。'],
         ['可以来家里接宠物吗？', '可以，我们提供专业遗体接送，打宠物专线 018-909 3883 安排。'],
-        ['骨灰可以带回家吗？', '可以，骨灰会放进骨灰罐交回主人。也可以放在怀宠阁，首月免费。'],
+        ['骨灰可以带回家吗？', '可以先告诉我们你想领回骨灰。简约告别配套列的是红布包裹，另两档列有骨灰瓮。我们会在预约时确认所选配套的交还方式和费用。'],
         ['什么动物都可以办吗？', '猫、狗、兔子、鱼都可以先联络我们，讲一下情况。'],
         ['新山、新文龙分店有宠物殡葬吗？', '宠物殡葬只在峇株巴辖总店，宠物专线 018-909 3883。'],
       ],
       en: [
         ['Do you offer pet cremation in Yong Peng, Ayer Hitam, Parit Sulong and Parit Raja?', 'Yes. We collect pets from the areas around Batu Pahat. Call our pet line on +60 18-909 3883.'],
         ['How soon should we arrange the cremation?', 'As soon as you can. Call our pet line on +60 18-909 3883 and we will arrange a time to collect your pet.'],
-        ['How much does dog or cat cremation cost?', 'It depends on weight and package, from RM738. Simple Farewell from RM738, Farewell & Prayer from RM988, Treasured Memories from RM1688. Every package includes 1 month at our pet columbarium.'],
+        ['How much does cat or dog cremation cost in Batu Pahat?', `Prices start at RM${petStartingPrice} and vary by weight and package. See the price breakdown above and tell us your pet’s weight and pickup location to confirm the quote.`],
         ['Can my pet be buried instead of cremated?', 'Yes. The Farewell & Prayer and Treasured Memories packages offer individual cremation or burial. Call our pet line on +60 18-909 3883 for details.'],
-        ['Can you arrange prayer rites for my pet?', 'Yes, for an extra RM600, by appointment.'],
+        ['Can you arrange prayer rites for my pet?', `Yes, for an extra RM${petPrayerFee}, by appointment.`],
         ['What is 怀宠阁?', '怀宠阁 is Seong Hoe’s pet columbarium. If you prefer not to keep the ashes at home, your pet can rest here, with the first month free.'],
         ['Is pet cremation in Batu Pahat done individually?', 'Yes. Each pet is cremated individually.'],
         ['Can you collect my pet from home?', 'Yes. Call our pet hotline on +60 18-909 3883 to arrange collection.'],
-        ['Can we take the ashes home?', 'Yes, in an urn. They can also rest at our pet columbarium, with the first month free.'],
+        ['Can we take the ashes home?', 'Tell us if you would like to take the ashes home. Simple Farewell lists red cloth wrapping, and the other two packages list an urn. We can confirm the return arrangements and any costs when you book.'],
         ['Which animals can you help with?', 'Cats, dogs, rabbits and fish. Contact us and tell us about your pet.'],
         ['Do the Johor Bahru and Senggarang branches offer pet funerals?', 'Pet funerals are only available at our Batu Pahat HQ. Pet line: +60 18-909 3883.'],
       ],

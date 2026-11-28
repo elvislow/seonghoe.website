@@ -58,6 +58,13 @@ const faqSchema = g ? { '@context': 'https://schema.org', '@type': 'FAQPage', ma
             <div class="svc-sec" data-reveal>
               <h2 class="h3">{t(`${area}服务专页`, `${area} service guides`)}</h2>
               <div class="svc-rows" style="margin-top:12px">
+                {b.isHQ && (
+                  <a class="svc-row" href={`${pre}/services/pet-funeral/`}>
+                    <span class="svc-row__icon"><Icon name={serviceIcon['pet-funeral']} /></span>
+                    <span class="svc-row__title">{t('峇株巴辖宠物火化与殡葬', 'Pet cremation and funerals in Batu Pahat')}</span>
+                    <span class="disc-arrow"><Icon name="arrow" /></span>
+                  </a>
+                )}
                 {areaPages[b.slug].map((o) => (
                   <a class="svc-row" href={`${pre}/${b.slug}/${o.slug}/`}>
                     <span class="svc-row__icon"><Icon name={o.icon} /></span>
