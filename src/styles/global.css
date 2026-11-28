@@ -178,7 +178,7 @@ figure { margin: 0; }
 .hero__name { font-size: var(--fs-name); line-height: 1.12; letter-spacing: .02em; margin: 22px 0 22px; }
 .hero__name .ln { display: block; overflow: hidden; padding-bottom: .06em; }
 .hero__name .ln > span { display: block; white-space: nowrap; }
-.hero__name--wrap .ln > span { white-space: normal; }
+.hero__name--wrap .ln > span { white-space: normal; text-wrap: wrap; }
 .hero__location { margin-top: 16px; }
 .hero__name .ln--2 > span { color: var(--soft); }
 .hero__lead { font-size: 16px; line-height: 1.8; color: var(--muted); max-width: 22em; }
@@ -444,6 +444,19 @@ figure { margin: 0; }
   .svc-row .disc-arrow { width: 36px; height: 36px; }
   .footer { padding-bottom: 96px; }
   .acc__panel p { padding-right: 0; }
+}
+
+.hero__name--wrap { font-size: clamp(30px, 3vw, 42px); }
+@media (max-width: 380px) {
+  .site-header__in { gap: 10px; }
+  .site-header .brand { gap: 6px; }
+  .site-header .brand img { width: 30px; height: 32px; }
+  .site-header .brand b { font-size: 13px; }
+  .header-cta { gap: 6px; }
+  .header-cta .lang { padding: 6px 8px; white-space: nowrap; }
+  .header-cta .menu-btn { width: 36px; height: 36px; }
+  .hero__name--wrap { margin-block: 16px; }
+  .hero__name--wrap ~ .hero__ctas { gap: 10px; margin-top: 18px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
